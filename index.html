@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keval — GEO & SEO Specialist, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f4f2;
+    --warm: #ececea;
+    --accent: #7a1520;
+    --accent-pale: #f0d0d3;
+    --mid: #6b6b6b;
+    --rule: #d0d0ce;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    animation: fadeDown 0.8s ease both;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+  .hero-left {
+    padding: 6rem 3rem 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 2rem; height: 1px;
+    background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.2rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta-row { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #a8360a; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--ink); color: var(--ink); }
+
+  .hero-right {
+    background: var(--warm);
+    border-left: 1px solid var(--rule);
+    padding: 6rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+  .hero-right::before {
+    content: 'GEO';
+    position: absolute; top: -1rem; right: -1rem;
+    font-family: var(--serif);
+    font-size: 16rem;
+    font-weight: 300;
+    color: var(--accent-pale);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    position: relative; z-index: 1;
+  }
+  .stat-item { border-top: 1px solid var(--rule); padding-top: 1rem; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    line-height: 1.4;
+  }
+  .hero-quote {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: var(--paper);
+    border-left: 3px solid var(--accent);
+    position: relative; z-index: 1;
+  }
+  .hero-quote p {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .hero-quote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-style: normal;
+  }
+
+  /* SECTION SHARED */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 1.5rem; height: 1px; background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ABOUT / GEO EXPLAINER */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    border-top: 1px solid var(--rule);
+    background: var(--warm);
+  }
+  .about-left {}
+  .about-text {
+    margin-top: 1.5rem;
+    color: var(--mid);
+    line-height: 1.75;
+    font-size: 1.02rem;
+  }
+  .geo-vs-seo {
+    margin-top: 2rem;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  .geo-vs-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .geo-vs-row:last-child { border-bottom: none; }
+  .geo-vs-cell {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--ink);
+    border-right: 1px solid var(--rule);
+  }
+  .geo-vs-cell:last-child { border-right: none; }
+  .geo-vs-head {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    background: var(--warm);
+  }
+  .geo-vs-cell.accent { color: var(--accent); font-weight: 500; }
+
+  .about-right { display: flex; flex-direction: column; justify-content: center; }
+  .service-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0; }
+  .service-item {
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: start; gap: 1.25rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: default;
+    transition: background 0.15s;
+  }
+  .service-item:first-child { border-top: 1px solid var(--rule); }
+  .service-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--mid);
+    padding-top: 0.15rem;
+  }
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+  }
+  .service-desc {
+    font-size: 0.82rem;
+    color: var(--mid);
+    line-height: 1.5;
+  }
+  .service-arrow {
+    font-size: 0.9rem;
+    color: var(--accent);
+    padding-top: 0.1rem;
+  }
+
+  /* PROCESS */
+  #process { border-top: 1px solid var(--rule); }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid var(--rule);
+  }
+  .process-step {
+    padding: 2rem 1.75rem;
+    border-right: 1px solid var(--rule);
+    position: relative;
+    transition: background 0.2s;
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step:hover { background: var(--warm); }
+  .process-step-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .process-step h3 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+  .process-step p {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+
+  /* BLOG */
+  #blog { border-top: 1px solid var(--rule); background: var(--warm); }
+  .blog-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .blog-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(14,14,13,0.08);
+  }
+  .blog-card.featured { grid-row: span 2; }
+  .blog-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--accent-pale);
+    display: inline-block;
+    width: fit-content;
+  }
+  .blog-card h3 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+    flex-grow: 1;
+  }
+  .blog-card.featured h3 { font-size: 1.8rem; }
+  .blog-card p {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .blog-meta {
+    display: flex; align-items: center; gap: 1rem;
+    margin-top: auto;
+    border-top: 1px solid var(--rule);
+    padding-top: 1rem;
+  }
+  .blog-date {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+  }
+  .blog-read {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: var(--mid);
+    margin-left: auto;
+  }
+
+  /* PRICING */
+  #pricing { border-top: 1px solid var(--rule); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .pricing-card {
+    border: 1px solid var(--rule);
+    padding: 2.5rem;
+    position: relative;
+    background: var(--paper);
+    transition: transform 0.2s;
+  }
+  .pricing-card:hover { transform: translateY(-2px); }
+  .pricing-card.featured {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+  .pricing-card.featured .pricing-desc,
+  .pricing-card.featured .pricing-feature { color: #a0a0a0; }
+  .pricing-card.featured .pricing-feature::before { background: var(--accent); }
+  .pricing-badge {
+    position: absolute; top: -0.65rem; left: 2rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.7rem;
+  }
+  .pricing-tier {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1rem;
+  }
+  .pricing-card.featured .pricing-tier { color: #999; }
+  .pricing-price {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .pricing-period {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--mid);
+    margin-bottom: 1rem;
+  }
+  .pricing-card.featured .pricing-period { color: #999; }
+  .pricing-desc {
+    font-size: 0.875rem;
+    color: var(--mid);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pricing-card.featured .pricing-desc { border-color: #2a2a2a; }
+  .pricing-features { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+  .pricing-feature {
+    font-size: 0.85rem;
+    color: var(--mid);
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    line-height: 1.4;
+  }
+  .pricing-feature::before {
+    content: ''; display: block;
+    width: 5px; height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0; margin-top: 0.45rem;
+  }
+
+  /* CONTACT */
+  #contact {
+    border-top: 1px solid var(--rule);
+    background: var(--ink);
+    color: var(--paper);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+  }
+  #contact .section-label { color: var(--accent); }
+  #contact .section-label::before { background: var(--accent); }
+  #contact .section-title { color: var(--paper); }
+  .contact-sub {
+    margin-top: 1rem;
+    color: #a0a0a0;
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  .contact-details { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .contact-detail {
+    display: flex; align-items: baseline; gap: 1rem;
+    border-bottom: 1px solid #252525;
+    padding-bottom: 1rem;
+  }
+  .contact-detail-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+    min-width: 80px;
+  }
+  .contact-detail-value {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--paper);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; padding-top: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #999;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: #111111;
+    border: 1px solid #2a2a2a;
+    color: var(--paper);
+    padding: 0.75rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: #606060; }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: #111111; }
+  .btn-submit {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { background: #a8360a; transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    color: #606060;
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: #999;
+  }
+  .footer-logo span { color: var(--accent); font-style: italic; }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: #505050;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #606060;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+
+  /* BOOK CTA */
+  .book-cta {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: #111111;
+    border: 1px solid #2a2a2a;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .book-cta-text {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: #a0a0a0;
+  }
+  .btn-book {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-book:hover { background: var(--accent); color: #fff; }
+
+  /* MODAL OVERLAY */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(14,14,13,0.75);
+    align-items: center; justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(4px);
+    animation-fill-mode: both;
+  }
+  .modal-overlay.open { display: flex; animation: modalFadeIn 0.25s ease; }
+  @keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .modal-box {
+    background: var(--paper);
+    width: 100%; max-width: 520px;
+    max-height: 90vh; overflow-y: auto;
+    padding: 2.5rem;
+    position: relative;
+    animation: modalSlideUp 0.3s ease both;
+    border: 1px solid var(--rule);
+  }
+  @keyframes modalSlideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: none; border: none;
+    font-size: 1rem; color: var(--mid); cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    transition: color 0.15s;
+    font-family: var(--mono);
+  }
+  .modal-close:hover { color: var(--ink); }
+  .modal-back {
+    background: none; border: none;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; color: var(--mid);
+    cursor: pointer; padding: 0; margin-bottom: 1.5rem;
+    display: block; transition: color 0.15s;
+    text-transform: uppercase;
+  }
+  .modal-back:hover { color: var(--accent); }
+  .modal-meet-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .modal-title {
+    font-family: var(--serif);
+    font-size: 2rem; font-weight: 300; line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .modal-sub {
+    font-size: 0.88rem; color: var(--mid);
+    line-height: 1.6; margin-bottom: 1.75rem;
+  }
+
+  /* CALENDAR */
+  .cal-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+  .cal-nav-btn {
+    background: none; border: 1px solid var(--rule);
+    color: var(--ink); width: 2rem; height: 2rem;
+    cursor: pointer; font-size: 1rem;
+    transition: border-color 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cal-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .cal-month-label {
+    font-family: var(--mono); font-size: 0.75rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    gap: 4px; margin-bottom: 1.5rem;
+  }
+  .cal-day-header {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); text-align: center;
+    padding: 0.4rem 0;
+  }
+  .cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; border: 1px solid transparent;
+    cursor: pointer; transition: all 0.15s;
+    color: var(--ink); background: transparent;
+  }
+  .cal-day:hover:not(.disabled):not(.empty) { border-color: var(--accent); color: var(--accent); }
+  .cal-day.selected { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .cal-day.today { border-color: var(--rule); font-weight: 600; }
+  .cal-day.disabled, .cal-day.empty { color: #ccc; cursor: default; pointer-events: none; }
+  .cal-day.past { color: #ccc; cursor: default; pointer-events: none; }
+
+  /* TIME SLOTS */
+  .time-row { margin-bottom: 1.5rem; }
+  .time-row-label {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); margin-bottom: 0.75rem;
+  }
+  .time-slots { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .time-slot {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.06em; cursor: pointer;
+    transition: all 0.15s; color: var(--ink); background: transparent;
+  }
+  .time-slot:hover { border-color: var(--accent); color: var(--accent); }
+  .time-slot.selected { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* MODAL BUTTONS */
+  .btn-modal-next {
+    width: 100%; padding: 1rem;
+    background: var(--accent); color: #fff; border: none;
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s, opacity 0.2s;
+    margin-top: 0.5rem;
+  }
+  .btn-modal-next:disabled { opacity: 0.35; cursor: not-allowed; }
+  .btn-modal-next:not(:disabled):hover { background: #a8360a; }
+  .modal-form { display: flex; flex-direction: column; gap: 1rem; }
+  .modal-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .modal-form .form-group label { color: var(--mid); }
+  .modal-form .form-group input,
+  .modal-form .form-group textarea,
+  .modal-form .form-group select {
+    background: var(--warm); border: 1px solid var(--rule);
+    color: var(--ink); padding: 0.65rem 0.9rem;
+    font-family: var(--sans); font-size: 0.875rem;
+    outline: none; transition: border-color 0.2s; appearance: none;
+  }
+  .modal-form .form-group input:focus,
+  .modal-form .form-group textarea:focus,
+  .modal-form .form-group select:focus { border-color: var(--accent); }
+  .modal-form .form-group textarea { min-height: 80px; resize: vertical; }
+  .btn-modal-confirm {
+    width: 100%; padding: 1rem; margin-top: 0.5rem;
+    background: var(--accent); color: #fff; border: none;
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-modal-confirm:hover { background: #a8360a; }
+
+  /* CONFIRM STEP */
+  .modal-confirm-icon {
+    width: 3rem; height: 3rem; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1.25rem;
+  }
+  .modal-confirm-details {
+    background: var(--warm); border: 1px solid var(--rule);
+    padding: 1.25rem; margin-top: 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .confirm-row { display: flex; gap: 1rem; font-size: 0.875rem; }
+  .confirm-row strong {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); min-width: 70px; padding-top: 0.1rem;
+  }
+  .btn-modal-done {
+    margin-top: 1.5rem; width: 100%; padding: 0.85rem;
+    background: transparent; border: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; color: var(--mid); transition: all 0.2s;
+  }
+  .btn-modal-done:hover { border-color: var(--ink); color: var(--ink); }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+    background: var(--ink); color: var(--paper);
+    padding: 0.85rem 1.75rem;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
+    text-transform: uppercase; z-index: 2000;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s;
+    opacity: 0; pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { border-left: none; border-top: 1px solid var(--rule); }
+    #about { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card.featured { grid-row: auto; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; gap: 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; }
+    .process-grid { grid-template-columns: 1fr; }
+    .process-step { border-right: none; border-bottom: 1px solid var(--rule); }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">K<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#blog">Insights</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="btn-primary">Work Together</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">London-based specialist</div>
+    <h1>Search visibility<br>for the <em>AI era</em></h1>
+    <p class="hero-sub">I help brands rank in traditional search <em>and</em> get cited by AI systems like ChatGPT, Perplexity, and Google's AI Overviews — before your competitors even know GEO exists.</p>
+    <div class="hero-cta-row">
+      <a href="#contact" class="btn-primary">Start a project</a>
+      <a href="#about" class="btn-ghost">How GEO works</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">~60%</div>
+        <div class="stat-label">of Google searches now show AI Overviews</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">more brand trust when cited by AI answers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2025</div>
+        <div class="stat-label">GEO becomes a core discipline, not a nice-to-have</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Early-mover advantage for brands acting now</div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <p>"The brands being cited in AI answers tomorrow are the ones building structured authority today."</p>
+      <cite>— Keval, GEO & SEO Specialist</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / GEO EXPLAINER -->
+<section id="about">
+  <div class="about-left reveal">
+    <div class="section-label">What I do</div>
+    <h2 class="section-title">SEO <em>&</em> GEO —<br>the full picture</h2>
+    <p class="about-text">Traditional SEO still matters enormously. But search is changing. AI-powered answer engines — Perplexity, ChatGPT Search, Google AIO — are now the first touchpoint for millions of queries. I build strategies that win in both worlds.</p>
+
+    <div class="geo-vs-seo reveal" style="transition-delay: 0.15s">
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell geo-vs-head">Traditional SEO</div>
+        <div class="geo-vs-cell geo-vs-head">GEO — Generative Engine Optimisation</div>
+      </div>
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell">Rank in 10 blue links</div>
+        <div class="geo-vs-cell accent">Get cited in AI-generated answers</div>
+      </div>
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell">Target keywords</div>
+        <div class="geo-vs-cell accent">Target topics, entities & questions</div>
+      </div>
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell">Build backlinks for authority</div>
+        <div class="geo-vs-cell accent">Build structured data & source authority</div>
+      </div>
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell">Optimise meta descriptions</div>
+        <div class="geo-vs-cell accent">Optimise for extractable, citable content</div>
+      </div>
+      <div class="geo-vs-row">
+        <div class="geo-vs-cell">Focus: click-through rate</div>
+        <div class="geo-vs-cell accent">Focus: brand mention in AI responses</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right reveal" style="transition-delay: 0.2s">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What you <em>get</em></h2>
+    <div class="service-list">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <div>
+          <div class="service-name">GEO Strategy & AI Positioning</div>
+          <div class="service-desc">Structured content architecture, entity optimisation, and schema to make your brand the source AI trusts.</div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <div>
+          <div class="service-name">Technical SEO Audits</div>
+          <div class="service-desc">Core Web Vitals, crawlability, structured data, and indexing fixes that compound over time.</div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <div>
+          <div class="service-name">Editorial Content Strategy</div>
+          <div class="service-desc">Topical authority mapping and content briefs designed for both human readers and LLMs.</div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <div>
+          <div class="service-name">PR-to-Link Pipeline</div>
+          <div class="service-desc">Digital PR strategy that builds the kind of external citations AI models use as trust signals.</div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">05</span>
+        <div>
+          <div class="service-name">GEO Training & Workshops</div>
+          <div class="service-desc">Help your in-house team understand and implement GEO before it becomes mainstream.</div>
+        </div>
+        <span class="service-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-label reveal">How it works</div>
+  <h2 class="section-title reveal">A clear, <em>no-fluff</em> process</h2>
+  <div class="process-grid reveal" style="transition-delay: 0.1s">
+    <div class="process-step">
+      <div class="process-step-num">Step 01</div>
+      <h3>Discovery & Audit</h3>
+      <p>I dig into your current search presence, competitors, and where AI mentions your space — not just your brand.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">Step 02</div>
+      <h3>Strategy Build</h3>
+      <p>A prioritised roadmap with quick wins and long-term foundations. No fluff, all action.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">Step 03</div>
+      <h3>Implementation</h3>
+      <p>I work alongside your team or handle delivery directly — technical fixes, content, structured data.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">Step 04</div>
+      <h3>Monitor & Iterate</h3>
+      <p>Regular reporting on traditional rankings and AI citation tracking, adjusting strategy as the landscape evolves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / INSIGHTS -->
+<section id="blog">
+  <div class="blog-header">
+    <div>
+      <div class="section-label reveal">Insights</div>
+      <h2 class="section-title reveal">Thinking on <em>search's</em> next chapter</h2>
+    </div>
+    <a href="blog.html" class="btn-ghost reveal">All articles →</a>
+  </div>
+  <div class="blog-grid reveal" style="transition-delay: 0.1s">
+    <a href="#" class="blog-card featured">
+      <span class="blog-tag">GEO</span>
+      <h3>Why Your Brand Needs to Be Cited in AI Answers — Before Your Competitors Figure It Out</h3>
+      <p>AI answer engines are now the first click for millions of searches. Brands that get cited build compounding trust that latecomers can't easily replicate. Here's what it takes to become the source AI trusts in your niche.</p>
+      <div class="blog-meta">
+        <span class="blog-date">May 2025</span>
+        <span class="blog-read">8 min read</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Technical SEO</span>
+      <h3>Structured Data in 2025: Writing Schema for Humans and LLMs</h3>
+      <p>How schema markup has evolved from a ranking signal to a citation signal for AI engines.</p>
+      <div class="blog-meta">
+        <span class="blog-date">Apr 2025</span>
+        <span class="blog-read">5 min read</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Strategy</span>
+      <h3>Topical Authority vs. Keyword Clusters: What GEO Changes</h3>
+      <p>The shift from targeting keywords to building entity-level expertise.</p>
+      <div class="blog-meta">
+        <span class="blog-date">Mar 2025</span>
+        <span class="blog-read">6 min read</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">GEO</span>
+      <h3>How Perplexity Decides Who to Cite: A Practical Guide</h3>
+      <p>Reverse-engineering citation patterns in AI answer engines to inform your content strategy.</p>
+      <div class="blog-meta">
+        <span class="blog-date">Feb 2025</span>
+        <span class="blog-read">7 min read</span>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <span class="blog-tag">Digital PR</span>
+      <h3>The PR-to-Citation Pipeline: Building Links That AI Models Trust</h3>
+      <p>Why traditional link-building and AI-era citation-building overlap more than you think.</p>
+      <div class="blog-meta">
+        <span class="blog-date">Jan 2025</span>
+        <span class="blog-read">4 min read</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div>
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title">Ready to<br><em>start?</em></h2>
+    <p class="contact-sub">Whether you have a clear brief or just want to explore what GEO could mean for your brand, I'm happy to talk. Based in London, working with UK and international clients.</p>
+    <div class="contact-details">
+      <div class="contact-detail">
+        <span class="contact-detail-label">Based</span>
+        <span class="contact-detail-value">London, UK</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Email</span>
+        <span class="contact-detail-value">hello@yourname.co.uk</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">LinkedIn</span>
+        <span class="contact-detail-value">linkedin.com/in/yourprofile</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Availability</span>
+        <span class="contact-detail-value">Taking new clients — June 2025</span>
+      </div>
+    </div>
+    <!-- Book a call CTA -->
+    <div class="book-cta">
+      <p class="book-cta-text">Prefer to talk first? Book a free 30-minute Google Meet.</p>
+      <button class="btn-book" onclick="openBookingModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book a Google Meet
+      </button>
+    </div>
+  </div>
+  <div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your name</label>
+          <input type="text" id="cf-name" placeholder="Jane Smith">
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" id="cf-company" placeholder="Acme Ltd">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="cf-email" placeholder="jane@company.com">
+      </div>
+      <div class="form-group">
+        <label>What do you need?</label>
+        <select id="cf-service">
+          <option value="">Select a service</option>
+          <option>GEO Strategy</option>
+          <option>Technical SEO</option>
+          <option>Content Strategy</option>
+          <option>Full Retainer</option>
+          <option>Workshop / Training</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tell me about your project</label>
+        <textarea id="cf-message" placeholder="A bit about your brand, goals, and timeline..."></textarea>
+      </div>
+      <button class="btn-submit" type="button" onclick="handleFormSubmit()">Send message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- BOOKING MODAL                          -->
+<!-- ═══════════════════════════════════════ -->
+<div id="booking-modal" class="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal-box">
+
+    <!-- Step 1: Pick a date -->
+    <div class="modal-step" id="step-1">
+      <button class="modal-close" onclick="closeBookingModal()">✕</button>
+      <div class="modal-meet-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="var(--accent)" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="var(--accent)" stroke-width="2"/></svg>
+        <span>Free 30-min Google Meet</span>
+      </div>
+      <h2 class="modal-title">Book a discovery call</h2>
+      <p class="modal-sub">Pick a date and time that works for you. A Google Meet link will be sent to your inbox.</p>
+
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="prevMonth()">‹</button>
+        <span id="cal-month-label" class="cal-month-label"></span>
+        <button class="cal-nav-btn" onclick="nextMonth()">›</button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <div id="time-row" class="time-row" style="display:none">
+        <p class="time-row-label">Available slots — <span id="selected-date-label"></span></p>
+        <div class="time-slots" id="time-slots"></div>
+      </div>
+
+      <button class="btn-modal-next" id="btn-next-1" onclick="goToStep2()" disabled>Continue →</button>
+    </div>
+
+    <!-- Step 2: Your details -->
+    <div class="modal-step" id="step-2" style="display:none">
+      <button class="modal-close" onclick="closeBookingModal()">✕</button>
+      <button class="modal-back" onclick="goToStep1()">← Back</button>
+      <div class="modal-meet-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="var(--accent)" stroke-width="2"/><line x1="16" y1="2" x2="16" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="8" y1="2" x2="8" y2="6" stroke="var(--accent)" stroke-width="2"/><line x1="3" y1="10" x2="21" y2="10" stroke="var(--accent)" stroke-width="2"/></svg>
+        <span id="booking-summary-badge">30-min call · </span>
+      </div>
+      <h2 class="modal-title">Your details</h2>
+      <p class="modal-sub">Almost there — just a few details so I can send the calendar invite.</p>
+
+      <div class="modal-form">
+        <div class="modal-form-row">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" id="b-name" placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="b-email" placeholder="jane@company.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Company (optional)</label>
+          <input type="text" id="b-company" placeholder="Acme Ltd">
+        </div>
+        <div class="form-group">
+          <label>What would you like to discuss?</label>
+          <select id="b-topic">
+            <option value="">Select a topic</option>
+            <option>GEO Strategy</option>
+            <option>Technical SEO</option>
+            <option>Content & Editorial Strategy</option>
+            <option>Monthly Retainer</option>
+            <option>Workshop / Training</option>
+            <option>Just exploring / not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Anything else I should know? (optional)</label>
+          <textarea id="b-notes" placeholder="Brief context about your brand or challenge..."></textarea>
+        </div>
+        <button class="btn-modal-confirm" onclick="confirmBooking()">Confirm booking →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Confirmed -->
+    <div class="modal-step" id="step-3" style="display:none">
+      <button class="modal-close" onclick="closeBookingModal()">✕</button>
+      <div class="modal-confirm-icon">✓</div>
+      <h2 class="modal-title">You're booked!</h2>
+      <div class="modal-confirm-details" id="confirm-details"></div>
+      <p class="modal-sub" style="margin-top:1.25rem">A Google Meet invite has been sent to your email. I look forward to speaking with you.</p>
+      <button class="btn-modal-done" onclick="closeBookingModal()">Close</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SUCCESS TOAST (contact form)            -->
+<!-- ═══════════════════════════════════════ -->
+<div id="toast" class="toast">
+  <span id="toast-msg">Message sent!</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">K<span>.</span></div>
+  <div class="footer-copy">© 2025 · GEO & SEO Specialist · London</div>
+  <div class="footer-links">
+    <a href="#about">Services</a>
+    <a href="#blog">Blog</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+
+  /* ─── BOOKING MODAL ─── */
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAYS   = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const SLOTS  = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30','16:00','16:30'];
+
+  let calYear, calMonth, selectedDate = null, selectedTime = null;
+
+  function openBookingModal() {
+    const now = new Date();
+    calYear = now.getFullYear(); calMonth = now.getMonth();
+    renderCalendar();
+    document.getElementById('booking-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeBookingModal() {
+    document.getElementById('booking-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    // reset
+    selectedDate = null; selectedTime = null;
+    goToStep1(true);
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('booking-modal')) closeBookingModal();
+  }
+
+  function goToStep1(reset) {
+    document.getElementById('step-1').style.display = '';
+    document.getElementById('step-2').style.display = 'none';
+    document.getElementById('step-3').style.display = 'none';
+    if (reset) {
+      selectedDate = null; selectedTime = null;
+      document.getElementById('time-row').style.display = 'none';
+      document.getElementById('btn-next-1').disabled = true;
+      renderCalendar();
+    }
+  }
+  function goToStep2() {
+    if (!selectedDate || !selectedTime) return;
+    const d = selectedDate;
+    document.getElementById('booking-summary-badge').textContent =
+      '30-min · ' + d.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}) + ' at ' + selectedTime;
+    document.getElementById('step-1').style.display = 'none';
+    document.getElementById('step-2').style.display = '';
+    document.getElementById('step-3').style.display = 'none';
+  }
+
+  function renderCalendar() {
+    const label = document.getElementById('cal-month-label');
+    label.textContent = MONTHS[calMonth] + ' ' + calYear;
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+    // Day headers
+    DAYS.forEach(d => {
+      const h = document.createElement('div');
+      h.className = 'cal-day-header'; h.textContent = d;
+      grid.appendChild(h);
+    });
+    const today = new Date(); today.setHours(0,0,0,0);
+    const first = new Date(calYear, calMonth, 1);
+    // Monday-indexed (0=Mon)
+    let startDow = first.getDay() - 1; if (startDow < 0) startDow = 6;
+    const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+
+    for (let i = 0; i < startDow; i++) {
+      const e = document.createElement('div'); e.className = 'cal-day empty'; grid.appendChild(e);
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const btn = document.createElement('button');
+      btn.className = 'cal-day'; btn.textContent = d;
+      const date = new Date(calYear, calMonth, d);
+      const dow = date.getDay(); // 0=Sun
+      const isWeekend = dow === 0 || dow === 6;
+      const isPast = date < today;
+      if (isWeekend || isPast) { btn.classList.add(isPast ? 'past' : 'disabled'); }
+      else {
+        if (date.toDateString() === today.toDateString()) btn.classList.add('today');
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) btn.classList.add('selected');
+        btn.onclick = () => selectDate(date, btn);
+      }
+      grid.appendChild(btn);
+    }
+  }
+
+  function selectDate(date, btn) {
+    selectedDate = date; selectedTime = null;
+    document.querySelectorAll('.cal-day.selected').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    // Render time slots
+    const label = document.getElementById('selected-date-label');
+    label.textContent = date.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
+    const slotsEl = document.getElementById('time-slots');
+    slotsEl.innerHTML = '';
+    SLOTS.forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'time-slot'; b.textContent = t;
+      b.onclick = () => selectTime(t, b);
+      slotsEl.appendChild(b);
+    });
+    document.getElementById('time-row').style.display = '';
+    document.getElementById('btn-next-1').disabled = true;
+  }
+
+  function selectTime(time, btn) {
+    selectedTime = time;
+    document.querySelectorAll('.time-slot.selected').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    document.getElementById('btn-next-1').disabled = false;
+  }
+
+  function prevMonth() {
+    calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; }
+    renderCalendar();
+  }
+  function nextMonth() {
+    calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; }
+    renderCalendar();
+  }
+
+  function confirmBooking() {
+    const name  = document.getElementById('b-name').value.trim();
+    const email = document.getElementById('b-email').value.trim();
+    if (!name || !email) { alert('Please enter your name and email.'); return; }
+
+    const dateStr = selectedDate.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    const details = document.getElementById('confirm-details');
+    details.innerHTML = `
+      <div class="confirm-row"><strong>Date</strong><span>${dateStr}</span></div>
+      <div class="confirm-row"><strong>Time</strong><span>${selectedTime} GMT</span></div>
+      <div class="confirm-row"><strong>Name</strong><span>${name}</span></div>
+      <div class="confirm-row"><strong>Email</strong><span>${email}</span></div>
+      <div class="confirm-row"><strong>Format</strong><span>Google Meet (link sent to your email)</span></div>
+    `;
+    document.getElementById('step-2').style.display = 'none';
+    document.getElementById('step-3').style.display = '';
+  }
+
+  /* ─── CONTACT FORM ─── */
+  function handleFormSubmit() {
+    const name  = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    if (!name || !email) { showToast('Please fill in your name and email.'); return; }
+    showToast('Message sent — I\'ll be in touch within 24 hours!');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toast-msg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  // Close modal on Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBookingModal();
+  });
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
