@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — GEO & SEO Blog by Keval</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f4f4f2;
+    --warm: #ececea;
+    --accent: #7a1520;
+    --accent-pale: #f0d0d3;
+    --mid: #6b6b6b;
+    --rule: #d0d0ce;
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    animation: fadeDown 0.6s ease both;
+  }
+  @keyframes fadeDown {
+    from { opacity:0; transform:translateY(-10px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .nav-logo {
+    font-family: var(--serif); font-size: 1.35rem;
+    font-weight: 400; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 0.72rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mid); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: #a8360a; }
+
+  /* ── BLOG HEADER ── */
+  .blog-hero {
+    padding: 9rem 3rem 5rem;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 3rem;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(16px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .blog-hero-eyebrow {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .blog-hero-eyebrow::before {
+    content:''; display:block; width:1.5rem; height:1px; background:var(--accent);
+  }
+  .blog-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 4.5vw, 5rem);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .blog-hero h1 em { font-style: italic; color: var(--accent); }
+  .blog-hero-sub {
+    margin-top: 1rem; font-size: 1rem; color: var(--mid);
+    max-width: 520px; line-height: 1.7;
+  }
+  .blog-hero-right { text-align: right; }
+  .post-count {
+    font-family: var(--serif); font-size: 4rem;
+    font-weight: 300; color: var(--accent); line-height: 1;
+  }
+  .post-count-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  /* ── FILTER BAR ── */
+  .filter-bar {
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 0.75rem;
+    flex-wrap: wrap;
+    background: var(--warm);
+    position: sticky; top: 64px; z-index: 50;
+  }
+  .filter-label {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid); margin-right: 0.5rem;
+  }
+  .filter-btn {
+    background: transparent; border: 1px solid var(--rule);
+    padding: 0.35rem 0.9rem;
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); cursor: pointer; transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* ── FEATURED POST ── */
+  .featured-post {
+    margin: 3rem;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink);
+    transition: transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .featured-post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(14,14,13,0.1);
+  }
+  .featured-post-visual {
+    background: var(--ink);
+    min-height: 340px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    padding: 3rem;
+  }
+  .featured-post-bg-text {
+    position: absolute;
+    font-family: var(--serif); font-size: 11rem;
+    font-weight: 300; line-height: 1;
+    color: rgba(122,21,32,0.2);
+    letter-spacing: -0.04em;
+    user-select: none; pointer-events: none;
+  }
+  .featured-post-category {
+    position: relative; z-index: 1;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-pale);
+    border: 1px solid rgba(200,100,110,0.4);
+    padding: 0.35rem 0.75rem;
+  }
+  .featured-post-content {
+    background: var(--warm);
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .featured-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .featured-label::before { content:''; display:block; width:1rem; height:1px; background:var(--accent); }
+  .featured-post-title {
+    font-family: var(--serif); font-size: 2rem;
+    font-weight: 300; line-height: 1.2; margin-bottom: 1rem;
+  }
+  .featured-post-excerpt {
+    font-size: 0.9rem; color: var(--mid); line-height: 1.7;
+    margin-bottom: 1.5rem; flex-grow: 1;
+  }
+  .post-meta {
+    display: flex; align-items: center; gap: 1.25rem;
+    border-top: 1px solid var(--rule); padding-top: 1rem;
+  }
+  .post-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-pale);
+    padding: 0.2rem 0.6rem;
+  }
+  .post-date, .post-read {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.06em; color: var(--mid);
+  }
+  .post-read { margin-left: auto; }
+
+  /* ── ARTICLE GRID ── */
+  .articles-section {
+    padding: 0 3rem 5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .articles-header {
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2rem;
+    display: flex; align-items: baseline; justify-content: space-between;
+  }
+  .articles-header-title {
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid);
+  }
+  .articles-count {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.06em; color: var(--mid);
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .article-card {
+    border: 1px solid var(--rule);
+    padding: 1.75rem;
+    text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.15s;
+    background: var(--paper);
+  }
+  .article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(14,14,13,0.08);
+    background: var(--warm);
+  }
+  .article-card-tag {
+    font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-pale);
+    padding: 0.2rem 0.6rem; display: inline-block;
+    margin-bottom: 1rem; width: fit-content;
+  }
+  .article-card h3 {
+    font-family: var(--serif); font-size: 1.25rem;
+    font-weight: 400; line-height: 1.25;
+    margin-bottom: 0.75rem; flex-grow: 1;
+  }
+  .article-card p {
+    font-size: 0.84rem; color: var(--mid);
+    line-height: 1.6; margin-bottom: 1.25rem;
+  }
+  .article-card-meta {
+    display: flex; align-items: center; gap: 1rem;
+    border-top: 1px solid var(--rule); padding-top: 1rem;
+    margin-top: auto;
+  }
+  .article-date, .article-read {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.06em; color: var(--mid);
+  }
+  .article-read { margin-left: auto; }
+
+  /* ── NEWSLETTER STRIP ── */
+  .newsletter-strip {
+    margin: 0 3rem 3rem;
+    background: var(--ink);
+    padding: 3rem;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 3rem;
+    border: 1px solid #222;
+  }
+  .newsletter-title {
+    font-family: var(--serif); font-size: 1.8rem;
+    font-weight: 300; color: var(--paper); margin-bottom: 0.5rem;
+  }
+  .newsletter-title em { font-style: italic; color: var(--accent); }
+  .newsletter-sub {
+    font-size: 0.875rem; color: #a0a0a0; line-height: 1.6;
+  }
+  .newsletter-form {
+    display: flex; gap: 0; min-width: 360px;
+  }
+  .newsletter-input {
+    flex: 1; background: #111111; border: 1px solid #2a2a2a;
+    border-right: none; color: var(--paper);
+    padding: 0.85rem 1rem;
+    font-family: var(--sans); font-size: 0.875rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .newsletter-input::placeholder { color: #606060; }
+  .newsletter-input:focus { border-color: var(--accent); }
+  .newsletter-btn {
+    background: var(--accent); color: #fff; border: none;
+    padding: 0.85rem 1.5rem;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .newsletter-btn:hover { background: #a8360a; }
+
+  /* ── SINGLE ARTICLE VIEW ── */
+  .article-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: var(--paper);
+    overflow-y: auto;
+    animation: articleSlideIn 0.35s ease both;
+  }
+  .article-overlay.open { display: block; }
+  @keyframes articleSlideIn {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .article-overlay-nav {
+    position: sticky; top: 0; background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 1rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    z-index: 10;
+  }
+  .article-back-btn {
+    display: flex; align-items: center; gap: 0.6rem;
+    background: none; border: none; cursor: pointer;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid); transition: color 0.15s; padding: 0;
+  }
+  .article-back-btn:hover { color: var(--accent); }
+  .article-share {
+    display: flex; gap: 1rem; align-items: center;
+  }
+  .share-label {
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid);
+  }
+  .share-btn {
+    background: none; border: 1px solid var(--rule);
+    padding: 0.35rem 0.85rem;
+    font-family: var(--mono); font-size: 0.62rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid); cursor: pointer; transition: all 0.15s;
+  }
+  .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .article-body {
+    max-width: 720px; margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+  .article-body-tag {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-pale);
+    padding: 0.25rem 0.7rem; display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  .article-body h1 {
+    font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.1;
+    margin-bottom: 1rem; letter-spacing: -0.01em;
+  }
+  .article-body-meta {
+    display: flex; gap: 1.5rem; align-items: center;
+    margin-bottom: 2.5rem; padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .article-body-meta span {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; color: var(--mid);
+  }
+  .article-body-content { font-size: 1.05rem; line-height: 1.8; color: var(--ink); }
+  .article-body-content p { margin-bottom: 1.5rem; }
+  .article-body-content h2 {
+    font-family: var(--serif); font-size: 1.75rem;
+    font-weight: 400; margin: 2.5rem 0 1rem;
+    line-height: 1.2;
+  }
+  .article-body-content h3 {
+    font-family: var(--serif); font-size: 1.3rem;
+    font-weight: 400; margin: 2rem 0 0.75rem;
+  }
+  .article-body-content strong { font-weight: 600; }
+  .article-body-content em { font-style: italic; }
+  .article-body-content ul, .article-body-content ol {
+    margin: 1rem 0 1.5rem 1.5rem;
+  }
+  .article-body-content li { margin-bottom: 0.4rem; }
+  .article-body-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.5rem; margin: 2rem 0;
+    background: var(--warm);
+    font-family: var(--serif); font-size: 1.2rem;
+    font-style: italic; line-height: 1.6; color: var(--ink);
+  }
+  .article-cta-box {
+    margin-top: 3rem; padding: 2rem;
+    background: var(--ink); color: var(--paper);
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .article-cta-text {
+    font-family: var(--serif); font-size: 1.25rem;
+    font-style: italic; color: var(--paper);
+  }
+  .article-cta-btn {
+    background: var(--accent); color: #fff;
+    padding: 0.85rem 1.75rem; border: none;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none;
+    white-space: nowrap; transition: background 0.2s;
+    display: inline-block;
+  }
+  .article-cta-btn:hover { background: #a8360a; }
+
+  /* FOOTER */
+  footer {
+    background: #050505; color: #606060;
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #1a1a1a;
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: #999; }
+  .footer-logo span { color: var(--accent); font-style: italic; }
+  .footer-copy { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.08em; color: #505050; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-family: var(--mono); font-size: 0.65rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: #606060; text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* REVEAL */
+  .reveal { opacity:0; transform:translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .blog-hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 3rem; gap: 1rem; }
+    .blog-hero-right { text-align: left; }
+    .filter-bar { padding: 1rem 1.5rem; top: 58px; }
+    .featured-post { margin: 1.5rem; grid-template-columns: 1fr; }
+    .featured-post-visual { min-height: 180px; }
+    .articles-section { padding: 0 1.5rem 4rem; }
+    .articles-grid { grid-template-columns: 1fr 1fr; }
+    .newsletter-strip { margin: 0 1.5rem 2rem; grid-template-columns: 1fr; gap: 1.5rem; }
+    .newsletter-form { min-width: auto; }
+    .article-overlay-nav { padding: 1rem 1.5rem; }
+    .article-body { padding: 2rem 1.5rem 4rem; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .articles-grid { grid-template-columns: 1fr; }
+    .modal-form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="geo-seo-website.html" class="nav-logo">K<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="geo-seo-website.html#about">Services</a></li>
+    <li><a href="geo-seo-website.html#process">Process</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="geo-seo-website.html#pricing">Pricing</a></li>
+    <li><a href="geo-seo-website.html#contact">Contact</a></li>
+  </ul>
+  <a href="geo-seo-website.html#contact" class="nav-cta">Work Together</a>
+</nav>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <div>
+    <div class="blog-hero-eyebrow">Insights & analysis</div>
+    <h1>The <em>AI search</em> brief</h1>
+    <p class="blog-hero-sub">Practical thinking on GEO, SEO, and the changing shape of search — for brands and marketers who want to stay ahead.</p>
+  </div>
+  <div class="blog-hero-right">
+    <div class="post-count" id="post-count">5</div>
+    <div class="post-count-label">Articles</div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <span class="filter-label">Filter:</span>
+  <button class="filter-btn active" onclick="filterPosts('all', this)">All</button>
+  <button class="filter-btn" onclick="filterPosts('GEO', this)">GEO</button>
+  <button class="filter-btn" onclick="filterPosts('Technical SEO', this)">Technical SEO</button>
+  <button class="filter-btn" onclick="filterPosts('Strategy', this)">Strategy</button>
+  <button class="filter-btn" onclick="filterPosts('Digital PR', this)">Digital PR</button>
+</div>
+
+<!-- FEATURED POST -->
+<a class="featured-post" id="featured-card" href="#" onclick="openArticle(0, event)">
+  <div class="featured-post-visual">
+    <div class="featured-post-bg-text">GEO</div>
+    <span class="featured-post-category">Featured</span>
+  </div>
+  <div class="featured-post-content">
+    <div>
+      <div class="featured-label">Latest post</div>
+      <h2 class="featured-post-title">Why Your Brand Needs to Be Cited in AI Answers — Before Your Competitors Figure It Out</h2>
+      <p class="featured-post-excerpt">AI answer engines are now the first click for millions of searches. Brands that get cited build compounding trust that latecomers can't easily replicate. Here's what it takes to become the source AI trusts in your niche.</p>
+    </div>
+    <div class="post-meta">
+      <span class="post-tag">GEO</span>
+      <span class="post-date">May 2025</span>
+      <span class="post-read">8 min read</span>
+    </div>
+  </div>
+</a>
+
+<!-- ARTICLES GRID -->
+<div class="articles-section">
+  <div class="articles-header">
+    <span class="articles-header-title">All articles</span>
+    <span class="articles-count" id="visible-count">Showing 5 articles</span>
+  </div>
+  <div class="articles-grid" id="articles-grid">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<!-- NEWSLETTER STRIP -->
+<div class="newsletter-strip reveal">
+  <div>
+    <h3 class="newsletter-title">Get the <em>AI Search Brief</em></h3>
+    <p class="newsletter-sub">Fortnightly analysis on GEO, AI Overviews, and what's changing in search. No fluff — just what matters.</p>
+  </div>
+  <div class="newsletter-form">
+    <input class="newsletter-input" type="email" placeholder="your@email.com" id="nl-email">
+    <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">K<span>.</span></div>
+  <div class="footer-copy">© 2025 · GEO & SEO Specialist · London</div>
+  <div class="footer-links">
+    <a href="geo-seo-website.html#about">Services</a>
+    <a href="blog.html">Blog</a>
+    <a href="geo-seo-website.html#contact">Contact</a>
+  </div>
+</footer>
+
+<!-- SINGLE ARTICLE OVERLAY -->
+<div class="article-overlay" id="article-overlay">
+  <div class="article-overlay-nav">
+    <button class="article-back-btn" onclick="closeArticle()">
+      ← Back to Insights
+    </button>
+    <div class="article-share">
+      <span class="share-label">Share:</span>
+      <button class="share-btn" onclick="shareArticle('linkedin')">LinkedIn</button>
+      <button class="share-btn" onclick="shareArticle('twitter')">Twitter/X</button>
+      <button class="share-btn" onclick="copyLink()">Copy link</button>
+    </div>
+  </div>
+  <div class="article-body" id="article-body">
+    <!-- Injected by JS -->
+  </div>
+</div>
+
+<script>
+const POSTS = [
+  {
+    tag: 'GEO',
+    date: 'May 2025',
+    read: '8 min read',
+    title: 'Why Your Brand Needs to Be Cited in AI Answers — Before Your Competitors Figure It Out',
+    excerpt: 'AI answer engines are now the first click for millions of searches. Brands that get cited build compounding trust that latecomers can\'t easily replicate.',
+    content: `
+      <p>In 2024, something changed in search. It wasn't another core update. It wasn't a new keyword tool. It was the quiet arrival of AI answer engines as mainstream consumer behaviour — and with them, a new battleground for brand visibility that most marketers still haven't registered.</p>
+      <p>When someone asks Perplexity "what's the best sustainable activewear brand in the UK?" they don't get ten blue links. They get a paragraph. That paragraph may cite two or three brands. If your brand isn't one of them, you don't exist in that answer — and increasingly, that answer <em>is</em> the search.</p>
+      <h2>The compounding advantage</h2>
+      <p>AI citation works like backlinks did in 2005. Early movers who build the right signals accumulate an authority advantage that compounds. The brands who get cited first, get cited more — because AI models use existing citation patterns as a quality signal.</p>
+      <blockquote>"The brands being cited in AI answers tomorrow are the ones building structured authority today."</blockquote>
+      <p>This isn't speculation. If you search any established category on Perplexity right now, you'll see the same handful of brands appearing consistently. They're not necessarily the biggest. They're the most structurally visible — clear entity definitions, strong FAQ schema, deep topical content, and genuine external citations.</p>
+      <h2>What GEO actually means in practice</h2>
+      <p>Generative Engine Optimisation (GEO) is not a replacement for SEO. It's an additional layer. The fundamentals — technical health, content quality, external authority — still apply. But GEO asks a different question: not "does Google rank this?" but "would an AI model cite this?"</p>
+      <p>The practical differences:</p>
+      <ul>
+        <li><strong>Content must be extractable.</strong> AI models pull specific, quotable passages. Write with clear structure, direct answers, and citable statistics.</li>
+        <li><strong>Entity establishment matters.</strong> Is your brand clearly defined as an entity with consistent attributes across the web? Schema.org Organisation markup, Wikipedia presence, and consistent NAP data all signal entity confidence.</li>
+        <li><strong>Topical depth beats breadth.</strong> AI models build trust by seeing comprehensive, authoritative treatment of a topic — not thin pages targeting keywords.</li>
+      </ul>
+      <h2>The window is open — but not for long</h2>
+      <p>Most UK brands haven't started thinking about GEO. Most agencies haven't built the capability. That creates a genuine first-mover window for brands willing to move now — and it won't stay open indefinitely.</p>
+      <p>The practical starting point: audit how your brand currently appears when you search your category in Perplexity, ChatGPT Search, and Google's AI Overviews. That gap between what you see and what you want to see is your GEO roadmap.</p>
+    `
+  },
+  {
+    tag: 'Technical SEO',
+    date: 'Apr 2025',
+    read: '5 min read',
+    title: 'Structured Data in 2025: Writing Schema for Humans and LLMs',
+    excerpt: 'How schema markup has evolved from a ranking signal to a citation signal for AI engines — and what that changes about how you implement it.',
+    content: `
+      <p>Schema markup has always been something marketers implement with one eye on Google's rich results. FAQs for the accordion snippets. Product schema for the shopping panel. Organisation schema because someone read it was important. But in 2025, schema has a second, arguably more valuable audience: the large language models that power AI answer engines.</p>
+      <h2>How LLMs use structured data</h2>
+      <p>AI models don't read schema the way Googlebot does — they're not parsing JSON-LD for feature eligibility. But they do use the semantic signals that schema creates. When your content clearly defines what an entity is, what it does, and how it relates to other entities, you're making it easier for a model to represent your brand accurately in a generated answer.</p>
+      <blockquote>Think of schema not as a ranking trick, but as a communication layer between your website and any system — human or machine — trying to understand what you do.</blockquote>
+      <h2>The schema types that matter most for GEO</h2>
+      <p><strong>Organisation:</strong> Define your brand clearly. Name, description, founding date, area served, logo, social profiles, and knowsAbout. This is entity establishment in markup form.</p>
+      <p><strong>FAQPage:</strong> Write questions exactly as users (and AI systems) would ask them. The answers should be direct, self-contained, and citable. This is your most direct route to AI Overview inclusion.</p>
+      <p><strong>Article / BlogPosting:</strong> Author entity markup is increasingly important. A clearly defined author with expertise signals (LinkedIn, Google Scholar, other cited work) gives AI models confidence that a piece represents genuine authority.</p>
+      <p><strong>HowTo:</strong> Step-by-step content with HowTo schema is highly extractable. AI models love a clear sequence they can surface directly in an answer.</p>
+      <h2>The implementation mistake to avoid</h2>
+      <p>Most schema implementations are technically valid but semantically thin. A product schema with name and price, a FAQ with vague answers, an Organisation schema with just a name. In 2025, the signal isn't presence — it's depth. Complete every available property. Write FAQ answers as if they'll be quoted directly. Because increasingly, they will be.</p>
+    `
+  },
+  {
+    tag: 'Strategy',
+    date: 'Mar 2025',
+    read: '6 min read',
+    title: 'Topical Authority vs. Keyword Clusters: What GEO Changes',
+    excerpt: 'The SEO world has been debating topical authority for years. GEO doesn\'t end that debate — it settles it.',
+    content: `
+      <p>The keyword cluster model has been SEO's dominant content framework for the better part of a decade. Build a pillar page, surround it with cluster content targeting long-tail variations, link them together, watch rankings improve. It works. But it optimises for a search engine that reads pages in isolation — and that's not quite how AI answer engines work.</p>
+      <h2>How AI models assess authority</h2>
+      <p>When a large language model decides which sources to cite on a topic, it's drawing on a training signal that represents cumulative, aggregate authority — not individual page rankings. The question isn't "does this page target this keyword?" but "is this source consistently associated with genuine expertise in this domain?"</p>
+      <p>That's a different bar. It rewards depth, consistency, and genuine perspective over keyword coverage.</p>
+      <blockquote>Topical authority isn't just an SEO strategy anymore. It's the prerequisite for AI citability.</blockquote>
+      <h2>What this means in practice</h2>
+      <p>The brands that get cited in AI answers about sustainable fashion aren't necessarily the ones who rank #1 for "sustainable activewear UK." They're the ones whose content ecosystem — across their blog, their press coverage, their social presence — consistently signals deep, genuine expertise in sustainable materials, ethical production, and conscious consumption.</p>
+      <p>Practically, this means:</p>
+      <ul>
+        <li>Content strategy should start from "what does a genuinely expert source in this space write about?" not "what keywords have the best volume/difficulty ratio?"</li>
+        <li>Original research, data, and perspectives have outsized value — they create citations, not just rankings</li>
+        <li>Consistency matters: publishing deeply on a topic for two years beats a six-month content sprint followed by silence</li>
+      </ul>
+      <h2>The keyword cluster still has a place</h2>
+      <p>None of this means abandoning keyword research. Search volume is still a proxy for what people care about. Keyword gaps still reveal content opportunities. But the cluster model should be downstream of a topical authority map, not upstream of it. Build the authority first, then use keyword data to sharpen your execution.</p>
+    `
+  },
+  {
+    tag: 'GEO',
+    date: 'Feb 2025',
+    read: '7 min read',
+    title: 'How Perplexity Decides Who to Cite: A Practical Guide',
+    excerpt: 'Reverse-engineering citation patterns in AI answer engines to inform your content strategy — what I\'ve learned from testing hundreds of queries.',
+    content: `
+      <p>Perplexity has become one of the most interesting canaries in the GEO coalmine. Unlike Google's AI Overviews, which are deliberately opaque, Perplexity shows you exactly which sources it cited and why — making it the most useful tool for understanding how AI citation actually works in practice.</p>
+      <p>Over the past few months I've been systematically testing queries across industries I work in, observing citation patterns, and drawing conclusions about what separates cited sources from invisible ones. Here's what I've found.</p>
+      <h2>Recency matters more than you'd expect</h2>
+      <p>Perplexity strongly favours recently updated content. On evergreen topics, a page last updated 18 months ago will consistently lose to a comparable page updated in the last 90 days. This creates a clear maintenance requirement: your most strategically important pages need fresh signals regularly, not just when you add new content.</p>
+      <h2>Structural clarity is a citation advantage</h2>
+      <p>Pages with clear heading hierarchies, direct answers in the first paragraph, and well-formatted sections are cited far more frequently than comparable pages with dense prose. AI models are extracting passages, not summarising entire articles — and clearly delineated sections make extraction easier.</p>
+      <blockquote>The question to ask about every piece of content: could an AI model pull a paragraph from this and have it stand alone as a useful answer?</blockquote>
+      <h2>Domain authority still correlates — but it's not deterministic</h2>
+      <p>High-DA domains get a baseline citation advantage. But I've consistently seen niche specialist sources outrank high-DA generalist sites on specific queries when their content was more directly relevant and more structurally clear. Authority helps, but it's not a free pass.</p>
+      <h2>The entity connection</h2>
+      <p>Sources with strong entity establishment — clear Wikipedia entries, consistent Knowledge Graph data, well-attributed authorship — appear more frequently in citation sets. This suggests AI models use entity confidence as a trust signal when deciding which sources to surface. The practical implication: entity work isn't just a nice-to-have, it's a citation prerequisite.</p>
+    `
+  },
+  {
+    tag: 'Digital PR',
+    date: 'Jan 2025',
+    read: '4 min read',
+    title: 'The PR-to-Citation Pipeline: Building Links That AI Models Trust',
+    excerpt: 'Traditional link-building and AI-era citation-building overlap more than you think. Here\'s how to build a PR strategy that serves both.',
+    content: `
+      <p>For years, digital PR and SEO have had a slightly uncomfortable relationship. PR teams focus on coverage; SEO teams focus on links. The goals overlap but the metrics diverge. In the GEO era, that tension resolves — because the kind of external citation that AI models treat as a trust signal is almost exactly the kind that good PR produces.</p>
+      <h2>Why AI models care about external citations</h2>
+      <p>AI language models learn what brands and entities are trustworthy partly through the pattern of how they're referenced across the web. A brand cited in The Guardian, Which?, and industry publications carries a different signal than one that only appears on its own website and a handful of low-quality directories.</p>
+      <p>This isn't just about link equity in the traditional PageRank sense. It's about the semantic context of citations — what words surround your brand name when it appears externally, which topics you're cited in relation to, and which authoritative sources are willing to reference you.</p>
+      <h2>The pipeline in practice</h2>
+      <p><strong>Step 1 — Data and research.</strong> Original research is the most reliable trigger for high-quality coverage. A study, survey, or proprietary data set that journalists in your space can reference creates citations with genuine semantic authority. Invest in one or two pieces of primary research per year.</p>
+      <p><strong>Step 2 — Expert commentary.</strong> Reactive PR — responding to journalists seeking expert quotes — builds a pattern of your brand being cited as a source of expertise. Set up Google Alerts and Sourcebottle/Response Source to find these opportunities. Over time, this builds an AI-visible pattern of expert association.</p>
+      <p><strong>Step 3 — Review sites and third-party platforms.</strong> AI models frequently cite Trustpilot, Which?, and industry review platforms. An optimised presence on these — genuine reviews, accurate brand information, consistent entity data — feeds directly into AI answer quality signals.</p>
+      <blockquote>The best digital PR isn't just earning links. It's building the external reference ecosystem that tells AI models your brand is worth citing.</blockquote>
+    `
+  }
+];
+
+// ─── RENDER ───────────────────────────────────────
+function renderGrid(posts) {
+  const grid = document.getElementById('articles-grid');
+  grid.innerHTML = '';
+  document.getElementById('visible-count').textContent = `Showing ${posts.length} article${posts.length !== 1 ? 's' : ''}`;
+
+  posts.forEach((p, i) => {
+    const card = document.createElement('a');
+    card.href = '#';
+    card.className = 'article-card reveal';
+    card.setAttribute('data-tag', p.tag);
+    card.onclick = (e) => openArticle(POSTS.indexOf(p), e);
+    card.innerHTML = `
+      <span class="article-card-tag">${p.tag}</span>
+      <h3>${p.title}</h3>
+      <p>${p.excerpt}</p>
+      <div class="article-card-meta">
+        <span class="article-date">${p.date}</span>
+        <span class="article-read">${p.read}</span>
+      </div>
+    `;
+    // staggered reveal delay
+    card.style.transitionDelay = (i * 0.07) + 's';
+    grid.appendChild(card);
+  });
+
+  // trigger intersection observer on new cards
+  document.querySelectorAll('.reveal:not(.visible)').forEach(r => revealObs.observe(r));
+}
+
+// ─── FILTER ───────────────────────────────────────
+function filterPosts(tag, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered = tag === 'all' ? POSTS : POSTS.filter(p => p.tag === tag);
+  // hide/show featured
+  const featured = document.getElementById('featured-card');
+  if (tag === 'all' || POSTS[0].tag === tag) {
+    featured.style.display = '';
+  } else {
+    featured.style.display = 'none';
+  }
+  renderGrid(filtered);
+}
+
+// ─── ARTICLE OVERLAY ──────────────────────────────
+let currentArticleIndex = null;
+
+function openArticle(index, e) {
+  e.preventDefault();
+  currentArticleIndex = index;
+  const p = POSTS[index];
+  const body = document.getElementById('article-body');
+  body.innerHTML = `
+    <span class="article-body-tag">${p.tag}</span>
+    <h1>${p.title}</h1>
+    <div class="article-body-meta">
+      <span>${p.date}</span>
+      <span>${p.read}</span>
+      <span>By Keval · London</span>
+    </div>
+    <div class="article-body-content">${p.content}</div>
+    <div class="article-cta-box">
+      <span class="article-cta-text">Want to apply this to your brand?</span>
+      <a class="article-cta-btn" href="geo-seo-website.html#contact">Book a free discovery call →</a>
+    </div>
+  `;
+  const overlay = document.getElementById('article-overlay');
+  overlay.classList.add('open');
+  overlay.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle() {
+  document.getElementById('article-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function shareArticle(platform) {
+  const p = POSTS[currentArticleIndex];
+  const text = encodeURIComponent(p.title + ' — ' + window.location.href);
+  if (platform === 'linkedin') {
+    window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href));
+  } else {
+    window.open('https://twitter.com/intent/tweet?text=' + text);
+  }
+}
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const btn = event.target;
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy link', 2000);
+  });
+}
+
+// ─── NEWSLETTER ───────────────────────────────────
+function subscribeNewsletter() {
+  const email = document.getElementById('nl-email').value.trim();
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  const btn = document.querySelector('.newsletter-btn');
+  btn.textContent = '✓ Subscribed!';
+  btn.style.background = '#2a6a3a';
+  document.getElementById('nl-email').value = '';
+  setTimeout(() => { btn.textContent = 'Subscribe →'; btn.style.background = ''; }, 3000);
+}
+
+// ─── INTERSECTION OBSERVER ────────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(r => revealObs.observe(r));
+
+// ─── ESCAPE KEY ───────────────────────────────────
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+
+// ─── INIT ─────────────────────────────────────────
+renderGrid(POSTS);
+document.getElementById('post-count').textContent = POSTS.length;
+</script>
+</body>
+</html>
