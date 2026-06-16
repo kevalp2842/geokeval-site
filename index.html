@@ -737,16 +737,22 @@ nav {
 .nav-links a:hover, .nav-links a.active { color: var(--off-white); }
 
 /* Dropdown */
-.nav-dropdown { position: relative; padding-bottom: 20px; margin-bottom: -20px; }
+.nav-dropdown { position: relative; }
 .nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
 .nav-dropdown:hover > a::after { transform: rotate(180deg); }
 .dropdown-menu {
-  position: absolute; top: calc(100% - 12px); left: 50%; transform: translateX(-50%);
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
   background: rgba(8,8,8,0.98); border: 1px solid rgba(242,239,233,0.12);
   min-width: 200px; padding: 16px 0 8px;
   opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
+  transition: opacity 0.15s;
+  margin-top: 0;
+}
+.nav-dropdown::after {
+  content: ''; position: absolute;
+  top: 100%; left: -20px; right: -20px;
+  height: 20px; background: transparent;
 }
 .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
 .dropdown-menu a {
@@ -1060,7 +1066,7 @@ nav {
     <a href="/blog/">View all articles →</a>
   </div>
   <div class="articles">
-    <div class="article-card featured">
+    <a href="/blog/what-is-geo/" class="article-card featured" style="text-decoration:none;">
       <div class="article-cat">GEO · Fundamentals</div>
       <h3>Why your brand is invisible to AI — and what to do about it</h3>
       <p>Most brands have invested years into traditional SEO. Almost none have asked whether that work translates to how language models form answers. It doesn't, in ways that matter.</p>
