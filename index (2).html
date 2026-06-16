@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keval Patel — Search & AI Visibility Specialist</title>
+<meta name="description" content="Keval Patel is a London-based search specialist with 7+ years of experience helping brands understand and improve their visibility in AI-powered search.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black:   #080808;
+    --off-white: #F2EFE9;
+    --crimson: #8B1A1A;
+    --crimson-light: #B22222;
+    --warm-grey: #5A5854;
+    --mid: #2A2826;
+    --border-dark: rgba(242,239,233,0.1);
+    --border-light: rgba(8,8,8,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--off-white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: rgba(8,8,8,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--off-white);
+    text-decoration: none;
+  }
+  .nav-brand span { color: var(--crimson-light); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(242,239,233,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--off-white); }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--off-white);
+    border: 1px solid rgba(242,239,233,0.3);
+    padding: 9px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-cta:hover {
+    background: var(--crimson);
+    border-color: var(--crimson);
+  }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    background: var(--black);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    right: -2%;
+    transform: translateY(-50%);
+    font-family: var(--serif);
+    font-size: clamp(120px, 18vw, 220px);
+    font-weight: 300;
+    color: rgba(242,239,233,0.025);
+    pointer-events: none;
+    white-space: nowrap;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 28px;
+  }
+
+  .hero-question {
+    font-family: var(--serif);
+    font-size: clamp(13px, 1.4vw, 17px);
+    color: rgba(242,239,233,0.45);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+    font-style: italic;
+    min-height: 1.5em;
+  }
+
+  .hero-question .typed-text { color: rgba(242,239,233,0.45); }
+  .hero-question .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--crimson-light);
+    vertical-align: middle;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(42px, 6.5vw, 92px);
+    font-weight: 400;
+    line-height: 1.02;
+    color: var(--off-white);
+    letter-spacing: -0.01em;
+    margin-bottom: 36px;
+    max-width: 14ch;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: rgba(242,239,233,0.5);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .hero-desc {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: rgba(242,239,233,0.55);
+    line-height: 1.75;
+    max-width: 42ch;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--crimson);
+    color: var(--off-white);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { background: var(--crimson-light); }
+
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: rgba(242,239,233,0.5);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    text-decoration: none;
+    border: 1px solid rgba(242,239,233,0.15);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-ghost:hover {
+    color: var(--off-white);
+    border-color: rgba(242,239,233,0.4);
+  }
+
+  .hero-scroll {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(242,239,233,0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: rgba(242,239,233,0.2);
+  }
+
+  /* ── TICKER ───────────────────────────────────────────── */
+  .ticker {
+    background: var(--crimson);
+    overflow: hidden;
+    padding: 10px 0;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker-scroll 28s linear infinite;
+  }
+  .ticker-inner span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(242,239,233,0.85);
+    padding: 0 48px;
+  }
+  .ticker-inner span::before {
+    content: '— ';
+    color: rgba(242,239,233,0.4);
+  }
+  @keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS SHARED ──────────────────────────────────── */
+  section { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* ── WHAT I DO ────────────────────────────────────────── */
+  .what {
+    background: var(--off-white);
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .what-left .label { color: var(--crimson); margin-bottom: 28px; display: block; }
+
+  .what-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+  .what-left h2 em { font-style: italic; color: var(--warm-grey); }
+
+  .what-left p {
+    font-size: 15px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    max-width: 44ch;
+    font-weight: 300;
+  }
+
+  .what-right { padding-top: 8px; }
+
+  .pillar {
+    padding: 28px 0;
+    border-top: 1px solid var(--border-light);
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .pillar:last-child { border-bottom: 1px solid var(--border-light); }
+
+  .pillar-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--crimson);
+    padding-top: 4px;
+  }
+
+  .pillar h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  .pillar p {
+    font-size: 14px;
+    color: var(--warm-grey);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* ── WHY NOW ──────────────────────────────────────────── */
+  .why {
+    background: var(--black);
+    padding: 100px 48px;
+    color: var(--off-white);
+  }
+
+  .why-inner {
+    max-width: 900px;
+  }
+
+  .why .label { color: var(--crimson-light); margin-bottom: 28px; display: block; }
+
+  .why h2 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4.5vw, 62px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--off-white);
+    margin-bottom: 48px;
+    max-width: 20ch;
+  }
+  .why h2 em { font-style: italic; color: rgba(242,239,233,0.4); }
+
+  .why-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(242,239,233,0.1);
+    margin-bottom: 64px;
+  }
+
+  .stat-block {
+    background: var(--black);
+    padding: 40px 32px;
+  }
+
+  .stat-block .big {
+    font-family: var(--serif);
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 300;
+    color: var(--off-white);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .stat-block .big em { font-style: italic; color: var(--crimson-light); }
+
+  .stat-block p {
+    font-size: 13px;
+    color: rgba(242,239,233,0.45);
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 22ch;
+  }
+
+  .why-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .why-body p {
+    font-size: 15px;
+    color: rgba(242,239,233,0.6);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* ── ABOUT ────────────────────────────────────────────── */
+  .about {
+    background: var(--off-white);
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-left .label { color: var(--crimson); margin-bottom: 28px; display: block; }
+
+  .about-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--black);
+    margin-bottom: 28px;
+  }
+  .about-left h2 em { font-style: italic; color: var(--warm-grey); }
+
+  .about-left p {
+    font-size: 15px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--warm-grey);
+    border: 1px solid rgba(8,8,8,0.15);
+    padding: 6px 12px;
+  }
+
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-light);
+  }
+
+  .about-card {
+    background: var(--off-white);
+    padding: 32px;
+  }
+
+  .about-card .card-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 10px;
+  }
+
+  .about-card h4 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+
+  .about-card p {
+    font-size: 13px;
+    color: var(--warm-grey);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── INSIGHTS ─────────────────────────────────────────── */
+  .insights {
+    background: var(--mid);
+    padding: 100px 48px;
+  }
+
+  .insights-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 56px;
+  }
+
+  .insights-header .label { color: var(--crimson-light); margin-bottom: 16px; display: block; }
+
+  .insights-header h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.1;
+  }
+  .insights-header h2 em { font-style: italic; color: rgba(242,239,233,0.4); }
+
+  .insights-header a {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(242,239,233,0.4);
+    text-decoration: none;
+    white-space: nowrap;
+    padding-bottom: 8px;
+    transition: color 0.2s;
+  }
+  .insights-header a:hover { color: var(--off-white); }
+
+  .articles {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1px;
+    background: rgba(242,239,233,0.08);
+  }
+
+  .article-card {
+    background: var(--mid);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: background 0.2s;
+    cursor: default;
+  }
+  .article-card:hover { background: var(--black); }
+
+  .article-cat {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    margin-bottom: 20px;
+  }
+
+  .article-card h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.3;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .article-card.featured h3 { font-size: clamp(22px, 2.5vw, 30px); }
+  .article-card:not(.featured) h3 { font-size: 18px; }
+
+  .article-card p {
+    font-size: 13px;
+    color: rgba(242,239,233,0.45);
+    line-height: 1.65;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .article-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(242,239,233,0.3);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── CONTACT ──────────────────────────────────────────── */
+  .contact {
+    background: var(--off-white);
+    padding: 100px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-left .label { color: var(--crimson); margin-bottom: 28px; display: block; }
+
+  .contact-left h2 {
+    font-family: var(--serif);
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+  .contact-left h2 em { font-style: italic; color: var(--warm-grey); }
+
+  .contact-left p {
+    font-size: 15px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 42ch;
+    margin-bottom: 36px;
+  }
+
+  .contact-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    color: var(--warm-grey);
+    font-weight: 300;
+  }
+  .contact-meta-row .dot {
+    width: 6px;
+    height: 6px;
+    background: var(--crimson);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cal-prompt {
+    margin-top: 36px;
+    padding: 24px;
+    border: 1px solid var(--border-light);
+    background: rgba(8,8,8,0.03);
+  }
+  .cal-prompt .cal-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 8px;
+  }
+  .cal-prompt p {
+    font-size: 13px;
+    color: var(--warm-grey);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .cal-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .cal-btn:hover { color: var(--crimson); border-color: var(--crimson); }
+
+  /* ── FORM ─────────────────────────────────────────────── */
+  .form-wrap { display: flex; flex-direction: column; gap: 20px; }
+
+  .form-field { display: flex; flex-direction: column; gap: 8px; }
+
+  .form-field label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-grey);
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(8,8,8,0.2);
+    padding: 10px 0;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--black);
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(8,8,8,0.3); }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus { border-bottom-color: var(--crimson); }
+  .form-field textarea { resize: vertical; min-height: 100px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+  .form-submit {
+    background: var(--black);
+    color: var(--off-white);
+    border: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--crimson); }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    padding: 36px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-dark);
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(242,239,233,0.3);
+    letter-spacing: 0.06em;
+  }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(242,239,233,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--off-white); }
+
+  /* ── RESPONSIVE ───────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 24px 60px; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-actions { align-items: flex-start; }
+    .what, .about, .contact { grid-template-columns: 1fr; gap: 48px; padding: 64px 24px; }
+    .why { padding: 64px 24px; }
+    .why-stats { grid-template-columns: 1fr; }
+    .why-body { grid-template-columns: 1fr; gap: 24px; }
+    .articles { grid-template-columns: 1fr; }
+    .insights { padding: 64px 24px; }
+    .insights-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    section { opacity: 1; transform: none; transition: none; }
+    .ticker-inner { animation: none; }
+    .cursor { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">Keval<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#what">Expertise</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg-text" aria-hidden="true">GEO</div>
+
+  <div class="hero-eyebrow">London · Search &amp; AI Visibility</div>
+
+  <p class="hero-question" aria-label="Example AI search queries about brands">
+    <span class="typed-text"></span><span class="cursor" aria-hidden="true"></span>
+  </p>
+
+  <h1 class="hero-title">
+    Your brand's answer <em>isn't</em> what you think it is.
+  </h1>
+
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      AI tools now answer millions of brand questions every day.
+      Whether your brand appears — and how it appears — is determined
+      by signals most organisations haven't started optimising for yet.
+      I help change that.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Work with me</a>
+      <a href="#what" class="btn-ghost">See my approach</a>
+      <div class="hero-scroll" aria-hidden="true">Scroll to explore</div>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Technical SEO</span>
+    <span>Generative Engine Optimisation</span>
+    <span>AI Search Visibility</span>
+    <span>LLM Citation Strategy</span>
+    <span>Entity Authority</span>
+    <span>Content for AI</span>
+    <span>Search Architecture</span>
+    <span>Brand Discoverability</span>
+    <span>Technical SEO</span>
+    <span>Generative Engine Optimisation</span>
+    <span>AI Search Visibility</span>
+    <span>LLM Citation Strategy</span>
+    <span>Entity Authority</span>
+    <span>Content for AI</span>
+    <span>Search Architecture</span>
+    <span>Brand Discoverability</span>
+  </div>
+</div>
+
+<!-- WHAT I DO -->
+<section class="what" id="what">
+  <div class="what-left">
+    <span class="label">Expertise</span>
+    <h2>Search has two layers now. <em>Most brands only see one.</em></h2>
+    <p>
+      Traditional SEO optimises for ten blue links. But a growing share of search
+      now resolves before a user ever clicks anything — answered directly by AI.
+      I work at the intersection of both: where technical rigour meets the
+      emerging discipline of making brands legible to language models.
+    </p>
+  </div>
+  <div class="what-right">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div>
+        <h3>Technical SEO Foundation</h3>
+        <p>Crawlability, indexation, site architecture, structured data, and Core Web Vitals. The bedrock that everything else depends on — and the most common source of invisible losses.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div>
+        <h3>Generative Engine Optimisation</h3>
+        <p>GEO is the practice of making your brand citable, referenceable, and authoritative in the eyes of AI systems. It requires a different set of signals than traditional SEO — and most brands are starting from zero.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div>
+        <h3>Content Architecture for AI</h3>
+        <p>Structuring content so that it's not just readable by humans, but parseable by models. This means clear entities, specific claims, and the kind of authoritative depth that LLMs draw from when forming answers.</p>
+      </div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <div>
+        <h3>Visibility Measurement</h3>
+        <p>What gets measured, gets managed. I set up monitoring frameworks that track brand presence across both traditional search and generative AI responses — so you're not flying blind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why">
+  <div class="why-inner">
+    <span class="label">Why this matters now</span>
+    <h2>The window to act <em>before your competitors do</em> is narrowing.</h2>
+    <div class="why-stats">
+      <div class="stat-block">
+        <div class="big">7<em>+</em></div>
+        <p>Years working in search — across technical SEO, content strategy, and organic growth for brands across multiple sectors.</p>
+      </div>
+      <div class="stat-block">
+        <div class="big"><em>AI</em></div>
+        <p>Generative AI has moved from experiment to primary interface. Perplexity, ChatGPT, Gemini, and Claude now field millions of branded queries daily.</p>
+      </div>
+      <div class="stat-block">
+        <div class="big">0<em>→1</em></div>
+        <p>Most brands have zero GEO strategy. The organisations that move first will establish the citation and authority signals that are hardest to displace later.</p>
+      </div>
+    </div>
+    <div class="why-body">
+      <p>
+        I've been tracking the shift from traditional search to generative AI responses since
+        the earliest signs of change. What used to be an academic curiosity is now a
+        commercial reality — AI-generated answers are displacing clicks, reshaping how
+        consumers form opinions, and creating a new kind of invisible brand risk.
+      </p>
+      <p>
+        The brands that are best positioned in AI answers aren't necessarily the biggest
+        ones. They're the ones that understood early that LLMs have a different definition
+        of authority — and started building for it. That's the work I do.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <span class="label">About</span>
+    <h2>Senior search specialist. <em>Early GEO practitioner.</em></h2>
+    <p>
+      I'm Keval Patel — a London-based search professional with over seven years
+      of experience across technical SEO, content strategy, and organic performance.
+      I work at the senior level in a Shoreditch-based digital agency by day, and
+      take on focused GEO consultancy with selected brands.
+    </p>
+    <p>
+      My background spans both the technical and strategic sides of search.
+      I'm comfortable in a Screaming Frog crawl as I am presenting a growth
+      strategy to a leadership team. GEO is where I've chosen to go deep —
+      because I think it's the most consequential shift in search since mobile.
+    </p>
+    <p>
+      I'm not interested in vague AI hype. I care about what's measurable,
+      what's actionable, and what will still matter in three years.
+    </p>
+    <div class="about-tags">
+      <span class="tag">Technical SEO</span>
+      <span class="tag">GEO</span>
+      <span class="tag">Content Strategy</span>
+      <span class="tag">Entity Authority</span>
+      <span class="tag">Structured Data</span>
+      <span class="tag">AI Search</span>
+      <span class="tag">London</span>
+      <span class="tag">7+ Years Experience</span>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-card">
+      <div class="card-label">Background</div>
+      <h4>Agency &amp; In-house</h4>
+      <p>Experience across agency and brand-side search, working with teams across e-commerce, fashion, consumer tech, and professional services.</p>
+    </div>
+    <div class="about-card">
+      <div class="card-label">Specialism</div>
+      <h4>GEO — Generative Engine Optimisation</h4>
+      <p>One of a small number of practitioners in the UK building hands-on expertise in how brands can optimise for AI-generated search responses.</p>
+    </div>
+    <div class="about-card">
+      <div class="card-label">Tools &amp; Methods</div>
+      <h4>Data-led, not dogma-led</h4>
+      <p>Screaming Frog, Semrush, Ahrefs, Peec AI, Otterly, and custom prompt-monitoring frameworks. I use what the problem calls for.</p>
+    </div>
+    <div class="about-card">
+      <div class="card-label">Location</div>
+      <h4>London · Available remotely</h4>
+      <p>Based in London. Work with brands and teams across the UK and internationally.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section class="insights" id="insights">
+  <div class="insights-header">
+    <div>
+      <span class="label">Insights</span>
+      <h2>Thinking on search, <em>AI, and what's next.</em></h2>
+    </div>
+    <a href="/blog/">View all articles →</a>
+  </div>
+  <div class="articles">
+    <div class="article-card featured">
+      <div class="article-cat">GEO · Fundamentals</div>
+      <h3>Why your brand is invisible to AI — and what to do about it</h3>
+      <p>Most brands have invested years into traditional SEO. Almost none have asked whether that work translates to how language models form answers. It doesn't, in ways that matter.</p>
+      <div class="article-meta">Coming soon</div>
+    </div>
+    <div class="article-card">
+      <div class="article-cat">Content Strategy</div>
+      <h3>Writing content that LLMs actually cite</h3>
+      <p>The structural and substantive signals that make content referenceable by AI systems.</p>
+      <div class="article-meta">Coming soon</div>
+    </div>
+    <div class="article-card">
+      <div class="article-cat">Measurement</div>
+      <h3>How to know if your GEO strategy is working</h3>
+      <p>The emerging toolkit for tracking brand presence in AI-generated answers.</p>
+      <div class="article-meta">Coming soon</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <span class="label">Contact</span>
+    <h2>Have a question? <em>Let's talk.</em></h2>
+    <p>
+      Whether you're trying to understand where you stand in AI search,
+      curious about what GEO could mean for your brand, or just want to
+      discuss what's changing in search — I'm happy to have the conversation.
+      No hard sell. Just a direct chat.
+    </p>
+    <div class="contact-meta">
+      <div class="contact-meta-row">
+        <div class="dot"></div>
+        <span>keval@geokeval.co.uk</span>
+      </div>
+      <div class="contact-meta-row">
+        <div class="dot"></div>
+        <span>London, UK — available remotely</span>
+      </div>
+      <div class="contact-meta-row">
+        <div class="dot"></div>
+        <span>Typically responds within one business day</span>
+      </div>
+    </div>
+    <div class="cal-prompt">
+      <div class="cal-label">Prefer to talk directly?</div>
+      <p>Book a free 30-minute intro call — no commitment, no agenda except a good conversation.</p>
+      <a href="https://cal.com/geokeval" class="cal-btn" target="_blank" rel="noopener">View available slots →</a>
+    </div>
+  </div>
+  <div class="contact-right">
+    <form class="form-wrap" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="form-field">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="company">Company / Website</label>
+        <input type="text" id="company" name="company" placeholder="acme.com">
+      </div>
+      <div class="form-field">
+        <label for="topic">What's on your mind?</label>
+        <select id="topic" name="topic">
+          <option value="" disabled selected>Select a topic…</option>
+          <option value="geo-audit">Understanding my AI search visibility</option>
+          <option value="strategy">GEO strategy conversation</option>
+          <option value="content">Content and AI legibility</option>
+          <option value="technical">Technical SEO</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">Tell me a bit more</label>
+        <textarea id="message" name="message" placeholder="What's the situation? Where are you now, and what are you trying to figure out?" rows="5"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send message →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Keval Patel · geokeval.co.uk</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/kevalpatel" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/blog/">Blog</a>
+    <a href="mailto:keval@geokeval.co.uk">Email</a>
+  </div>
+</footer>
+
+<script>
+// ── Typing animation
+const questions = [
+  '"What is the best activewear brand for women in the UK?"',
+  '"Which brands are leading in sustainable fashion right now?"',
+  '"What are the top tools for email marketing?"',
+  '"Who are the best SEO agencies in London?"',
+  '"What skincare brand do dermatologists recommend?"',
+];
+let qi = 0, ci = 0, deleting = false, pause = 0;
+const el = document.querySelector('.typed-text');
+
+function type() {
+  if (pause > 0) { pause--; setTimeout(type, 50); return; }
+  const q = questions[qi];
+  if (!deleting) {
+    el.textContent = q.slice(0, ++ci);
+    if (ci === q.length) { deleting = true; pause = 40; }
+    setTimeout(type, 42);
+  } else {
+    el.textContent = q.slice(0, --ci);
+    if (ci === 0) { deleting = false; qi = (qi + 1) % questions.length; pause = 8; }
+    setTimeout(type, 18);
+  }
+}
+type();
+
+// ── Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
