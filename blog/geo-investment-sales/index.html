@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Does GEO Investment Lead to More Sales? — Keval Shah</title>
+<meta name="description" content="GEO disrupts last-click attribution, but that doesn't mean it doesn't drive revenue. Here's how Generative Engine Optimisation leads to more sales — and how to measure it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #080808;
+    --off-white: #F2EFE9;
+    --crimson: #8B1A1A;
+    --crimson-light: #B22222;
+    --warm-grey: #5A5854;
+    --mid: #2A2826;
+    --border-dark: rgba(242,239,233,0.1);
+    --border-light: rgba(8,8,8,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 48px;
+  background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(242,239,233,0.1);
+}
+.nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #ffffff; text-decoration: none; }
+.nav-brand span { color: var(--crimson-light); }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--off-white); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+.nav-dropdown:hover > a::after { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: rgba(8,8,8,0.98); border: 1px solid rgba(242,239,233,0.12);
+  min-width: 200px; padding: 16px 0 8px;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0;
+}
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+.dropdown-menu a:hover { color: var(--off-white); background: rgba(242,239,233,0.05); border-left-color: var(--crimson); }
+.dropdown-menu .dropdown-divider { height: 1px; background: rgba(242,239,233,0.08); margin: 6px 0; }
+.dropdown-menu .dropdown-all { font-size: 9px; }
+.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #ffffff; border: 1px solid rgba(242,239,233,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: var(--crimson); border-color: var(--crimson); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--off-white); transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: var(--black); border-left: 1px solid rgba(242,239,233,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+.mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(242,239,233,0.07); transition: color 0.2s; }
+.mobile-nav-links li a:hover { color: var(--off-white); }
+.mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+.mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #ffffff; font-weight: 700; border-bottom: 1px solid rgba(242,239,233,0.04); }
+.mobile-cta { margin-top: 32px; display: block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
+.mobile-cta:hover { background: var(--crimson-light); }
+
+  /* ── ARTICLE HEADER ─────────────────────────────────────── */
+  .article-header {
+    background: var(--black);
+    padding: 120px 48px 56px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .article-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .article-breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: #ffffff; }
+  .article-breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); }
+  .article-breadcrumb .current { color: rgba(255,255,255,0.6); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .article-cat-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .article-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 700; color: #ffffff; line-height: 1.08; margin-bottom: 24px; max-width: 22ch; }
+  .article-title em { font-style: italic; color: rgba(255,255,255,0.75); }
+  .article-meta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .article-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 700; }
+  .article-meta-dot { color: rgba(255,255,255,0.3); }
+
+  /* ── ARTICLE BODY ───────────────────────────────────────── */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 48px 100px;
+  }
+
+  .article-body .lead {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--black);
+    margin-bottom: 48px;
+    border-left: 3px solid var(--crimson);
+    padding-left: 28px;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-top: 64px;
+    margin-bottom: 20px;
+  }
+
+  .article-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.25;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .article-body p {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .article-body strong { color: var(--black); font-weight: 700; }
+
+  .article-body ul, .article-body ol {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+  }
+  .article-body li {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .article-body .callout {
+    background: var(--black);
+    border-left: 3px solid var(--crimson);
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .article-body .callout p {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  /* ── FUNNEL TABLE ───────────────────────────────────────── */
+  .funnel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 36px 0 48px;
+    font-family: var(--sans);
+  }
+  .funnel-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--off-white);
+    background: var(--black);
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 700;
+  }
+  .funnel-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--warm-grey);
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  .funnel-table td:first-child {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 700;
+    white-space: nowrap;
+    width: 140px;
+    border-right: 2px solid var(--crimson);
+    background: rgba(139,26,26,0.04);
+  }
+  .funnel-table tr:last-child td { border-bottom: none; }
+
+  .article-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 48px 0;
+  }
+
+  /* ── AUTHOR BIO ─────────────────────────────────────────── */
+  .author-bio {
+    border-top: 1px solid var(--border-light);
+    margin-top: 64px;
+    padding-top: 40px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .author-bio-text .author-name { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); font-weight: 700; margin-bottom: 8px; }
+  .author-bio-text p { font-size: 14px; color: var(--warm-grey); line-height: 1.7; margin-bottom: 0; }
+
+  /* ── CTA BAND ───────────────────────────────────────────── */
+  .cta-band { background: var(--black); padding: 72px 48px; text-align: center; }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; font-weight: 700; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: #ffffff; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .cta-band p { font-size: 15px; color: #ffffff; font-weight: 700; line-height: 1.8; max-width: 48ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; font-weight: 700; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); transition: all 0.2s; font-weight: 700; }
+  .btn-ghost:hover { color: var(--off-white); border-color: rgba(255,255,255,0.7); }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer { background: var(--black); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-dark); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #ffffff; font-weight: 700; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--off-white); }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .article-header { padding: 96px 24px 40px; }
+    .article-body { padding: 48px 24px 72px; }
+    .funnel-table td:first-child { width: 100px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/blog/">Articles &amp; Resources</a>
+      <div class="dropdown-menu">
+        <a href="/blog/" class="dropdown-all">All Articles</a>
+        <div class="dropdown-divider"></div>
+        <a href="/blog/category/geo/">GEO</a>
+        <a href="/blog/category/content-strategy/">Content Strategy</a>
+        <a href="/blog/category/technical-seo/">Technical SEO</a>
+        <a href="/blog/category/measurement/">Measurement</a>
+        <a href="/blog/category/resources/">Resources</a>
+      </div>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay"></div>
+<div class="mobile-drawer">
+  <ul class="mobile-nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Articles &amp; Resources</a></li>
+    <li>
+      <span class="mobile-section-label">Browse by category</span>
+      <ul class="mobile-sub" style="list-style:none;">
+        <li><a href="/blog/category/geo/">GEO</a></li>
+        <li><a href="/blog/category/content-strategy/">Content Strategy</a></li>
+        <li><a href="/blog/category/technical-seo/">Technical SEO</a></li>
+        <li><a href="/blog/category/measurement/">Measurement</a></li>
+        <li><a href="/blog/category/resources/">Resources</a></li>
+      </ul>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="mobile-cta">Get in touch</a>
+</div>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="article-breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/blog/">Articles</a><span>/</span>
+    <a href="/blog/category/geo/">GEO</a><span>/</span>
+    <span class="current">GEO &amp; Sales</span>
+  </div>
+  <span class="article-cat-tag">GEO · Strategy</span>
+  <h1 class="article-title">Does GEO Investment Lead to <em>More Sales?</em></h1>
+  <div class="article-meta-row">
+    <span class="article-meta-item">Keval Shah</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">June 2025</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">10 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">
+    If we can't track a click from ChatGPT, does it actually matter if we appear there? It's a fair question — and the answer is yes. But the mechanism is one most marketers aren't used to accounting for.
+  </p>
+
+  <p>
+    Digital marketing has spent two decades building attribution models, conversion funnels, and ROI calculators — all anchored to traceable clicks. <a href="/blog/what-is-geo/" style="color: var(--crimson); text-decoration: none; border-bottom: 1px solid var(--crimson);">Generative Engine Optimisation</a> disrupts that logic at its foundation. There often is no click to track. And yet, dismissing GEO because it's hard to measure would be one of the costlier strategic mistakes a brand could make right now.
+  </p>
+  <p>
+    This article makes the case that GEO does lead to more sales — but through a mechanism that most marketers aren't used to accounting for. Understanding that mechanism is what separates brands building durable commercial advantage from those optimising for a metric that's quietly becoming less relevant.
+  </p>
+
+  <h2>The Attribution Gap — And Why It Doesn't Mean What You Think</h2>
+  <p>
+    When someone searches Google and clicks your result, GA4 records it. When someone asks ChatGPT "what's the best immigration solicitor in London" and your firm is cited as a credible answer — and then that person arrives on your website three days later via a branded search — GA4 records a direct visit, or a branded organic visit. The influence of the AI citation is invisible.
+  </p>
+  <p>
+    This is what I call the <strong>dark discovery problem</strong>.
+  </p>
+  <p>
+    Dark discovery isn't unique to GEO. It existed long before AI search — word of mouth, PR mentions, podcast appearances, and even billboard advertising all influence purchase behaviour in ways that never show up neatly in a last-click model. But GEO amplifies it significantly, because AI-referred discovery is happening at scale, increasingly, and the gap between where someone first encounters your brand and where they convert is widening.
+  </p>
+  <p>
+    The mistake is treating "hard to measure" as synonymous with "not working." The reality is that an absence of direct attribution data is not evidence of an absence of commercial impact.
+  </p>
+
+  <h2>What the Evidence Is Starting to Show</h2>
+  <p>
+    We're still in the early innings of robust GEO performance data, but what's emerging is directionally consistent.
+  </p>
+  <p>
+    AI search tools — Perplexity, ChatGPT with browse enabled, Google AI Overviews — are generating meaningful referral traffic. More importantly, the users arriving via these touchpoints are disproportionately high-intent. They aren't casual browsers in the awareness phase. They're people who have already asked an AI a specific question, received an answer that cited your brand, found that answer credible, and then taken further action. That's a significantly more qualified prospect than someone who found you via a broad informational search.
+  </p>
+  <p>
+    Research into AI search behaviour also suggests that citation by an LLM functions as a trust proxy. When ChatGPT recommends a brand, users extend a degree of the trust they have in the model to the brand being recommended. This is functionally similar to an editorial mention in a respected publication — except it's delivered at the exact moment the user is actively researching a purchase.
+  </p>
+
+  <div class="callout">
+    <p>The commercial implication is significant: GEO reaches buyers, not just researchers.</p>
+  </div>
+
+  <h2>Mapping GEO Impact Across the Sales Funnel</h2>
+  <p>
+    One of the reasons GEO's commercial value gets undersold is that people look for its impact in the wrong place — usually at the bottom of the funnel, where attribution is cleanest. But GEO's real leverage is across the entire customer journey.
+  </p>
+
+  <table class="funnel-table">
+    <thead>
+      <tr>
+        <th>Funnel Stage</th>
+        <th>How GEO Contributes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Awareness</td>
+        <td>Your brand is cited unprompted in response to relevant questions, introducing you to prospects who didn't know to search for you specifically</td>
+      </tr>
+      <tr>
+        <td>Consideration</td>
+        <td>AI systems summarise your positioning, credentials, and differentiation, doing the comparison work the buyer would otherwise do manually</td>
+      </tr>
+      <tr>
+        <td>Decision</td>
+        <td>The prospect arrives at your site with trust already partially built — the AI endorsed you before they clicked</td>
+      </tr>
+      <tr>
+        <td>Retention</td>
+        <td>Consistent AI presence reinforces authority and keeps you in the mental shortlist when the customer is ready to purchase again or refer others</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    Traditional SEO largely operates at the awareness and consideration stages. GEO has the unusual property of compressing consideration — users receive a synthesised recommendation rather than having to evaluate multiple sources themselves. That compression benefits brands with strong AI citation significantly.
+  </p>
+
+  <hr class="article-divider">
+
+  <h2>Where GEO Investment Does (and Doesn't) Drive Sales</h2>
+  <p>
+    Being honest about this matters, because GEO isn't a universal solution — it's a particularly powerful one in specific contexts.
+  </p>
+
+  <h3>GEO investment tends to have the highest commercial impact for:</h3>
+  <ul>
+    <li><strong>High-consideration purchases</strong> — where buyers spend time researching before committing (financial services, legal, SaaS, healthcare, higher-value B2C)</li>
+    <li><strong>B2B services and agencies</strong> — where trust and authority are decisive purchase factors</li>
+    <li><strong>Specialist and niche brands</strong> — where AI systems surface specific expertise, and competitors are less visible in AI responses</li>
+    <li><strong>Local professional services</strong> — where AI-generated recommendations function similarly to trusted referrals</li>
+    <li><strong>Brands in regulated or complex categories</strong> — where the synthesis AI provides is genuinely valuable to the buyer</li>
+  </ul>
+
+  <h3>Where GEO's commercial impact is slower or less direct:</h3>
+  <ul>
+    <li>Impulse or low-consideration purchases, where the buyer isn't seeking advice</li>
+    <li>Commodity products, where price is the primary decision variable and brand authority matters less</li>
+    <li>Audiences who haven't yet adopted AI search as part of their research behaviour</li>
+  </ul>
+
+  <p>
+    None of this means those categories should ignore GEO entirely — share of voice in AI systems will matter for every category eventually. But it does mean prioritisation should be informed by where the trust-to-purchase dynamic is most active.
+  </p>
+
+  <hr class="article-divider">
+
+  <h2>How to Measure GEO's Commercial Impact Today</h2>
+  <p>
+    The measurement frameworks aren't perfect yet, but that doesn't mean you're flying completely blind. Here's what actually provides signal — and how to <a href="/blog/category/measurement/" style="color: var(--crimson); text-decoration: none; border-bottom: 1px solid var(--crimson);">build a measurement approach</a> that accounts for influence rather than just clicks.
+  </p>
+
+  <p>
+    <strong>Branded search volume trends.</strong> If your AI citation activity is increasing, branded search volume should follow — with a lag. This is one of the cleaner proxies for GEO-influenced discovery. Monitor monthly branded search impressions in Google Search Console and look for movement that correlates with GEO activity.
+  </p>
+  <p>
+    <strong>Direct traffic uplift.</strong> Direct visits are messy data, but directionally useful. A sustained increase in direct traffic alongside GEO investment, particularly from new users, suggests dark discovery is working.
+  </p>
+  <p>
+    <strong>AI share of voice audits.</strong> Tools like AthenaHQ and Peec AI allow you to systematically track which brands are being cited in AI responses to queries relevant to your category. Run a baseline before any GEO activity and track movement over time. Manual prompting — asking ChatGPT, Perplexity, and Gemini relevant questions and recording who appears — is low-tech but surprisingly useful.
+  </p>
+  <p>
+    <strong>Pipeline source surveys.</strong> Ask new customers and qualified leads: "How did you first hear about us?" You'll start seeing AI tools appear — and you'll also start noticing that people who first encountered you via AI are further along in their thinking when they make contact.
+  </p>
+  <p>
+    <strong>LLM citation audits pre- and post-content investment.</strong> Publish a substantive piece of content designed to earn AI citation. Run citation checks before and after. Track whether the content appears in relevant AI responses within 60–90 days.
+  </p>
+  <p>
+    None of these are perfect. All of them, used together, start to build a picture.
+  </p>
+
+  <h2>The Competitive Cost of Not Investing</h2>
+  <p>
+    There's a dimension to GEO that goes beyond "will it generate leads for us" — it's the question of what happens when your competitors invest in it and you don't.
+  </p>
+  <p>
+    AI systems have a finite number of citations to offer in any given response. When a user asks Perplexity which project management tool to use for a distributed team, it will name two or three. When someone asks ChatGPT for the best specialist in a particular area, the brands that have built AI authority appear. The ones that haven't, don't.
+  </p>
+  <p>
+    The consideration-stage buyer who receives a synthesised AI recommendation that doesn't include you has effectively been lost at a point you never even knew about. That's the compounding risk of non-investment: invisible attrition at the consideration stage, accumulating quietly over time.
+  </p>
+  <p>
+    There's also a structural point worth making. The brands that invested in SEO in 2005 still benefit disproportionately from that decision. Domain authority, link equity, and content archives compound over years. Early GEO investment appears to work similarly — the brands building AI citation now are accumulating an authority signal that will be harder to displace as the field matures.
+  </p>
+
+  <div class="callout">
+    <p>The consideration-stage buyer who receives an AI recommendation that doesn't include you has been lost at a point you never even knew about.</p>
+  </div>
+
+  <h2>The Honest Answer</h2>
+  <p>
+    Does GEO investment lead to more sales? Yes — but not always through the direct path that a last-click attribution model would validate.
+  </p>
+  <p>
+    GEO leads to more sales by doing something more durable: it builds the kind of pre-purchase trust that means buyers arrive at your door already partially convinced. It compresses consideration. It puts your brand in the synthesis that increasingly shapes what people believe before they ever visit your website.
+  </p>
+  <p>
+    The mechanism is trust accumulation. The commercial payoff is real, but it requires a measurement approach that accounts for influence rather than just clicks, and a time horizon that matches how brand authority actually develops.
+  </p>
+  <p>
+    The brands that will struggle with GEO ROI are the ones applying click-based thinking to a trust-based channel. The ones that will benefit most are the ones who understand that "hard to attribute" and "not commercially valuable" are very different things — and invest accordingly.
+  </p>
+
+  <div class="author-bio">
+    <div class="author-bio-text">
+      <div class="author-name">Keval Shah · GEO &amp; SEO Specialist</div>
+      <p>Keval Shah is a GEO and SEO specialist based in London, working with brands on visibility strategy across traditional and AI search.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <span class="cta-label">Ready to act on this?</span>
+  <h2>Let's talk about <em>your brand's GEO strategy.</em></h2>
+  <p>Whether you want to understand where you currently stand in AI answers or build a full GEO strategy — I'm happy to have a direct conversation.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Get in touch</a>
+    <a href="/blog/" class="btn-ghost">More articles</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Keval Patel · geokeval.co.uk</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/kevalpatel" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/blog/">Articles</a>
+    <a href="mailto:keval@geokeval.co.uk">Email</a>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.querySelector('.nav-hamburger');
+const drawer = document.querySelector('.mobile-drawer');
+const overlay = document.querySelector('.mobile-overlay');
+function toggleNav(open) {
+  hamburger.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => toggleNav(!drawer.classList.contains('open')));
+overlay.addEventListener('click', () => toggleNav(false));
+document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+</script>
+
+</body>
+</html>
