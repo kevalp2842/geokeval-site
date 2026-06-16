@@ -271,6 +271,26 @@ footer p, .footer-links a { color: #ffffff; font-weight: 700; }
 .nav-cta { color: #ffffff; }
 .mobile-nav-links li a { color: #ffffff; font-weight: 700; }
 .mobile-nav-links .mobile-sub a { color: #ffffff; font-weight: 700; }
+
+/* ── ARTICLE HEADER IMAGE ─────────────────────────────────── */
+.article-hero {
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  display: block;
+  margin-top: 61px; /* offset for fixed nav */
+}
+.article-hero img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+@media (max-width: 900px) {
+  .article-hero { margin-top: 53px; }
+  .article-hero img { height: 260px; }
+}
 </style>
 </head>
 <body>
@@ -321,6 +341,9 @@ footer p, .footer-links a { color: #ffffff; font-weight: 700; }
   <a href="/#contact" class="mobile-cta">Get in touch</a>
 </div>
 
+<div class="article-hero">
+  <img src="/blog/what-is-geo/hero.jpg" alt="Generative Engine Optimisation — AI search queries and GEO concept">
+</div>
 
 <div class="blog-hero">
   <div class="blog-hero-bg" aria-hidden="true">Insights</div>
