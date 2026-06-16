@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insights — Keval Patel</title>
-<meta name="description" content="Thinking on search, AI visibility, and Generative Engine Optimisation by Keval Patel — London-based search specialist.">
+<title>What is Generative Engine Optimisation (GEO)? — Keval Patel</title>
+<meta name="description" content="AI tools like ChatGPT, Perplexity, and Gemini now answer millions of search queries directly. GEO is the discipline of making your brand visible, citable, and authoritative in those answers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -23,142 +23,11 @@
     --sans: 'DM Sans', system-ui, sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
+
   html { scroll-behavior: smooth; }
   body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-  .blog-hero {
-    background: var(--black);
-    padding: 160px 48px 80px;
-    border-bottom: 1px solid var(--border-dark);
-    position: relative;
-    overflow: hidden;
-  }
-  .blog-hero-bg {
-    position: absolute; top: 50%; right: -2%; transform: translateY(-50%);
-    font-family: var(--serif); font-size: clamp(100px, 16vw, 200px);
-    font-weight: 300; color: rgba(242,239,233,0.025);
-    pointer-events: none; white-space: nowrap; user-select: none;
-  }
-  .blog-hero .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 24px; display: block; }
-  .blog-hero h1 { font-family: var(--serif); font-size: clamp(40px, 6vw, 82px); font-weight: 400; color: var(--off-white); line-height: 1.05; margin-bottom: 24px; }
-  .blog-hero h1 em { font-style: italic; color: rgba(242,239,233,0.4); }
-  .blog-hero p { font-size: 15px; color: rgba(242,239,233,0.5); line-height: 1.8; font-weight: 300; max-width: 48ch; }
-
-  /* FILTERS */
-  .filters {
-    background: var(--off-white);
-    padding: 32px 48px;
-    border-bottom: 1px solid var(--border-light);
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .filter-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-grey); margin-right: 8px; }
-  .filter-btn {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 7px 16px; background: transparent; border: 1px solid var(--border-light);
-    color: var(--warm-grey); cursor: pointer; transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active, a.filter-btn { background: var(--black); color: var(--off-white); border-color: var(--black); }
-
-  /* FEATURED */
-  .featured-wrap {
-    padding: 64px 48px 0;
-  }
-  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson); margin-bottom: 28px; display: block; }
-
-  .featured-article {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--border-light);
-    text-decoration: none;
-    transition: opacity 0.2s;
-    margin-bottom: 1px;
-  }
-  .featured-article:hover { opacity: 0.85; }
-  .featured-content { background: var(--black); padding: 52px 48px; }
-  .featured-meta { background: var(--mid); padding: 52px 48px; display: flex; flex-direction: column; justify-content: space-between; }
-
-  .article-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; }
-  .featured-content h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 42px); font-weight: 400; color: var(--off-white); line-height: 1.15; margin-bottom: 20px; }
-  .featured-content p { font-size: 14px; color: rgba(242,239,233,0.5); line-height: 1.8; font-weight: 300; margin-bottom: 32px; }
-  .read-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--crimson-light); }
-
-  .meta-tag { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; border: 1px solid rgba(242,239,233,0.15); color: rgba(242,239,233,0.4); padding: 6px 12px; margin-bottom: 8px; }
-  .meta-block { margin-bottom: 28px; }
-  .meta-block .meta-title { font-family: var(--mono); font-size: 10px; color: rgba(242,239,233,0.3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
-  .meta-block .meta-val { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--off-white); }
-  .featured-date { font-family: var(--mono); font-size: 10px; color: rgba(242,239,233,0.3); letter-spacing: 0.06em; margin-top: auto; }
-
-  /* GRID */
-  .grid-wrap { padding: 48px 48px 100px; }
-  .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); }
-
-  .article-card {
-    background: var(--off-white);
-    padding: 36px 32px;
-    display: flex; flex-direction: column;
-    text-decoration: none;
-    transition: background 0.2s;
-    border-bottom: 2px solid transparent;
-  }
-  .article-card:hover { background: var(--black); }
-  .article-card:hover .card-title { color: var(--off-white); }
-  .article-card:hover .card-excerpt { color: rgba(242,239,233,0.5); }
-  .article-card:hover .card-cat { color: var(--crimson-light); }
-  .article-card:hover .card-meta { color: rgba(242,239,233,0.3); }
-  .article-card:hover .card-arrow { color: var(--crimson-light); }
-
-  .card-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); margin-bottom: 20px; transition: color 0.2s; }
-  .card-title { font-family: var(--serif); font-size: 22px; font-weight: 400; color: var(--black); line-height: 1.25; margin-bottom: 14px; flex: 1; transition: color 0.2s; }
-  .card-excerpt { font-size: 13px; color: var(--warm-grey); line-height: 1.7; font-weight: 300; margin-bottom: 28px; transition: color 0.2s; }
-  .card-footer { display: flex; justify-content: space-between; align-items: center; }
-  .card-meta { font-family: var(--mono); font-size: 10px; color: rgba(8,8,8,0.35); letter-spacing: 0.04em; transition: color 0.2s; }
-  .card-arrow { font-family: var(--mono); font-size: 11px; color: var(--crimson); transition: color 0.2s; }
-
-  /* NEWSLETTER */
-  .newsletter {
-    background: var(--black);
-    padding: 80px 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-  .newsletter .label { color: var(--crimson-light); margin-bottom: 20px; display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
-  .newsletter h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; color: var(--off-white); line-height: 1.15; }
-  .newsletter h2 em { font-style: italic; color: rgba(242,239,233,0.4); }
-  .newsletter p { font-size: 14px; color: rgba(242,239,233,0.45); line-height: 1.8; font-weight: 300; }
-  .nl-form { display: flex; flex-direction: column; gap: 16px; }
-  .nl-input { background: transparent; border: none; border-bottom: 1px solid rgba(242,239,233,0.2); padding: 12px 0; font-family: var(--sans); font-size: 14px; color: var(--off-white); outline: none; transition: border-color 0.2s; font-weight: 300; width: 100%; }
-  .nl-input::placeholder { color: rgba(242,239,233,0.25); }
-  .nl-input:focus { border-bottom-color: var(--crimson-light); }
-  .nl-note { font-family: var(--mono); font-size: 10px; color: rgba(242,239,233,0.25); letter-spacing: 0.04em; }
-  .nl-btn { align-self: flex-start; background: var(--crimson); color: var(--off-white); border: none; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; transition: background 0.2s; }
-  .nl-btn:hover { background: var(--crimson-light); }
-
-  /* FOOTER */
-  footer { background: var(--black); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-dark); }
-  footer p { font-family: var(--mono); font-size: 10px; color: rgba(242,239,233,0.3); letter-spacing: 0.06em; }
-  .footer-links { display: flex; gap: 28px; }
-  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(242,239,233,0.3); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--off-white); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .blog-hero { padding: 120px 24px 60px; }
-    .filters { padding: 24px; }
-    .featured-wrap, .grid-wrap { padding-left: 24px; padding-right: 24px; }
-    .featured-article { grid-template-columns: 1fr; }
-    .articles-grid { grid-template-columns: 1fr; }
-    .newsletter { grid-template-columns: 1fr; gap: 40px; padding: 64px 24px; }
-    footer { flex-direction: column; gap: 16px; padding: 28px 24px; }
-  }
-/* ── NAV SHARED STYLES (used across all pages) ─────────────── */
+/* ── NAV ─────────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; justify-content: space-between; align-items: center;
@@ -166,135 +35,183 @@ nav {
   background: rgba(8,8,8,0.95); backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(242,239,233,0.1);
 }
-.nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: var(--off-white); text-decoration: none; }
+.nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #ffffff; text-decoration: none; }
 .nav-brand span { color: var(--crimson-light); }
-
-/* Desktop links */
 .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(242,239,233,0.8); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--off-white); }
-
-/* Dropdown */
+.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--off-white); }
 .nav-dropdown { position: relative; }
 .nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
 .nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
 .nav-dropdown:hover > a::after { transform: rotate(180deg); }
 .dropdown-menu {
-  position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
   background: rgba(8,8,8,0.98); border: 1px solid rgba(242,239,233,0.12);
-  min-width: 200px; padding: 8px 0;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.15s, transform 0.15s;
-  transform: translateX(-50%) translateY(-4px);
+  min-width: 200px; padding: 16px 0 8px;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0;
 }
-.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
-.dropdown-menu a {
-  display: block; padding: 10px 18px;
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
-  text-transform: uppercase; color: rgba(242,239,233,0.65);
-  text-decoration: none; transition: color 0.15s, background 0.15s;
-  border-left: 2px solid transparent;
-}
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
 .dropdown-menu a:hover { color: var(--off-white); background: rgba(242,239,233,0.05); border-left-color: var(--crimson); }
 .dropdown-menu .dropdown-divider { height: 1px; background: rgba(242,239,233,0.08); margin: 6px 0; }
-.dropdown-menu .dropdown-all { color: rgba(242,239,233,0.45); font-size: 9px; }
-
-.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: var(--off-white); border: 1px solid rgba(242,239,233,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.dropdown-menu .dropdown-all { font-size: 9px; }
+.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #ffffff; border: 1px solid rgba(242,239,233,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
 .nav-cta:hover { background: var(--crimson); border-color: var(--crimson); }
-
-/* Hamburger button */
 .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
 .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--off-white); transition: all 0.3s; transform-origin: center; }
 .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* Mobile drawer */
-.mobile-drawer {
-  position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250;
-  background: var(--black); border-left: 1px solid rgba(242,239,233,0.1);
-  transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
-  display: flex; flex-direction: column; padding: 88px 32px 48px;
-  overflow-y: auto;
-}
+.mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: var(--black); border-left: 1px solid rgba(242,239,233,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
 .mobile-drawer.open { transform: translateX(0); }
-.mobile-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240;
-  opacity: 0; pointer-events: none; transition: opacity 0.3s;
-}
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
 .mobile-overlay.open { opacity: 1; pointer-events: all; }
-
 .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
-.mobile-nav-links li a {
-  display: block; padding: 14px 0;
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(242,239,233,0.75); text-decoration: none;
-  border-bottom: 1px solid rgba(242,239,233,0.07);
-  transition: color 0.2s;
-}
+.mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #ffffff; font-weight: 700; text-decoration: none; border-bottom: 1px solid rgba(242,239,233,0.07); transition: color 0.2s; }
 .mobile-nav-links li a:hover { color: var(--off-white); }
-.mobile-nav-links .mobile-section-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--crimson-light);
-  padding: 20px 0 8px; display: block;
-}
-.mobile-nav-links .mobile-sub a {
-  padding: 10px 0 10px 16px; font-size: 10px;
-  color: rgba(242,239,233,0.5); border-bottom: 1px solid rgba(242,239,233,0.04);
-}
-.mobile-nav-links .mobile-sub a:hover { color: rgba(242,239,233,0.9); }
+.mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+.mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #ffffff; font-weight: 700; border-bottom: 1px solid rgba(242,239,233,0.04); }
 .mobile-cta { margin-top: 32px; display: block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
 .mobile-cta:hover { background: var(--crimson-light); }
 
-@media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
-  .nav-hamburger { display: flex; }
-}
+  /* ── ARTICLE HERO IMAGE ─────────────────────────────────── */
+  .article-hero { width: 100%; max-height: 520px; overflow: hidden; display: block; margin-top: 61px; }
+  .article-hero img { width: 100%; height: 520px; object-fit: cover; object-position: center; display: block; }
 
-/* READABILITY: white and bold on dark backgrounds */
-.blog-hero h1, .blog-hero h1 em { color: #ffffff; font-weight: 700; }
-.blog-hero p { color: #ffffff; font-weight: 700; }
-.featured-content h2 { color: #ffffff; font-weight: 700; }
-.featured-content p { color: #ffffff; font-weight: 700; }
-.read-link { color: #ffffff; font-weight: 700; }
-.meta-title, .meta-val, .featured-date { color: #ffffff; font-weight: 700; }
-.meta-tag { color: #ffffff; font-weight: 700; border-color: rgba(255,255,255,0.3); }
-.newsletter h2, .newsletter h2 em { color: #ffffff; font-weight: 700; }
-.newsletter p { color: #ffffff; font-weight: 700; }
-.nl-note, .nl-input { color: #ffffff; font-weight: 700; }
-footer p, .footer-links a { color: #ffffff; font-weight: 700; }
-.nav-brand { color: #ffffff; }
-.nav-links a { color: #ffffff; font-weight: 700; }
-.dropdown-menu a { color: #ffffff; font-weight: 700; }
-.nav-cta { color: #ffffff; }
-.mobile-nav-links li a { color: #ffffff; font-weight: 700; }
-.mobile-nav-links .mobile-sub a { color: #ffffff; font-weight: 700; }
+  /* ── ARTICLE HEADER ─────────────────────────────────────── */
+  .article-header {
+    background: var(--black);
+    padding: 56px 48px 48px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .article-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .article-breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: #ffffff; }
+  .article-breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.3); }
+  .article-breadcrumb .current { color: rgba(255,255,255,0.6); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .article-cat-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .article-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 700; color: #ffffff; line-height: 1.08; margin-bottom: 24px; max-width: 18ch; }
+  .article-title em { font-style: italic; color: rgba(255,255,255,0.75); }
+  .article-meta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .article-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 700; }
+  .article-meta-dot { color: rgba(255,255,255,0.3); }
 
-/* ── ARTICLE HEADER IMAGE ─────────────────────────────────── */
-.article-hero {
-  width: 100%;
-  max-height: 520px;
-  overflow: hidden;
-  display: block;
-  margin-top: 61px; /* offset for fixed nav */
-}
-.article-hero img {
-  width: 100%;
-  height: 520px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-@media (max-width: 900px) {
-  .article-hero { margin-top: 53px; }
-  .article-hero img { height: 260px; }
-}
+  /* ── ARTICLE BODY ───────────────────────────────────────── */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 48px 100px;
+  }
+
+  .article-body .lead {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--black);
+    margin-bottom: 48px;
+    border-left: 3px solid var(--crimson);
+    padding-left: 28px;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-top: 64px;
+    margin-bottom: 20px;
+  }
+
+  .article-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.25;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .article-body p {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .article-body strong { color: var(--black); font-weight: 700; }
+
+  .article-body ul, .article-body ol {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+  }
+  .article-body li {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .article-body .callout {
+    background: var(--black);
+    border-left: 3px solid var(--crimson);
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .article-body .callout p {
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  .article-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 48px 0;
+  }
+
+  /* ── CTA BAND ───────────────────────────────────────────── */
+  .cta-band { background: var(--black); padding: 72px 48px; text-align: center; }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; font-weight: 700; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 700; color: #ffffff; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: rgba(255,255,255,0.6); }
+  .cta-band p { font-size: 15px; color: #ffffff; font-weight: 700; line-height: 1.8; max-width: 48ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; font-weight: 700; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(255,255,255,0.4); transition: all 0.2s; font-weight: 700; }
+  .btn-ghost:hover { color: var(--off-white); border-color: rgba(255,255,255,0.7); }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer { background: var(--black); padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-dark); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #ffffff; font-weight: 700; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #ffffff; font-weight: 700; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--off-white); }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .article-hero { margin-top: 53px; }
+    .article-hero img { height: 240px; }
+    .article-header { padding: 40px 24px 36px; }
+    .article-body { padding: 48px 24px 72px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
   <ul class="nav-links">
@@ -341,153 +258,165 @@ footer p, .footer-links a { color: #ffffff; font-weight: 700; }
   <a href="/#contact" class="mobile-cta">Get in touch</a>
 </div>
 
+<!-- HEADER IMAGE -->
 <div class="article-hero">
   <img src="/blog/what-is-geo/hero.jpg" alt="Generative Engine Optimisation — AI search queries and GEO concept">
 </div>
 
-<div class="blog-hero">
-  <div class="blog-hero-bg" aria-hidden="true">Insights</div>
-  <span class="label">Insights</span>
-  <h1>Thinking on search, <em>AI, and what's next.</em></h1>
-  <p>Practical, no-hype writing on how AI is reshaping search — and what brands and marketers need to do about it.</p>
-</div>
-
-<div class="filters">
-  <span class="filter-label">Filter by</span>
-  <button class="filter-btn active">All</button>
-  <a href="/blog/category/geo/" class="filter-btn">GEO</a>
-  <a href="/blog/category/technical-seo/" class="filter-btn">Technical SEO</a>
-  <a href="/blog/category/content-strategy/" class="filter-btn">Content Strategy</a>
-  <a href="/blog/category/measurement/" class="filter-btn">Measurement</a>
-  <a href="/blog/category/resources/" class="filter-btn">Resources</a>
-</div>
-
-<div class="featured-wrap">
-  <span class="section-label">Featured article</span>
-  <a href="/blog/what-is-geo/" class="featured-article">
-    <div class="featured-content">
-      <a href="/blog/category/geo/" class="article-cat">GEO · Fundamentals</a>
-      <h2>What is Generative Engine Optimisation (GEO)?</h2>
-      <p>AI tools like ChatGPT, Perplexity, and Gemini now answer millions of search queries directly — without the user clicking a single link. GEO is the discipline of making your brand visible, citable, and authoritative in those answers. Here's what it is, how it works, and why it matters now.</p>
-      <span class="read-link">Read article →</span>
-    </div>
-    <div class="featured-meta">
-      <div>
-        <div class="meta-block">
-          <div class="meta-title">Category</div>
-          <div class="meta-val">GEO Fundamentals</div>
-        </div>
-        <div class="meta-block">
-          <div class="meta-title">Reading time</div>
-          <div class="meta-val">8 min</div>
-        </div>
-        <div>
-          <span class="meta-tag">Generative AI</span>
-          <span class="meta-tag">Search</span>
-          <span class="meta-tag">LLMs</span>
-          <span class="meta-tag">Brand Visibility</span>
-        </div>
-      </div>
-      <div class="featured-date">June 2025</div>
-    </div>
-  </a>
-</div>
-
-<div class="grid-wrap">
-  <span class="section-label">All articles</span>
-  <div class="articles-grid">
-
-    <a href="/blog/what-is-geo/" class="article-card">
-      <div class="card-cat">GEO · Fundamentals</div>
-      <h3 class="card-title">What is Generative Engine Optimisation (GEO)?</h3>
-      <p class="card-excerpt">The discipline of making brands visible, citable, and authoritative in AI-generated search answers — explained from first principles.</p>
-      <div class="card-footer">
-        <span class="card-meta">June 2025 · 8 min</span>
-        <span class="card-arrow">Read full article →</span>
-      </div>
-    </a>
-
-    <div class="article-card" style="cursor:default;">
-      <div class="card-cat">Content Strategy</div>
-      <h3 class="card-title">Writing content that LLMs actually cite</h3>
-      <p class="card-excerpt">The structural and substantive signals that make content referenceable by AI systems — and what most brands are getting wrong.</p>
-      <div class="card-footer">
-        <span class="card-meta">Coming soon</span>
-        <span class="card-arrow" style="color:var(--warm-grey);">—</span>
-      </div>
-    </div>
-
-    <div class="article-card" style="cursor:default;">
-      <div class="card-cat">Measurement</div>
-      <h3 class="card-title">How to know if your GEO strategy is working</h3>
-      <p class="card-excerpt">The emerging toolkit for tracking brand presence in AI-generated answers — from Peec AI to custom prompt monitoring.</p>
-      <div class="card-footer">
-        <span class="card-meta">Coming soon</span>
-        <span class="card-arrow" style="color:var(--warm-grey);">—</span>
-      </div>
-    </div>
-
-    <div class="article-card" style="cursor:default;">
-      <div class="card-cat">Technical SEO</div>
-      <h3 class="card-title">Why your technical SEO foundation still matters in the age of AI</h3>
-      <p class="card-excerpt">GEO doesn't replace technical SEO — it builds on it. Here's what you need in place before GEO can work.</p>
-      <div class="card-footer">
-        <span class="card-meta">Coming soon</span>
-        <span class="card-arrow" style="color:var(--warm-grey);">—</span>
-      </div>
-    </div>
-
-    <div class="article-card" style="cursor:default;">
-      <div class="card-cat">GEO</div>
-      <h3 class="card-title">Entity authority: the signal LLMs use that SEOs ignore</h3>
-      <p class="card-excerpt">Language models don't rank pages — they build knowledge graphs. Understanding entity authority is the first step to GEO.</p>
-      <div class="card-footer">
-        <span class="card-meta">Coming soon</span>
-        <span class="card-arrow" style="color:var(--warm-grey);">—</span>
-      </div>
-    </div>
-
-    <div class="article-card" style="cursor:default;">
-      <div class="card-cat">Content Strategy</div>
-      <h3 class="card-title">The difference between content for humans and content for AI</h3>
-      <p class="card-excerpt">They're not the same brief. Here's how to think about writing for both audiences without compromising either.</p>
-      <div class="card-footer">
-        <span class="card-meta">Coming soon</span>
-        <span class="card-arrow" style="color:var(--warm-grey);">—</span>
-      </div>
-    </div>
-
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="article-breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/blog/">Articles</a><span>/</span>
+    <a href="/blog/category/geo/">GEO</a><span>/</span>
+    <span class="current">What is GEO?</span>
+  </div>
+  <span class="article-cat-tag">GEO · Fundamentals</span>
+  <h1 class="article-title">What is Generative Engine Optimisation <em>(GEO)?</em></h1>
+  <div class="article-meta-row">
+    <span class="article-meta-item">Keval Patel</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">June 2025</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">8 min read</span>
   </div>
 </div>
 
-<div class="newsletter">
-  <div>
-    <span class="label">Stay informed</span>
-    <h2>New thinking on AI search, <em>direct to your inbox.</em></h2>
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">
+    AI tools now answer millions of search queries every day — without users clicking a single link. GEO is the discipline of making your brand visible, citable, and authoritative in those answers. Here's what it is, how it works, and why it matters now.
+  </p>
+
+  <h2>The search landscape has quietly changed</h2>
+  <p>
+    For the past two decades, SEO has meant one thing: ranking on Google. Get your pages to appear in the top ten results, earn the click, drive the traffic. The model was simple, measurable, and well understood.
+  </p>
+  <p>
+    That model is no longer the whole picture. A growing share of search queries are now being answered directly by AI — by ChatGPT, Perplexity, Gemini, Claude, and others. Users ask a question and get a synthesised answer, often without ever visiting a website. No blue links. No clicks. Just a response.
+  </p>
+  <p>
+    For brands, this creates a new and urgent problem: <strong>if your brand isn't in the AI's answer, you effectively don't exist for that query.</strong>
+  </p>
+
+  <div class="callout">
+    <p>"In traditional search, you compete for position. In AI search, you compete to be cited at all. Those are fundamentally different challenges."</p>
   </div>
-  <div>
-    <p style="margin-bottom:28px;">No fluff, no AI hype. When I publish something new, you'll be the first to know. Unsubscribe any time.</p>
-    <form class="nl-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <input type="text" name="name" class="nl-input" placeholder="Your name">
-      <input type="email" name="email" class="nl-input" placeholder="your@email.com" required>
-      <input type="hidden" name="_subject" value="New newsletter signup">
-      <span class="nl-note">No spam. One email when something new is worth reading.</span>
-      <button type="submit" class="nl-btn">Subscribe →</button>
-    </form>
+
+  <h2>What is Generative Engine Optimisation?</h2>
+  <p>
+    Generative Engine Optimisation — GEO — is the practice of making your brand visible, credible, and citable within AI-generated search responses. It's the answer to the question: how do you show up when there are no rankings to rank for?
+  </p>
+  <p>
+    Unlike traditional SEO, which focuses on signals like backlinks, page speed, and keyword placement, GEO focuses on a different set of inputs:
+  </p>
+  <ul>
+    <li><strong>Entity clarity</strong> — does the AI understand who and what your brand is?</li>
+    <li><strong>Authoritative depth</strong> — does your content demonstrate genuine expertise on a topic?</li>
+    <li><strong>Citability</strong> — is your content structured in a way that's easy for a model to reference?</li>
+    <li><strong>Corroboration</strong> — does the wider web reinforce what you say about yourself?</li>
+  </ul>
+
+  <h2>How AI systems decide what to surface</h2>
+  <p>
+    Large language models like GPT-4, Gemini, and Claude are trained on vast amounts of web content. When a user asks a question, the model draws on that training — plus, in some cases, real-time retrieval — to compose an answer.
+  </p>
+  <p>
+    The brands that appear in those answers are not necessarily the biggest or best-known. They are the ones that the model has encountered frequently, in credible contexts, with consistent and specific information attached to them.
+  </p>
+
+  <h3>The role of entity authority</h3>
+  <p>
+    AI models build internal representations of entities — people, companies, products, concepts. The richer and more consistent that representation, the more likely the model is to reference it when composing a relevant answer. Sparse, inconsistent, or contradictory information about your brand weakens your entity authority and reduces your chances of being cited.
+  </p>
+
+  <h3>The role of content structure</h3>
+  <p>
+    Models prefer content that makes clear, specific, attributable claims. Vague brand copy — the kind optimised for persuasion rather than information — performs poorly in AI contexts. Content written with factual precision, clear structure, and specific evidence tends to be drawn on more heavily.
+  </p>
+
+  <hr class="article-divider">
+
+  <h2>How GEO differs from traditional SEO</h2>
+  <p>
+    It's important to be clear: GEO does not replace SEO. The technical foundations — crawlability, indexation, structured data, site architecture — remain essential. Without them, your content may not reach the training data or retrieval systems that AI models rely on.
+  </p>
+  <p>
+    But GEO adds a layer on top. Where SEO asks "can search engines find and understand my content?", GEO asks "will AI systems reference my brand when forming an answer?". The optimisation targets are different, the success metrics are different, and the content strategy is different.
+  </p>
+
+  <h2>The four pillars of a GEO strategy</h2>
+
+  <h3>1. Technical foundation</h3>
+  <p>
+    Ensure your site is technically sound. Clean architecture, fast load times, structured data markup, and accurate indexation are prerequisites. If a model's retrieval system can't access your content, nothing else matters.
+  </p>
+
+  <h3>2. Entity building</h3>
+  <p>
+    Develop a consistent, well-corroborated entity presence across the web. This means Wikipedia entries where appropriate, consistent NAP data, authoritative mentions in third-party publications, and a clear brand narrative that appears across multiple credible sources.
+  </p>
+
+  <h3>3. Content for AI legibility</h3>
+  <p>
+    Audit your content for specificity and citability. Replace vague claims with measurable ones. Structure content with clear headings, definitions, and factual statements. Anticipate the questions your audience asks AI tools and create content that directly answers them.
+  </p>
+
+  <h3>4. Measurement</h3>
+  <p>
+    Track your brand's presence in AI-generated answers. Tools like Peec AI, Otterly, and custom prompt-monitoring frameworks allow you to test how often and how accurately your brand appears across different AI platforms. What gets measured, gets managed.
+  </p>
+
+  <hr class="article-divider">
+
+  <h2>Why now is the moment to act</h2>
+  <p>
+    GEO is still an emerging discipline. Most brands have no strategy at all. The organisations that move now — that start building entity authority, auditing their content for AI legibility, and establishing measurement frameworks — will have a significant advantage over those that wait.
+  </p>
+  <p>
+    AI-generated answers, unlike search rankings, tend to be sticky. The citations and brand references that models form early are harder to displace once established. This isn't a space where you can afford to play catch-up.
+  </p>
+
+  <div class="callout">
+    <p>Most brands have zero GEO strategy. The organisations that move first will establish the citation and authority signals that are hardest to displace later.</p>
+  </div>
+
+  <h2>Where to start</h2>
+  <p>
+    If you're new to GEO, the most valuable first step is an honest audit of where your brand currently stands in AI responses. Ask the tools your customers use the questions they're likely to ask. See if your brand appears, and if so, how accurately it's represented.
+  </p>
+  <p>
+    From there, the work is methodical: strengthen your technical foundation, build your entity presence, restructure your content for AI legibility, and put measurement in place. None of it is magic — but all of it requires deliberate effort.
+  </p>
+  <p>
+    That's what GEO is. And it's the most consequential shift in search since mobile.
+  </p>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <span class="cta-label">Want to go further?</span>
+  <h2>Let's talk about <em>your brand's AI visibility.</em></h2>
+  <p>Whether you want a GEO audit, a strategy conversation, or just to understand where you currently stand — I'm happy to have a direct chat.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Get in touch</a>
+    <a href="/blog/" class="btn-ghost">More articles</a>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <p>© 2025 Keval Patel · geokeval.co.uk</p>
   <div class="footer-links">
     <a href="https://linkedin.com/in/kevalpatel" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="/">Home</a>
+    <a href="/blog/">Articles</a>
     <a href="mailto:keval@geokeval.co.uk">Email</a>
   </div>
 </footer>
 
 <script>
-  // Mobile nav
 const hamburger = document.querySelector('.nav-hamburger');
 const drawer = document.querySelector('.mobile-drawer');
 const overlay = document.querySelector('.mobile-overlay');
@@ -501,15 +430,6 @@ function toggleNav(open) {
 hamburger.addEventListener('click', () => toggleNav(!drawer.classList.contains('open')));
 overlay.addEventListener('click', () => toggleNav(false));
 document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
-
-
-  // Filter buttons (visual only — full filtering needs JS when articles are live)
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
 </script>
 
 </body>
