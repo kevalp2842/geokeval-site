@@ -141,14 +141,15 @@ nav {
   .cat-hero h1 em { font-style: italic; color: #a8a8a8; }
   .cat-hero p { font-size: 15px; color: #525252; line-height: 1.8; font-weight: 300; max-width: 50ch; }
 
-  .cat-layout { display: flex; align-items: flex-start; padding: 64px 48px 100px; gap: 64px; }
-  .cat-sidebar { width: 180px; flex-shrink: 0; }
-  .sidebar-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(22,22,22,0.4); display: block; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(22,22,22,0.1); }
-  .sidebar-nav { display: flex; flex-direction: column; }
-  .sidebar-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #525252; text-decoration: none; padding: 9px 0 9px 12px; border-left: 2px solid transparent; transition: all 0.18s; display: block; }
-  .sidebar-link:hover { color: #161616; border-left-color: rgba(22,22,22,0.25); }
-  .sidebar-link.active { color: #0f62fe; border-left-color: #0f62fe; }
-  .cat-main { flex: 1; min-width: 0; }
+  /* ── CATEGORY NAV BAR ──────────────────────────────────── */
+  .cat-nav { background: #ffffff; padding: 0 48px; border-bottom: 1px solid rgba(22,22,22,0.1); display: flex; gap: 0; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .cat-nav::-webkit-scrollbar { display: none; }
+  .cat-pill { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #525252; text-decoration: none; padding: 14px 20px; border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.18s; display: inline-block; }
+  .cat-pill:hover { color: #161616; border-bottom-color: rgba(22,22,22,0.3); }
+  .cat-pill.active { color: #0f62fe; border-bottom-color: #0f62fe; font-weight: 500; }
+
+  /* ── ARTICLES SECTION ───────────────────────────────────── */
+  .articles-section { padding: 64px 48px 100px; }
   .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson); margin-bottom: 32px; display: block; }
   .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); }
   .article-card { background: var(--off-white); padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; transition: background 0.2s; }
@@ -178,12 +179,8 @@ nav {
 
   @media (max-width: 900px) {
     .cat-hero { padding: 120px 24px 56px; }
-    .cat-layout { flex-direction: column; padding: 40px 24px 80px; gap: 28px; }
-    .cat-sidebar { width: 100%; position: static; }
-    .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 8px; }
-    .sidebar-link { padding: 7px 14px; border-left: none; border: 1px solid rgba(22,22,22,0.15); }
-    .sidebar-link.active { color: #0f62fe; border-color: #0f62fe; border-left-color: #0f62fe; }
-    .sidebar-link:hover { border-left-color: rgba(22,22,22,0.15); }
+    .cat-nav { padding: 0 24px; }
+    .articles-section { padding: 40px 24px 80px; }
     .articles-grid { grid-template-columns: 1fr; }
     .cta-band { padding: 56px 24px; }
     .cta-btns { flex-direction: column; align-items: center; }
@@ -253,27 +250,20 @@ nav {
 </div>
 
 
-<div class="cat-layout">
-  <aside class="cat-sidebar">
-    <span class="sidebar-label">Categories</span>
-    <nav class="sidebar-nav">
-      <a href="/blog/" class="sidebar-link">All Articles</a>
-      <a href="/blog/category/geo/" class="sidebar-link">GEO</a>
-      <a href="/blog/category/content-strategy/" class="sidebar-link active">Content Strategy</a>
-      <a href="/blog/category/technical-seo/" class="sidebar-link">Technical SEO</a>
-      <a href="/blog/category/measurement/" class="sidebar-link">Measurement</a>
-      <a href="/blog/category/resources/" class="sidebar-link">Resources</a>
-    </nav>
-  </aside>
-  <div class="cat-main">
+<div class="cat-nav">
+  <a href="/blog/" class="cat-pill">All</a>
+  <a href="/blog/category/geo/" class="cat-pill">GEO</a>
+  <a href="/blog/category/content-strategy/" class="cat-pill active">Content Strategy</a>
+  <a href="/blog/category/technical-seo/" class="cat-pill">Technical SEO</a>
+  <a href="/blog/category/measurement/" class="cat-pill">Measurement</a>
+  <a href="/blog/category/resources/" class="cat-pill">Resources</a>
+</div>
 
 <div class="articles-section">
   <span class="section-label">All Content Strategy articles</span>
   <div class="articles-grid">
   </div>
-</div>
 
-  </div>
 </div>
 
 <div class="cta-band">
