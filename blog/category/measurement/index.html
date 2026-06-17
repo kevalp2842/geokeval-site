@@ -120,17 +120,17 @@ nav {
   html { scroll-behavior: smooth; }
   body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   footer { background: #f4f4f4; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(22,22,22,0.1); }
-  footer p { font-family: var(--mono); font-size: 10px; color: rgba(242,239,233,0.55); letter-spacing: 0.06em; }
+  footer p { font-family: var(--mono); font-size: 10px; color: #525252; letter-spacing: 0.06em; }
   .footer-links { display: flex; gap: 28px; }
-  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: rgba(242,239,233,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #525252; text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: #161616; }
   @media (max-width: 900px) {
     footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
   }
 
 
-  .cat-hero { background: var(--black); padding: 148px 48px 72px; border-bottom: 1px solid var(--border-dark); position: relative; overflow: hidden; }
-  .cat-hero-bg { position: absolute; top: 50%; right: -2%; transform: translateY(-50%); font-family: var(--serif); font-size: clamp(80px, 14vw, 180px); font-weight: 300; color: rgba(242,239,233,0.03); pointer-events: none; white-space: nowrap; user-select: none; }
+  .cat-hero { background: #ffffff; padding: 148px 48px 72px; border-bottom: 1px solid var(--border-dark); position: relative; overflow: hidden; }
+  .cat-hero-bg { position: absolute; top: 50%; right: -2%; transform: translateY(-50%); font-family: var(--serif); font-size: clamp(80px, 14vw, 180px); font-weight: 300; color: rgba(22,22,22,0.04); pointer-events: none; white-space: nowrap; user-select: none; }
   .breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
   .breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.2s; }
   .breadcrumb a:hover { color: #161616; }
@@ -138,16 +138,17 @@ nav {
   .breadcrumb .current { color: #525252; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
   .cat-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 18px; display: block; }
   .cat-hero h1 { font-family: var(--serif); font-size: clamp(38px, 6vw, 76px); font-weight: 400; color: #161616; line-height: 1.06; margin-bottom: 20px; }
-  .cat-hero h1 em { font-style: italic; color: rgba(242,239,233,0.45); }
+  .cat-hero h1 em { font-style: italic; color: #a8a8a8; }
   .cat-hero p { font-size: 15px; color: #525252; line-height: 1.8; font-weight: 300; max-width: 50ch; }
 
-  .other-cats { background: var(--off-white); padding: 28px 48px; border-bottom: 1px solid var(--border-light); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-  .other-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-grey); margin-right: 8px; }
-  .cat-pill { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 16px; border: 1px solid var(--border-light); color: var(--warm-grey); text-decoration: none; transition: all 0.2s; }
-  .cat-pill:hover { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
-  .cat-pill.active { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
-
-  .articles-section { padding: 64px 48px 100px; }
+  .cat-layout { display: flex; align-items: flex-start; padding: 64px 48px 100px; gap: 64px; }
+  .cat-sidebar { width: 180px; flex-shrink: 0; position: sticky; top: 88px; }
+  .sidebar-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(22,22,22,0.4); display: block; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(22,22,22,0.1); }
+  .sidebar-nav { display: flex; flex-direction: column; }
+  .sidebar-link { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #525252; text-decoration: none; padding: 9px 0 9px 12px; border-left: 2px solid transparent; transition: all 0.18s; display: block; }
+  .sidebar-link:hover { color: #161616; border-left-color: rgba(22,22,22,0.25); }
+  .sidebar-link.active { color: #0f62fe; border-left-color: #0f62fe; }
+  .cat-main { flex: 1; min-width: 0; }
   .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson); margin-bottom: 32px; display: block; }
   .articles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-light); }
   .article-card { background: var(--off-white); padding: 36px 32px; display: flex; flex-direction: column; text-decoration: none; transition: background 0.2s; }
@@ -177,8 +178,12 @@ nav {
 
   @media (max-width: 900px) {
     .cat-hero { padding: 120px 24px 56px; }
-    .other-cats { padding: 20px 24px; }
-    .articles-section { padding: 48px 24px 80px; }
+    .cat-layout { flex-direction: column; padding: 40px 24px 80px; gap: 28px; }
+    .cat-sidebar { width: 100%; position: static; }
+    .sidebar-nav { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .sidebar-link { padding: 7px 14px; border-left: none; border: 1px solid rgba(22,22,22,0.15); }
+    .sidebar-link.active { color: #0f62fe; border-color: #0f62fe; border-left-color: #0f62fe; }
+    .sidebar-link:hover { border-left-color: rgba(22,22,22,0.15); }
     .articles-grid { grid-template-columns: 1fr; }
     .cta-band { padding: 56px 24px; }
     .cta-btns { flex-direction: column; align-items: center; }
@@ -247,18 +252,27 @@ nav {
   <p>What gets measured, gets managed. Tracking brand presence across both traditional search and AI-generated responses.</p>
 </div>
 
-<div class="other-cats">
-  <span class="other-label">Categories</span>
-  <a href="/blog/category/geo/" class="cat-pill">GEO</a>
-  <a href="/blog/category/content-strategy/" class="cat-pill">Content Strategy</a>
-  <a href="/blog/category/technical-seo/" class="cat-pill">Technical SEO</a>
-  <a href="/blog/category/measurement/" class="cat-pillactive">Measurement</a>
-  <a href="/blog/category/resources/" class="cat-pill">Resources</a>
-</div>
+
+<div class="cat-layout">
+  <aside class="cat-sidebar">
+    <span class="sidebar-label">Categories</span>
+    <nav class="sidebar-nav">
+      <a href="/blog/" class="sidebar-link">All Articles</a>
+      <a href="/blog/category/geo/" class="sidebar-link">GEO</a>
+      <a href="/blog/category/content-strategy/" class="sidebar-link">Content Strategy</a>
+      <a href="/blog/category/technical-seo/" class="sidebar-link">Technical SEO</a>
+      <a href="/blog/category/measurement/" class="sidebar-link active">Measurement</a>
+      <a href="/blog/category/resources/" class="sidebar-link">Resources</a>
+    </nav>
+  </aside>
+  <div class="cat-main">
 
 <div class="articles-section">
   <span class="section-label">All Measurement articles</span>
   <div class="articles-grid">
+  </div>
+</div>
+
   </div>
 </div>
 
