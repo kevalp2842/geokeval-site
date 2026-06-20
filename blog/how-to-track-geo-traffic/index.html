@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Measure GEO Traffic on Your Website — Keval Patel</title>
+<meta name="description" content="AI assistants are sending real visitors to your site. Most analytics setups are still counting them as nobody. Here's how to actually capture and measure GEO traffic.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to Measure GEO Traffic on Your Website",
+  "description": "A practical method for tracking AI-referred traffic from ChatGPT, Perplexity, Gemini and Claude — closing the gap between citation and analytics.",
+  "author": { "@type": "Person", "name": "Keval Patel" },
+  "publisher": { "@type": "Organization", "name": "geokeval" },
+  "datePublished": "2025-06-20"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #161616;
+    --off-white: #ffffff;
+    --crimson: #0f62fe;
+    --crimson-light: #0043ce;
+    --warm-grey: #525252;
+    --mid: #f4f4f4;
+    --border-dark: rgba(22,22,22,0.1);
+    --border-light: rgba(22,22,22,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 48px;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(22,22,22,0.1);
+}
+.nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #161616; text-decoration: none; }
+.nav-brand span { color: var(--crimson-light); }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #161616; }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+.nav-dropdown:hover > a::after { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: #ffffff; border: 1px solid rgba(22,22,22,0.12);
+  min-width: 200px; padding: 16px 0 8px;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0;
+}
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+.dropdown-menu a:hover { color: #161616; background: #f4f4f4; border-left-color: #0f62fe; }
+.dropdown-menu .dropdown-divider { height: 1px; background: rgba(22,22,22,0.08); margin: 6px 0; }
+.dropdown-menu .dropdown-all { font-size: 9px; }
+.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #161616; border: 1px solid rgba(22,22,22,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #161616; transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: #ffffff; border-left: 1px solid rgba(22,22,22,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+.mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #161616; text-decoration: none; border-bottom: 1px solid rgba(22,22,22,0.08); transition: color 0.2s; }
+.mobile-nav-links li a:hover { color: #0f62fe; }
+.mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+.mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #525252; border-bottom: 1px solid rgba(22,22,22,0.04); }
+.mobile-cta { margin-top: 32px; display: block; background: #0f62fe; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
+.mobile-cta:hover { background: #0043ce; }
+
+  /* ── ARTICLE HEADER ─────────────────────────────────────── */
+  .article-header {
+    background: #f4f4f4;
+    padding: 120px 48px 56px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .article-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+  .article-breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: #161616; }
+  .article-breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(22,22,22,0.3); }
+  .article-breadcrumb .current { color: #525252; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .article-cat-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .article-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 700; color: #161616; line-height: 1.08; margin-bottom: 24px; max-width: 22ch; }
+  .article-title em { font-style: italic; color: #525252; }
+  .article-meta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .article-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; font-weight: 400; }
+  .article-meta-dot { color: rgba(22,22,22,0.3); }
+
+  /* ── ARTICLE BODY ───────────────────────────────────────── */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 48px 100px;
+  }
+
+  .article-body .lead {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--black);
+    margin-bottom: 48px;
+    border-left: 3px solid var(--crimson);
+    padding-left: 28px;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-top: 64px;
+    margin-bottom: 20px;
+  }
+
+  .article-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.25;
+    margin-top: 40px;
+    margin-bottom: 14px;
+  }
+
+  .article-body p {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .article-body strong { color: var(--black); font-weight: 700; }
+
+  .article-body ul, .article-body ol {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+  }
+  .article-body li {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    margin-bottom: 8px;
+  }
+
+  .article-body code {
+    font-family: var(--mono);
+    background: #f4f4f4;
+    border: 1px solid rgba(22,22,22,0.1);
+    border-radius: 2px;
+    padding: 2px 7px;
+    font-size: 0.87em;
+    color: var(--black);
+  }
+
+  .article-body pre {
+    background: #f4f4f4;
+    border: 1px solid rgba(22,22,22,0.1);
+    border-left: 3px solid var(--crimson);
+    padding: 20px 24px;
+    overflow-x: auto;
+    border-radius: 2px;
+    margin: 0 0 28px;
+  }
+  .article-body pre code { background: none; border: none; padding: 0; font-size: 0.9em; color: var(--black); }
+
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0 36px;
+    font-size: 0.92rem;
+  }
+  .article-body th, .article-body td {
+    text-align: left;
+    padding: 13px 16px;
+    border-bottom: 1px solid rgba(22,22,22,0.1);
+  }
+  .article-body th {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    font-weight: 500;
+    background: #f4f4f4;
+  }
+  .article-body td { color: var(--warm-grey); font-size: 14px; line-height: 1.6; }
+  .article-body tr:last-child td { border-bottom: 1px solid rgba(22,22,22,0.1); }
+
+  .article-body .callout {
+    background: #edf4ff;
+    border-left: 3px solid #0f62fe;
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .article-body .callout p {
+    color: #161616;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  .article-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 48px 0;
+  }
+
+  /* ── CTA BAND ───────────────────────────────────────────── */
+  .cta-band { background: #f4f4f4; padding: 72px 48px; text-align: center; }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: #161616; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: #525252; }
+  .cta-band p { font-size: 15px; color: #525252; font-weight: 300; line-height: 1.8; max-width: 48ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #161616; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(22,22,22,0.3); transition: all 0.2s; }
+  .btn-ghost:hover { color: #000000; border-color: #161616; }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer { background: #f4f4f4; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(22,22,22,0.1); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #525252; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #161616; }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .article-header { padding: 96px 24px 40px; }
+    .article-body { padding: 48px 24px 72px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+    .article-body table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/blog/">Articles &amp; Resources</a>
+      <div class="dropdown-menu">
+        <a href="/blog/" class="dropdown-all">All Articles</a>
+        <div class="dropdown-divider"></div>
+        <a href="/blog/category/geo/">GEO</a>
+        <a href="/blog/category/content-strategy/">Content Strategy</a>
+        <a href="/blog/category/technical-seo/">Technical SEO</a>
+        <a href="/blog/category/measurement/">Measurement</a>
+        <a href="/blog/category/resources/">Resources</a>
+      </div>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay"></div>
+<div class="mobile-drawer">
+  <ul class="mobile-nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Articles &amp; Resources</a></li>
+    <li>
+      <span class="mobile-section-label">Browse by category</span>
+      <ul class="mobile-sub" style="list-style:none;">
+        <li><a href="/blog/category/geo/">GEO</a></li>
+        <li><a href="/blog/category/content-strategy/">Content Strategy</a></li>
+        <li><a href="/blog/category/technical-seo/">Technical SEO</a></li>
+        <li><a href="/blog/category/measurement/">Measurement</a></li>
+        <li><a href="/blog/category/resources/">Resources</a></li>
+      </ul>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="mobile-cta">Get in touch</a>
+</div>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="article-breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/blog/">Articles</a><span>/</span>
+    <a href="/blog/category/measurement/">Measurement</a><span>/</span>
+    <span class="current">How to Measure GEO Traffic</span>
+  </div>
+  <span class="article-cat-tag">Measurement · Analytics</span>
+  <h1 class="article-title">How to Measure GEO Traffic <em>on Your Website</em></h1>
+  <div class="article-meta-row">
+    <span class="article-meta-item">Keval Patel</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">June 2025</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">8 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">
+    Generative Engine Optimization (GEO) traffic — visits that originate from AI assistants like ChatGPT, Perplexity, Gemini, and Claude — doesn't behave like traditional organic search traffic. It arrives differently, it's labelled inconsistently, and most analytics setups miss it by default. Here's how to actually capture and measure it.
+  </p>
+
+  <h2>Why GEO Traffic Is Hard to Track</h2>
+  <p>Search engines send a referrer string and, increasingly, structured query data. AI assistants are inconsistent:</p>
+  <ul>
+    <li>Some (like Perplexity and Copilot) pass a clean referrer domain</li>
+    <li>Others (like ChatGPT's in-app browsing) strip or obscure referrer data, so visits land in "Direct" traffic</li>
+    <li>Mobile app contexts (the ChatGPT app, Gemini app) often pass no referrer at all</li>
+    <li>There's no universal UTM standard the assistants apply on your behalf</li>
+  </ul>
+  <p>This means a chunk of real GEO-driven traffic hides inside your "Direct" channel in GA4 right now, uncounted.</p>
+
+  <h2>Set Up Referrer-Based Segmentation in GA4</h2>
+  <p>Start with what's visible. In GA4, build a custom channel grouping or exploration that isolates known AI referrer domains:</p>
+  <ul>
+    <li><code>chat.openai.com</code> / <code>chatgpt.com</code></li>
+    <li><code>perplexity.ai</code></li>
+    <li><code>gemini.google.com</code></li>
+    <li><code>copilot.microsoft.com</code></li>
+    <li><code>claude.ai</code></li>
+    <li><code>bing.com/chat</code></li>
+  </ul>
+  <p><strong>How to do it:</strong></p>
+  <ol>
+    <li>Go to <strong>Admin → Data display → Channel groups</strong></li>
+    <li>Create a new custom channel rule matching <code>Session source</code> contains any of the above domains</li>
+    <li>Name it something explicit like "AI Referral / GEO"</li>
+    <li>Apply it retroactively where possible, or run a parallel Exploration report filtered by <code>Source</code> for historical data</li>
+  </ol>
+  <p>This gives you a clean, dedicated channel instead of these sessions being bucketed into "Referral" or "Direct."</p>
+
+  <h2>Recover the Hidden "Direct" Traffic</h2>
+  <p>Because many AI app contexts don't pass a referrer, you need indirect signals to estimate how much of your "Direct" traffic is actually AI-originated:</p>
+  <ul>
+    <li><strong>Landing page patterns:</strong> AI-referred sessions often land deep on a specific answer-style page rather than the homepage. A spike in direct sessions to a single long-tail page is a strong GEO signal.</li>
+    <li><strong>Session behaviour:</strong> AI-referred users frequently arrive having already "read" a summary elsewhere, so they tend to scroll fast and either bounce quickly or convert quickly — a bimodal pattern worth watching in engagement time.</li>
+    <li><strong>Device/timing correlation:</strong> Spikes in direct traffic that correlate with your content being newly indexed or cited (check via your own prompt testing) are a reasonable proxy.</li>
+  </ul>
+  <p>This won't give you exact numbers, but it lets you build a defensible estimate rather than ignoring the gap entirely.</p>
+
+  <h2>Use UTM Parameters Where You Control the Link</h2>
+  <p>Anywhere you can influence the link AI tools might cite — your own structured data, llms.txt file, schema markup, or content you syndicate — append UTM parameters:</p>
+  <pre><code>?utm_source=chatgpt&amp;utm_medium=ai_referral&amp;utm_campaign=geo</code></pre>
+  <p>This won't catch organic citations the AI generates unprompted, but it does help with:</p>
+  <ul>
+    <li>Links from your own AI-facing content syndication</li>
+    <li>Citations you can directly test and trace via prompt auditing</li>
+    <li>Any sponsored or directly submitted feeds</li>
+  </ul>
+
+  <h2>Monitor Server Logs for Bot and Crawler Activity</h2>
+  <p>GA4 only sees browser-rendered sessions. To understand whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended) are actually accessing and indexing your content in the first place, you need server-side log file analysis:</p>
+  <ul>
+    <li>Filter raw server logs (or use a tool like Screaming Frog's log file analyser) by known AI crawler user-agents</li>
+    <li>Track crawl frequency per page — pages never crawled by these bots can't be cited</li>
+    <li>Cross-reference crawl activity against which pages later show up in AI-referred sessions</li>
+  </ul>
+  <p>This closes the loop between "is my content being read by AI" and "is that translating into visits."</p>
+
+  <h2>Run Manual Prompt Audits Alongside Analytics</h2>
+  <p>Because passive tracking has real gaps, pair it with active testing:</p>
+  <ol>
+    <li>Build a list of target prompts your audience is likely to ask AI assistants</li>
+    <li>Run them periodically across ChatGPT, Perplexity, Gemini, and Claude</li>
+    <li>Record whether your site/brand is cited, in what position, and whether a link is included</li>
+    <li>Cross-reference citation frequency against the referral and direct-traffic patterns above</li>
+  </ol>
+  <p>This is the only way to validate whether the "Direct" traffic theory actually holds up.</p>
+
+  <div class="callout">
+    <p>GEO traffic measurement right now is closer to triangulation than precise attribution.</p>
+  </div>
+
+  <h2>Consider a Dedicated GEO Tracking Tool</h2>
+  <p>Given the gaps in native analytics, several tools now specialise in AI visibility tracking specifically — running automated prompt audits and monitoring citation presence across platforms on a schedule, rather than relying on manual spot-checks. These are worth layering on top of GA4 rather than replacing it, since they answer "are we being cited" while GA4 still answers "is that converting into visits."</p>
+
+  <hr class="article-divider">
+
+  <h2>Putting It Together</h2>
+  <p>None of these layers alone gives a complete picture. Combining confirmed referral data with crawl evidence and prompt-level testing is the most reliable approach until AI platforms standardise referrer behaviour.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>What it tells you</th>
+        <th>Tool</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GA4 custom channel</td>
+        <td>Confirmed AI referral sessions</td>
+        <td>GA4</td>
+      </tr>
+      <tr>
+        <td>Direct traffic pattern analysis</td>
+        <td>Estimated hidden AI traffic</td>
+        <td>GA4 + landing page reports</td>
+      </tr>
+      <tr>
+        <td>UTM tracking</td>
+        <td>Traceable citations from owned content</td>
+        <td>GA4</td>
+      </tr>
+      <tr>
+        <td>Server log analysis</td>
+        <td>Whether AI crawlers reach your content</td>
+        <td>Screaming Frog / raw logs</td>
+      </tr>
+      <tr>
+        <td>Manual prompt audits</td>
+        <td>Citation presence, position, sentiment</td>
+        <td>Manual or GEO platform</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-band">
+  <span class="cta-label">Want to go further?</span>
+  <h2>Let's talk about <em>your brand's AI visibility.</em></h2>
+  <p>Whether you want a GEO audit, a measurement framework, or just to understand where you currently stand — I'm happy to have a direct chat.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Get in touch</a>
+    <a href="/blog/" class="btn-ghost">More articles</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Keval Patel · geokeval.co.uk</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/kevalpatel" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/blog/">Articles</a>
+    <a href="mailto:keval@geokeval.co.uk">Email</a>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.querySelector('.nav-hamburger');
+const drawer = document.querySelector('.mobile-drawer');
+const overlay = document.querySelector('.mobile-overlay');
+function toggleNav(open) {
+  hamburger.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => toggleNav(!drawer.classList.contains('open')));
+overlay.addEventListener('click', () => toggleNav(false));
+document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+</script>
+
+</body>
+</html>
