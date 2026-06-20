@@ -5,6 +5,94 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What is Generative Engine Optimisation (GEO)? — Keval Patel</title>
 <meta name="description" content="AI tools like ChatGPT, Perplexity, and Gemini now answer millions of search queries directly. GEO is the discipline of making your brand visible, citable, and authoritative in those answers.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Generative Engine Optimisation (GEO)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generative Engine Optimisation (GEO) is the practice of making your brand visible, credible, and citable within AI-generated search responses. It focuses on ensuring that AI assistants like ChatGPT, Perplexity, Gemini, and Claude include your brand when forming answers to relevant queries — rather than competing for a position in a traditional list of links."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is GEO different from traditional SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional SEO targets ranking signals like backlinks, page speed, and keyword placement to appear in search engine results pages. GEO focuses on a different goal: ensuring AI systems reference your brand when composing an answer. Where SEO asks 'can search engines find and rank my content?', GEO asks 'will AI cite my brand when answering a relevant question?' The optimisation targets, success metrics, and content strategies are fundamentally different — though a strong technical SEO foundation remains essential for both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI platforms does GEO focus on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO primarily focuses on the platforms your audience actually uses for search-like queries: ChatGPT (including GPT-4o browsing), Perplexity, Google Gemini, Microsoft Copilot, and Claude. Each has different retrieval behaviours — Perplexity performs real-time web searches, while ChatGPT draws primarily on training data with optional browsing — so a well-rounded GEO strategy accounts for all of them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do AI models decide which brands to cite?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI models build internal representations of entities — people, companies, products, and concepts — based on the content they are trained on and, in retrieval-augmented systems, what they find via web search. Brands that appear frequently, consistently, and in credible contexts across multiple sources are more likely to be cited. Sparse, contradictory, or vague brand information weakens a model's entity representation and reduces citation likelihood."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can GEO replace SEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. GEO and SEO are complementary disciplines, not substitutes. The technical foundations of SEO — crawlability, indexation, site architecture, structured data — remain prerequisites for GEO, since AI retrieval systems depend on the same infrastructure. GEO adds a layer on top: once your content is technically accessible, GEO work ensures it is cited by AI systems rather than just ranked by search engines."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know if my brand is being cited in AI responses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most direct method is manual prompt auditing: run the questions your customers are likely to ask across ChatGPT, Perplexity, Gemini, and Claude, and record whether your brand appears, in what position, and how it is described. Dedicated GEO monitoring tools automate this at scale. On the analytics side, you can segment GA4 to isolate known AI referrer domains, though a significant portion of AI-driven traffic arrives as 'Direct' with no referrer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is an llms.txt file and do I need one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An llms.txt file is an emerging convention — similar in concept to robots.txt — that provides AI systems with a structured, plain-text summary of your site's content and key information. It is designed to make it easier for AI crawlers to understand your brand and content without having to parse full HTML pages. It is not yet universally adopted or required, but adding one is a low-effort signal that forward-looking AI systems may use."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to see results from GEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GEO timelines vary significantly by platform and tactic. Changes visible to real-time retrieval systems like Perplexity can take effect within days of content being published and indexed. Influencing a model's training data takes much longer — months to years, depending on training cycles. Entity-building work (earning consistent, credible mentions across the web) is a long-term investment. Most brands should expect meaningful movement over a 3–6 month window of sustained effort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What content changes improve GEO performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most impactful content changes for GEO are: replacing vague brand copy with specific, factual, attributable claims; adding clear definitions and structured headings that directly answer likely questions; including measurable evidence and third-party corroboration; and writing content that anticipates the exact questions your audience asks AI tools. Persuasion-optimised copy performs poorly in AI contexts — precision and specificity are what get cited."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I measure GEO traffic in Google Analytics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In GA4, create a custom channel group under Admin → Data display → Channel groups, with rules matching Session source to known AI referrer domains: chat.openai.com, chatgpt.com, perplexity.ai, gemini.google.com, copilot.microsoft.com, and claude.ai. This captures the visible referral traffic. A significant portion of AI-driven visits arrives as 'Direct' with no referrer — particularly from mobile apps — so also monitor landing page patterns: unexplained spikes in direct traffic to specific answer-style pages are a strong secondary signal."
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -206,6 +294,100 @@ nav {
     .cta-btns { flex-direction: column; align-items: center; }
     footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
   }
+
+  /* ── FAQ SECTION ────────────────────────────────────────── */
+  .faq-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+  .faq-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .faq-heading {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+  .faq-list {
+    list-style: none;
+    border-top: 1px solid var(--border-light);
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border-light);
+  }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    text-align: left;
+  }
+  .faq-question-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.3;
+    transition: color 0.2s;
+  }
+  .faq-question:hover .faq-question-text { color: var(--crimson); }
+  .faq-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgba(22,22,22,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .faq-icon::before,
+  .faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--warm-grey);
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s;
+  }
+  .faq-icon { position: relative; }
+  .faq-icon::before { width: 8px; height: 1.5px; }
+  .faq-icon::after { width: 1.5px; height: 8px; }
+  .faq-question[aria-expanded="true"] .faq-icon { background: var(--crimson); border-color: var(--crimson); }
+  .faq-question[aria-expanded="true"] .faq-icon::before,
+  .faq-question[aria-expanded="true"] .faq-icon::after { background: #ffffff; }
+  .faq-question[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+  .faq-answer-inner {
+    padding: 0 0 24px;
+    font-size: 15px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    .faq-section { padding: 0 24px 64px; }
+    .faq-question-text { font-size: 16px; }
+  }
 </style>
 </head>
 <body>
@@ -394,6 +576,135 @@ nav {
 
 </div>
 
+<!-- FAQ -->
+<section class="faq-section" aria-label="Frequently asked questions">
+  <span class="faq-label">FAQ</span>
+  <h2 class="faq-heading">Common questions about GEO</h2>
+  <ul class="faq-list">
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+        <span class="faq-question-text">What is Generative Engine Optimisation (GEO)?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-1" role="region">
+        <div class="faq-answer-inner">
+          Generative Engine Optimisation (GEO) is the practice of making your brand visible, credible, and citable within AI-generated search responses. It focuses on ensuring that AI assistants like ChatGPT, Perplexity, Gemini, and Claude include your brand when forming answers to relevant queries — rather than competing for a position in a traditional list of links.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+        <span class="faq-question-text">How is GEO different from traditional SEO?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-2" role="region">
+        <div class="faq-answer-inner">
+          Traditional SEO targets ranking signals like backlinks, page speed, and keyword placement to appear in search engine results pages. GEO focuses on a different goal: ensuring AI systems reference your brand when composing an answer. Where SEO asks "can search engines find and rank my content?", GEO asks "will AI cite my brand when answering a relevant question?" The optimisation targets, success metrics, and content strategies are fundamentally different — though a strong technical SEO foundation remains essential for both.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+        <span class="faq-question-text">Which AI platforms does GEO focus on?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-3" role="region">
+        <div class="faq-answer-inner">
+          GEO primarily focuses on the platforms your audience actually uses for search-like queries: ChatGPT (including GPT-4o browsing), Perplexity, Google Gemini, Microsoft Copilot, and Claude. Each has different retrieval behaviours — Perplexity performs real-time web searches, while ChatGPT draws primarily on training data with optional browsing — so a well-rounded GEO strategy accounts for all of them.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+        <span class="faq-question-text">How do AI models decide which brands to cite?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-4" role="region">
+        <div class="faq-answer-inner">
+          AI models build internal representations of entities — people, companies, products, and concepts — based on the content they are trained on and, in retrieval-augmented systems, what they find via web search. Brands that appear frequently, consistently, and in credible contexts across multiple sources are more likely to be cited. Sparse, contradictory, or vague brand information weakens a model's entity representation and reduces citation likelihood.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+        <span class="faq-question-text">Can GEO replace SEO?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-5" role="region">
+        <div class="faq-answer-inner">
+          No. GEO and SEO are complementary disciplines, not substitutes. The technical foundations of SEO — crawlability, indexation, site architecture, structured data — remain prerequisites for GEO, since AI retrieval systems depend on the same infrastructure. GEO adds a layer on top: once your content is technically accessible, GEO work ensures it is cited by AI systems rather than just ranked by search engines.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+        <span class="faq-question-text">How do I know if my brand is being cited in AI responses?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-6" role="region">
+        <div class="faq-answer-inner">
+          The most direct method is manual prompt auditing: run the questions your customers are likely to ask across ChatGPT, Perplexity, Gemini, and Claude, and record whether your brand appears, in what position, and how it is described. Dedicated GEO monitoring tools automate this at scale. On the analytics side, you can segment GA4 to isolate known AI referrer domains, though a significant portion of AI-driven traffic arrives as "Direct" with no referrer.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+        <span class="faq-question-text">What is an llms.txt file and do I need one?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-7" role="region">
+        <div class="faq-answer-inner">
+          An llms.txt file is an emerging convention — similar in concept to robots.txt — that provides AI systems with a structured, plain-text summary of your site's content and key information. It is designed to make it easier for AI crawlers to understand your brand without parsing full HTML pages. It is not yet universally adopted or required, but adding one is a low-effort signal that forward-looking AI systems may use.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+        <span class="faq-question-text">How long does it take to see results from GEO?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-8" role="region">
+        <div class="faq-answer-inner">
+          GEO timelines vary significantly by platform and tactic. Changes visible to real-time retrieval systems like Perplexity can take effect within days of content being indexed. Influencing a model's training data takes much longer — months to years, depending on training cycles. Entity-building work (earning consistent, credible mentions across the web) is a long-term investment. Most brands should expect meaningful movement over a 3–6 month window of sustained effort.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-9">
+        <span class="faq-question-text">What content changes improve GEO performance?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-9" role="region">
+        <div class="faq-answer-inner">
+          The most impactful content changes for GEO are: replacing vague brand copy with specific, factual, attributable claims; adding clear definitions and structured headings that directly answer likely questions; including measurable evidence and third-party corroboration; and writing content that anticipates the exact questions your audience asks AI tools. Persuasion-optimised copy performs poorly in AI contexts — precision and specificity are what get cited.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-10">
+        <span class="faq-question-text">How do I measure GEO traffic in Google Analytics?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-10" role="region">
+        <div class="faq-answer-inner">
+          In GA4, create a custom channel group under Admin → Data display → Channel groups, with rules matching Session source to known AI referrer domains: chat.openai.com, chatgpt.com, perplexity.ai, gemini.google.com, copilot.microsoft.com, and claude.ai. This captures the visible referral traffic. A significant portion of AI-driven visits arrives as "Direct" with no referrer — particularly from mobile apps — so also monitor landing page patterns: unexplained spikes in direct traffic to specific answer-style pages are a strong secondary signal.
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
 <!-- CTA -->
 <div class="cta-band">
   <span class="cta-label">Want to go further?</span>
@@ -416,6 +727,16 @@ nav {
 </footer>
 
 <script>
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const answer = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.setAttribute('aria-expanded', !expanded);
+    answer.style.maxHeight = expanded ? '0' : answer.scrollHeight + 'px';
+  });
+});
+
 const hamburger = document.querySelector('.nav-hamburger');
 const drawer = document.querySelector('.mobile-drawer');
 const overlay = document.querySelector('.mobile-overlay');
