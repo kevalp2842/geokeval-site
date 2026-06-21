@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XML Sitemap &amp; robots.txt Generator — Free Tool — Keval Patel</title>
+<meta name="description" content="Free browser-based tool to generate a sitemap.xml and robots.txt file. Paste URLs, set crawl rules, download both files. No data leaves your browser.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "XML Sitemap & robots.txt Generator",
+  "description": "A free, browser-based tool to generate sitemap.xml and robots.txt files. Paste URLs, set changefreq and priority, define crawl rules for any user-agent, then download both files. No data leaves your browser.",
+  "url": "https://geokeval.co.uk/tools/sitemap-robots-generator/",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Keval Patel",
+    "url": "https://geokeval.co.uk/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://geokeval.co.uk/"},
+    {"@type":"ListItem","position":2,"name":"Articles & Resources","item":"https://geokeval.co.uk/blog/"},
+    {"@type":"ListItem","position":3,"name":"XML Sitemap & robots.txt Generator","item":"https://geokeval.co.uk/tools/sitemap-robots-generator/"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #161616;
+    --off-white: #ffffff;
+    --crimson: #0f62fe;
+    --crimson-light: #0043ce;
+    --warm-grey: #525252;
+    --mid: #f4f4f4;
+    --mid-raised: #ececec;
+    --border: rgba(22,22,22,0.1);
+    --border-med: rgba(22,22,22,0.15);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  /* ── NAV ──────────────────────────────────────────────────── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(22,22,22,0.1); }
+  .nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #161616; text-decoration: none; }
+  .nav-brand span { color: var(--crimson-light); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #161616; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #0f62fe; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  .nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+  .nav-dropdown:hover > a::after { transform: rotate(180deg); }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #ffffff; border: 1px solid rgba(22,22,22,0.12); min-width: 240px; padding: 16px 0 8px; opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0; }
+  .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+  .dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+  .dropdown-menu a:hover { color: #161616; background: #f4f4f4; border-left-color: #0f62fe; }
+  .dropdown-menu .dropdown-divider { height: 1px; background: rgba(22,22,22,0.08); margin: 6px 0; }
+  .dropdown-menu .dropdown-all { font-size: 9px; }
+  .dropdown-menu a.active { color: #0f62fe; border-left-color: #0f62fe; }
+  .nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #161616; border: 1px solid rgba(22,22,22,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .nav-cta:hover { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #161616; transition: all 0.3s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: #ffffff; border-left: 1px solid rgba(22,22,22,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
+  .mobile-drawer.open { transform: translateX(0); }
+  .mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-overlay.open { opacity: 1; pointer-events: all; }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #161616; text-decoration: none; border-bottom: 1px solid rgba(22,22,22,0.08); transition: color 0.2s; }
+  .mobile-nav-links li a:hover { color: #0f62fe; }
+  .mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+  .mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #525252; border-bottom: 1px solid rgba(22,22,22,0.04); }
+  .mobile-cta { margin-top: 32px; display: block; background: #0f62fe; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
+  .mobile-cta:hover { background: #0043ce; }
+
+  /* ── HERO ─────────────────────────────────────────────────── */
+  .tool-hero { background: #f4f4f4; padding: 120px 48px 64px; border-bottom: 1px solid var(--border); }
+  .breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #161616; text-decoration: none; }
+  .breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(22,22,22,0.3); }
+  .breadcrumb .current { color: #525252; }
+  .hero-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 20px; }
+  .tool-hero h1 { font-family: var(--serif); font-size: clamp(32px, 5vw, 62px); font-weight: 700; color: #161616; line-height: 1.08; margin-bottom: 20px; max-width: 22ch; }
+  .tool-hero h1 em { font-style: italic; color: #525252; }
+  .tool-hero p { font-size: 16px; color: #525252; line-height: 1.8; font-weight: 300; max-width: 54ch; }
+  .privacy-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--crimson-light); }
+  .privacy-badge::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: #24a148; }
+
+  /* ── TOOL AREA ────────────────────────────────────────────── */
+  .tool-wrap { max-width: 900px; margin: 0 auto; padding: 56px 48px 120px; }
+
+  /* Tab switcher — uses div, not nav, to avoid fixed-nav CSS rule */
+  .switch { display: flex; gap: 0; border: 1px solid var(--border-med); margin-bottom: 40px; width: fit-content; }
+  .switch button { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: none; color: var(--warm-grey); padding: 13px 28px; cursor: pointer; transition: color 0.15s, background 0.15s; }
+  .switch button + button { border-left: 1px solid var(--border-med); }
+  .switch button.active { background: var(--crimson); color: #fff; }
+  .switch button:not(.active):hover { color: var(--black); background: var(--mid); }
+
+  section.tool { display: none; }
+  section.tool.active { display: block; }
+
+  .panel { border: 1px solid var(--border); background: var(--mid); padding: 32px; margin-bottom: 24px; }
+  .panel h2 { font-family: var(--serif); font-weight: 600; font-size: 24px; color: var(--black); margin: 0 0 6px; }
+  .panel .sub { color: var(--warm-grey); font-size: 13.5px; margin: 0 0 24px; line-height: 1.5; }
+
+  label { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 8px; }
+  .field { margin-bottom: 22px; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 600px) { .field-row { grid-template-columns: 1fr; } }
+
+  textarea, input[type=text], input[type=url], select {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid var(--border-med);
+    color: var(--black);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 14px;
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  textarea:focus, input:focus, select:focus { border-color: var(--crimson); }
+  textarea { resize: vertical; min-height: 160px; line-height: 1.6; }
+  select {
+    appearance: none;
+    cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #525252 50%), linear-gradient(135deg, #525252 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+  }
+  .hint { font-size: 12px; color: var(--warm-grey); margin-top: 7px; line-height: 1.5; }
+
+  .url-row { display: grid; grid-template-columns: 1fr 110px 90px 130px 28px; gap: 10px; align-items: center; margin-bottom: 8px; }
+  @media (max-width: 700px) { .url-row { grid-template-columns: 1fr; background: #ffffff; border: 1px solid var(--border); padding: 12px; margin-bottom: 10px; } }
+  .url-row input, .url-row select { font-size: 12.5px; padding: 9px 10px; }
+  .url-row .remove { background: none; border: none; color: var(--warm-grey); cursor: pointer; font-size: 16px; line-height: 1; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+  .url-row .remove:hover { color: #da1e28; }
+  .url-list-head { display: grid; grid-template-columns: 1fr 110px 90px 130px 28px; gap: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--warm-grey); margin-bottom: 10px; }
+  @media (max-width: 700px) { .url-list-head { display: none; } }
+
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  button.action { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 13px 22px; border: 1px solid var(--border-med); background: transparent; color: var(--black); cursor: pointer; transition: all 0.15s; }
+  button.action:hover { border-color: var(--black); }
+  button.action.primary { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+  button.action.primary:hover { background: var(--crimson-light); border-color: var(--crimson-light); }
+  button.action.ghost { color: var(--warm-grey); }
+  button.action.ghost:hover { color: var(--black); border-color: var(--border-med); }
+
+  .output-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+  .output-head h2 { margin: 0; }
+  .meta { font-family: var(--mono); font-size: 11.5px; color: var(--warm-grey); }
+
+  pre.output { background: #ffffff; border: 1px solid var(--border-med); padding: 20px; font-family: var(--mono); font-size: 12.5px; line-height: 1.7; color: #333333; overflow-x: auto; white-space: pre; max-height: 420px; overflow-y: auto; margin: 0 0 18px; }
+  pre.output .tag { color: var(--crimson); }
+  pre.output::-webkit-scrollbar { width: 8px; height: 8px; }
+  pre.output::-webkit-scrollbar-thumb { background: rgba(22,22,22,0.15); }
+
+  .empty-state { font-family: var(--mono); font-size: 12.5px; color: var(--warm-grey); border: 1px dashed var(--border-med); padding: 20px; text-align: center; }
+
+  .robots-block { border: 1px solid var(--border); padding: 20px; margin-bottom: 16px; background: #ffffff; }
+  .robots-path-row { display: grid; grid-template-columns: 110px 1fr 28px; gap: 10px; margin-bottom: 8px; align-items: center; }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--crimson); color: #fff; font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; padding: 12px 20px; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; z-index: 500; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .footnote { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--warm-grey); font-size: 13px; line-height: 1.7; }
+  .footnote strong { color: var(--black); }
+  .footnote code { font-family: var(--mono); font-size: 12px; background: var(--mid); padding: 1px 5px; }
+
+  /* ── CTA BAND ─────────────────────────────────────────────── */
+  .cta-band { background: #f4f4f4; padding: 72px 48px; text-align: center; border-top: 1px solid var(--border); }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: #161616; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: #525252; }
+  .cta-band p { font-size: 15px; color: #525252; font-weight: 300; line-height: 1.8; max-width: 52ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #161616; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(22,22,22,0.3); transition: all 0.2s; }
+  .btn-ghost:hover { border-color: #161616; }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  footer { background: #f4f4f4; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(22,22,22,0.1); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #525252; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #161616; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .tool-hero { padding: 96px 24px 48px; }
+    .tool-wrap { padding: 40px 24px 80px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/blog/" class="active">Articles &amp; Resources</a>
+      <div class="dropdown-menu">
+        <a href="/blog/" class="dropdown-all">All Articles</a>
+        <div class="dropdown-divider"></div>
+        <a href="/blog/category/geo/">GEO</a>
+        <a href="/blog/category/content-strategy/">Content Strategy</a>
+        <a href="/blog/category/technical-seo/">Technical SEO</a>
+        <a href="/blog/category/measurement/">Measurement</a>
+        <a href="/blog/category/resources/">Resources</a>
+        <div class="dropdown-divider"></div>
+        <a href="/tools/sitemap-robots-generator/" class="active">Sitemap &amp; robots.txt Tool</a>
+      </div>
+    </li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay"></div>
+<div class="mobile-drawer">
+  <ul class="mobile-nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Articles &amp; Resources</a></li>
+    <li>
+      <span class="mobile-section-label">Browse by category</span>
+      <ul class="mobile-sub" style="list-style:none;">
+        <li><a href="/blog/category/geo/">GEO</a></li>
+        <li><a href="/blog/category/content-strategy/">Content Strategy</a></li>
+        <li><a href="/blog/category/technical-seo/">Technical SEO</a></li>
+        <li><a href="/blog/category/measurement/">Measurement</a></li>
+        <li><a href="/blog/category/resources/">Resources</a></li>
+        <li><a href="/tools/sitemap-robots-generator/">Sitemap &amp; robots.txt Tool</a></li>
+      </ul>
+    </li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="mobile-cta">Get in touch</a>
+</div>
+
+<div class="tool-hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <a href="/blog/">Articles &amp; Resources</a>
+    <span>/</span>
+    <span class="current">Sitemap &amp; robots.txt Generator</span>
+  </div>
+  <span class="hero-tag">Free Tool</span>
+  <h1>XML Sitemap &amp; <em>robots.txt</em> Generator</h1>
+  <p>Paste your URLs, set crawl rules for any user-agent, and export both files in one place. Built for SEO and GEO — including AI crawler control.</p>
+  <span class="privacy-badge">No data leaves your browser &mdash; everything runs client-side</span>
+</div>
+
+<div class="tool-wrap">
+
+  <div class="switch" role="tablist">
+    <button class="active" data-tab="sitemap" role="tab" aria-selected="true" aria-controls="tool-sitemap">Sitemap.xml</button>
+    <button data-tab="robots" role="tab" aria-selected="false" aria-controls="tool-robots">Robots.txt</button>
+  </div>
+
+  <!-- SITEMAP TOOL -->
+  <section class="tool active" id="tool-sitemap" role="tabpanel">
+    <div class="panel">
+      <h2>Add your URLs</h2>
+      <p class="sub">One field per URL. Use bulk paste to add many at once — one URL per line.</p>
+      <div class="field">
+        <label for="bulk-input">Bulk paste (one URL per line)</label>
+        <textarea id="bulk-input" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/blog/post-one"></textarea>
+        <div class="hint">Paste a list, then click "Add to list" — defaults (weekly, priority 0.5) are applied and can be edited per row below.</div>
+      </div>
+      <div class="btn-row">
+        <button class="action primary" id="btn-bulk-add">Add to list</button>
+        <button class="action ghost" id="btn-add-row">+ Add single row</button>
+        <button class="action ghost" id="btn-clear-rows">Clear all</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>URL list</h2>
+      <p class="sub" id="sitemap-count">No URLs yet.</p>
+      <div class="url-list-head">
+        <span>URL</span><span>Last modified</span><span>Frequency</span><span>Priority</span><span></span>
+      </div>
+      <div id="url-rows"></div>
+    </div>
+
+    <div class="panel">
+      <div class="output-head">
+        <h2>sitemap.xml</h2>
+        <span class="meta" id="sitemap-meta"></span>
+      </div>
+      <pre class="output" id="sitemap-output"><span style="color:#a8a8a8">Add at least one URL to generate output.</span></pre>
+      <div class="btn-row">
+        <button class="action primary" id="btn-download-sitemap">Download sitemap.xml</button>
+        <button class="action ghost" id="btn-copy-sitemap">Copy to clipboard</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROBOTS TOOL -->
+  <section class="tool" id="tool-robots" role="tabpanel">
+    <div class="panel">
+      <h2>Crawl rules</h2>
+      <p class="sub">Define how search and AI crawlers should treat your site. Add a rule block per user-agent.</p>
+      <div id="robots-rules"></div>
+      <div class="btn-row">
+        <button class="action ghost" id="btn-add-rule">+ Add user-agent block</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Site-wide settings</h2>
+      <div class="field-row">
+        <div class="field">
+          <label for="robots-sitemap">Sitemap URL</label>
+          <input type="url" id="robots-sitemap" placeholder="https://example.com/sitemap.xml">
+        </div>
+        <div class="field">
+          <label for="robots-crawl-delay">Crawl-delay (seconds, optional)</label>
+          <input type="text" id="robots-crawl-delay" placeholder="e.g. 10">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="output-head">
+        <h2>robots.txt</h2>
+        <span class="meta" id="robots-meta"></span>
+      </div>
+      <pre class="output" id="robots-output"></pre>
+      <div class="btn-row">
+        <button class="action primary" id="btn-download-robots">Download robots.txt</button>
+        <button class="action ghost" id="btn-copy-robots">Copy to clipboard</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="footnote">
+    <strong>Notes:</strong> Sitemap files should be placed at your domain root (e.g. <code>/sitemap.xml</code>) and referenced inside <code>robots.txt</code>. Search engines treat <code>priority</code> and <code>changefreq</code> as weak hints, not guarantees — they mainly help communicate relative importance across your own pages. For AI crawler control (GPTBot, ClaudeBot, PerplexityBot, etc.), add a dedicated user-agent block rather than relying on the wildcard <code>*</code> rule. Learn more in the <a href="/glossary/#ns" style="color:var(--crimson-light);text-decoration:none;border-bottom:1px solid rgba(0,67,206,0.25);">glossary definitions for robots.txt and sitemap</a>.
+  </div>
+
+</div>
+
+<div class="cta-band">
+  <span class="cta-label">Go deeper</span>
+  <h2>Need a full <em>GEO strategy?</em></h2>
+  <p>This tool helps with the technical foundations. If you want to go further — content strategy, citation optimisation, AI visibility — I offer focused GEO consultancy for selected brands.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Get in touch</a>
+    <a href="/blog/" class="btn-ghost">All articles</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Keval Patel &mdash; GEO &amp; AI Visibility Consultant, London</p>
+  <div class="footer-links">
+    <a href="/privacy/">Privacy</a>
+    <a href="/blog/">Articles</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+// Mobile nav
+const ham = document.querySelector('.nav-hamburger');
+const drawer = document.querySelector('.mobile-drawer');
+const overlay = document.querySelector('.mobile-overlay');
+function toggleDrawer(open) {
+  ham.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+  ham.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+ham.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+overlay.addEventListener('click', () => toggleDrawer(false));
+
+// ---------- TAB SWITCHING ----------
+document.querySelectorAll('.switch button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.switch button').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('section.tool').forEach(s => s.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('tool-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function escapeXml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+}
+
+function todayISO() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function downloadFile(filename, content, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ---------- SITEMAP TOOL ----------
+let urlRows = [];
+let rowIdCounter = 0;
+
+function addRow(url = '', lastmod = todayISO(), freq = 'weekly', priority = '0.5') {
+  urlRows.push({ id: rowIdCounter++, url, lastmod, freq, priority });
+  renderRows();
+}
+
+function removeRow(id) {
+  urlRows = urlRows.filter(r => r.id !== id);
+  renderRows();
+}
+
+function renderRows() {
+  const container = document.getElementById('url-rows');
+  container.innerHTML = '';
+  urlRows.forEach(row => {
+    const div = document.createElement('div');
+    div.className = 'url-row';
+    div.innerHTML = `
+      <input type="text" value="${escapeAttr(row.url)}" placeholder="https://example.com/page" data-field="url" data-id="${row.id}">
+      <input type="text" value="${escapeAttr(row.lastmod)}" placeholder="YYYY-MM-DD" data-field="lastmod" data-id="${row.id}">
+      <select data-field="freq" data-id="${row.id}">
+        ${['always','hourly','daily','weekly','monthly','yearly','never'].map(f => `<option value="${f}" ${f === row.freq ? 'selected' : ''}>${f}</option>`).join('')}
+      </select>
+      <select data-field="priority" data-id="${row.id}">
+        ${['1.0','0.9','0.8','0.7','0.6','0.5','0.4','0.3','0.2','0.1'].map(p => `<option value="${p}" ${p === row.priority ? 'selected' : ''}>${p}</option>`).join('')}
+      </select>
+      <button class="remove" data-id="${row.id}" title="Remove">&times;</button>
+    `;
+    container.appendChild(div);
+  });
+
+  container.querySelectorAll('input, select').forEach(el => {
+    el.addEventListener('input', e => {
+      const id = Number(e.target.dataset.id);
+      const field = e.target.dataset.field;
+      const row = urlRows.find(r => r.id === id);
+      if (row) { row[field] = e.target.value; generateSitemap(); }
+    });
+  });
+  container.querySelectorAll('.remove').forEach(el => {
+    el.addEventListener('click', e => removeRow(Number(e.target.dataset.id)));
+  });
+
+  document.getElementById('sitemap-count').textContent = urlRows.length
+    ? `${urlRows.length} URL${urlRows.length === 1 ? '' : 's'} in list.`
+    : 'No URLs yet.';
+
+  generateSitemap();
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/"/g, '&quot;');
+}
+
+document.getElementById('btn-add-row').addEventListener('click', () => addRow());
+
+document.getElementById('btn-bulk-add').addEventListener('click', () => {
+  const raw = document.getElementById('bulk-input').value;
+  const lines = raw.split('\n').map(l => l.trim()).filter(Boolean);
+  if (!lines.length) return;
+  lines.forEach(url => addRow(url));
+  document.getElementById('bulk-input').value = '';
+  showToast(`Added ${lines.length} URL${lines.length === 1 ? '' : 's'}`);
+});
+
+document.getElementById('btn-clear-rows').addEventListener('click', () => {
+  urlRows = [];
+  renderRows();
+});
+
+function generateSitemap() {
+  const valid = urlRows.filter(r => r.url.trim());
+  const out = document.getElementById('sitemap-output');
+  const meta = document.getElementById('sitemap-meta');
+
+  if (!valid.length) {
+    out.innerHTML = '<span style="color:#a8a8a8">Add at least one URL to generate output.</span>';
+    meta.textContent = '';
+    return;
+  }
+
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  valid.forEach(r => {
+    xml += '  <url>\n';
+    xml += `    <loc>${escapeXml(r.url.trim())}</loc>\n`;
+    if (r.lastmod) xml += `    <lastmod>${escapeXml(r.lastmod)}</lastmod>\n`;
+    if (r.freq) xml += `    <changefreq>${escapeXml(r.freq)}</changefreq>\n`;
+    if (r.priority) xml += `    <priority>${escapeXml(r.priority)}</priority>\n`;
+    xml += '  </url>\n';
+  });
+  xml += '</urlset>';
+
+  out.textContent = xml;
+  meta.textContent = `${valid.length} URL${valid.length === 1 ? '' : 's'} · ${new Blob([xml]).size} bytes`;
+}
+
+document.getElementById('btn-download-sitemap').addEventListener('click', () => {
+  const valid = urlRows.filter(r => r.url.trim());
+  if (!valid.length) { showToast('Add at least one URL first'); return; }
+  downloadFile('sitemap.xml', document.getElementById('sitemap-output').textContent, 'application/xml');
+  showToast('sitemap.xml downloaded');
+});
+
+document.getElementById('btn-copy-sitemap').addEventListener('click', () => {
+  const text = document.getElementById('sitemap-output').textContent;
+  if (!text || text.includes('Add at least one URL')) { showToast('Nothing to copy yet'); return; }
+  navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard'));
+});
+
+// seed with one empty row
+addRow('', todayISO(), 'weekly', '0.5');
+
+// ---------- ROBOTS.TXT TOOL ----------
+let robotRules = [];
+let ruleIdCounter = 0;
+
+function addRule(agent = '*', rules = [{ type: 'disallow', path: '/' }]) {
+  robotRules.push({ id: ruleIdCounter++, agent, rules: rules.map(r => ({ ...r })) });
+  renderRules();
+}
+
+function removeRule(id) {
+  robotRules = robotRules.filter(r => r.id !== id);
+  renderRules();
+}
+
+function addPathToRule(ruleId) {
+  const rule = robotRules.find(r => r.id === ruleId);
+  if (rule) rule.rules.push({ type: 'disallow', path: '' });
+  renderRules();
+}
+
+function removePathFromRule(ruleId, idx) {
+  const rule = robotRules.find(r => r.id === ruleId);
+  if (rule) { rule.rules.splice(idx, 1); renderRules(); }
+}
+
+function renderRules() {
+  const container = document.getElementById('robots-rules');
+  container.innerHTML = '';
+
+  robotRules.forEach(rule => {
+    const block = document.createElement('div');
+    block.className = 'robots-block';
+    block.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;gap:12px;">
+        <div style="flex:1;">
+          <label>User-agent</label>
+          <input type="text" value="${escapeAttr(rule.agent)}" data-rule="${rule.id}" data-field="agent" placeholder="* or GPTBot, ClaudeBot, Googlebot...">
+        </div>
+        <button class="action ghost" data-removerule="${rule.id}" style="margin-top:18px;white-space:nowrap;">Remove block</button>
+      </div>
+      <div class="path-rows"></div>
+      <button class="action ghost" data-addpath="${rule.id}" style="margin-top:4px;">+ Add path rule</button>
+    `;
+    const pathRows = block.querySelector('.path-rows');
+    rule.rules.forEach((pr, idx) => {
+      const row = document.createElement('div');
+      row.className = 'robots-path-row';
+      row.innerHTML = `
+        <select data-rule="${rule.id}" data-idx="${idx}" data-field="type">
+          <option value="disallow" ${pr.type === 'disallow' ? 'selected' : ''}>Disallow</option>
+          <option value="allow" ${pr.type === 'allow' ? 'selected' : ''}>Allow</option>
+        </select>
+        <input type="text" value="${escapeAttr(pr.path)}" placeholder="/path/" data-rule="${rule.id}" data-idx="${idx}" data-field="path">
+        <button class="remove" data-removepath="${rule.id}:${idx}" title="Remove">&times;</button>
+      `;
+      pathRows.appendChild(row);
+    });
+    container.appendChild(block);
+  });
+
+  container.querySelectorAll('input[data-field], select[data-field]').forEach(el => {
+    el.addEventListener('input', e => {
+      const ruleId = Number(e.target.dataset.rule);
+      const field = e.target.dataset.field;
+      const rule = robotRules.find(r => r.id === ruleId);
+      if (!rule) return;
+      if (field === 'agent') { rule.agent = e.target.value; }
+      else {
+        const idx = Number(e.target.dataset.idx);
+        rule.rules[idx][field] = e.target.value;
+      }
+      generateRobots();
+    });
+  });
+  container.querySelectorAll('[data-removerule]').forEach(el => {
+    el.addEventListener('click', e => removeRule(Number(e.target.dataset.removerule)));
+  });
+  container.querySelectorAll('[data-addpath]').forEach(el => {
+    el.addEventListener('click', e => addPathToRule(Number(e.target.dataset.addpath)));
+  });
+  container.querySelectorAll('[data-removepath]').forEach(el => {
+    el.addEventListener('click', e => {
+      const [ruleId, idx] = e.target.dataset.removepath.split(':').map(Number);
+      removePathFromRule(ruleId, idx);
+    });
+  });
+
+  generateRobots();
+}
+
+document.getElementById('btn-add-rule').addEventListener('click', () => addRule('*', [{ type: 'disallow', path: '' }]));
+document.getElementById('robots-sitemap').addEventListener('input', generateRobots);
+document.getElementById('robots-crawl-delay').addEventListener('input', generateRobots);
+
+function generateRobots() {
+  const out = document.getElementById('robots-output');
+  const meta = document.getElementById('robots-meta');
+  const sitemapUrl = document.getElementById('robots-sitemap').value.trim();
+  const crawlDelay = document.getElementById('robots-crawl-delay').value.trim();
+
+  let lines = [];
+  robotRules.forEach(rule => {
+    if (!rule.agent.trim()) return;
+    lines.push(`User-agent: ${rule.agent.trim()}`);
+    rule.rules.forEach(pr => {
+      if (!pr.path.trim()) return;
+      const label = pr.type === 'allow' ? 'Allow' : 'Disallow';
+      lines.push(`${label}: ${pr.path.trim()}`);
+    });
+    if (crawlDelay) lines.push(`Crawl-delay: ${crawlDelay}`);
+    lines.push('');
+  });
+
+  if (sitemapUrl) { lines.push(`Sitemap: ${sitemapUrl}`); }
+
+  const text = lines.join('\n').trim();
+  out.textContent = text || '# Add a user-agent block to generate output.';
+  meta.textContent = text ? `${new Blob([text]).size} bytes` : '';
+}
+
+document.getElementById('btn-download-robots').addEventListener('click', () => {
+  const text = document.getElementById('robots-output').textContent;
+  if (!text || text.startsWith('#')) { showToast('Add a rule first'); return; }
+  downloadFile('robots.txt', text, 'text/plain');
+  showToast('robots.txt downloaded');
+});
+
+document.getElementById('btn-copy-robots').addEventListener('click', () => {
+  const text = document.getElementById('robots-output').textContent;
+  if (!text || text.startsWith('#')) { showToast('Nothing to copy yet'); return; }
+  navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard'));
+});
+
+// seed default robots rules
+addRule('*', [{ type: 'allow', path: '/' }]);
+addRule('GPTBot', [{ type: 'disallow', path: '/' }]);
+document.getElementById('robots-sitemap').value = '';
+</script>
+</body>
+</html>
