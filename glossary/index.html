@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO &amp; GEO Glossary: 45+ Terms Defined — Keval Patel</title>
+<meta name="description" content="A plain-English glossary spanning traditional SEO and generative engine optimisation — from backlinks and E-E-A-T to RAG, query fan-out and share of model — with concise, citable definitions.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DefinedTermSet",
+  "name": "SEO & GEO Glossary",
+  "description": "A combined glossary of traditional SEO and generative engine optimisation terms, with concise, citable definitions.",
+  "url": "https://geokeval.co.uk/glossary/",
+  "inLanguage": "en-GB",
+  "hasDefinedTerm": [
+    {"@type":"DefinedTerm","name":"AEO (Answer Engine Optimisation)","description":"A term often used interchangeably with GEO, with a slight emphasis on optimising for direct-answer formats such as featured snippets, voice assistants and AI answer boxes rather than generative synthesis specifically.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"AI Overview","description":"Google's AI-generated summary that appears above traditional organic results for many queries, synthesising information from multiple sources and citing a handful of them.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"AI Visibility","description":"An umbrella term for how often, how prominently and how favourably a brand appears across AI-generated answers, measured through citation frequency and share of voice rather than traditional rankings or clicks.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Alt Text","description":"A short text description attached to an image, read by screen readers and search engine crawlers since the image itself cannot be parsed as text.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Anchor Text","description":"The visible, clickable text of a hyperlink. Descriptive, varied anchor text helps both search engines and AI systems understand what the linked page is about.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Backlink","description":"A link from one website to another. Backlinks are a core authority signal in traditional SEO ranking algorithms; in GEO, their influence is weaker and less consistent.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Canonical Tag","description":"An HTML tag (rel=canonical) that tells search engines which version of a page is the master copy when duplicate or near-duplicate content exists at multiple URLs, consolidating ranking signals onto one preferred version.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Chunking","description":"The process by which an AI system splits a web page into smaller, semantically coherent passages before retrieval. AI citation happens at the passage level rather than the page level because of chunking.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Citation (AI Citation)","description":"A reference an AI engine attaches to a specific claim in its generated answer, pointing to the source it drew that claim from. Earning citations — not rankings — is the primary goal of GEO.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Core Web Vitals","description":"Google's set of page-experience metrics measuring loading performance, interactivity and visual stability: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Crawl Budget","description":"The number of pages a search engine bot will crawl on a given site within a given timeframe. Most relevant for very large sites where site structure efficiency affects indexation frequency.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Dark Discovery","description":"A category of AI-driven brand discovery and influence that occurs with no associated click, referral or analytics trail — visible in business outcomes but invisible in standard reporting tools such as GA4.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Domain Authority / Domain Rating","description":"Third-party metrics from Moz and Ahrefs respectively that estimate a website's overall ranking strength on a 1–100 scale, based largely on backlink profile. Carries little to no direct weight in AI citation decisions.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"E-E-A-T","description":"Google's framework for evaluating content quality: Experience, Expertise, Authoritativeness and Trustworthiness. E-E-A-T signals matter for AI citation as well as traditional search ranking, since engines favour authoritative, verifiable sources.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Entity (Entity Authority)","description":"A distinct, identifiable thing — a person, brand, product or concept — that search and AI systems can recognise consistently across the web, typically via a knowledge graph. Building entity authority means establishing clear, consistent signals across many independent sources.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Featured Snippet","description":"A highlighted answer box shown above standard organic results in Google, pulled directly from a ranking page. Pages holding a featured snippet have historically shown higher probability of being cited in AI Overviews.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Fluency Optimisation","description":"A content technique tested in the Princeton GEO study (Aggarwal et al., KDD 2024) involving rewriting content in clearer, more readable language. It improved citation visibility across most content categories.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"GEO (Generative Engine Optimisation)","description":"The practice of structuring and writing content so that generative AI engines retrieve, trust and cite it in their synthesised answers. Formalised as a research discipline in a 2024 Princeton-led study.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Grounding","description":"The process by which an AI system anchors a generated claim to a specific retrieved passage, reducing the risk of hallucination by tying the answer to verifiable source material. Grounding is the mechanism that produces citations.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Hallucination","description":"An AI-generated statement presented as fact that is not supported by any retrieved source — effectively a confident fabrication. Strong grounding and high-quality retrieval reduce hallucination risk.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Index / Indexation","description":"The process by which a search engine stores and organises a crawled page so it can be returned in results. A page can be crawled but not indexed. Indexation is the prerequisite for both ranking and AI retrieval.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Information Gain","description":"The degree to which a piece of content adds genuinely new value beyond what is already available elsewhere on a topic. AI re-ranking systems favour passages with high information gain — original data, novel analysis, a fresh framework.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Internal Linking","description":"Hyperlinks connecting pages within the same website. A deliberate internal linking structure distributes topical relevance and authority and helps AI retrieval systems understand how content relates.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Keyword Density","description":"The frequency of a target keyword relative to total word count on a page. Keyword density has little to no direct influence on AI retrieval, since generative engines match content by semantic meaning rather than exact wording.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Knowledge Graph","description":"A structured database of entities and the relationships between them, used by Google and AI systems to understand things rather than just strings of text. A well-established entity is more reliably retrieved and disambiguated.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"LLMO (Large Language Model Optimisation)","description":"A term sometimes used alongside GEO and AEO, with emphasis on optimising for how large language models represent and recall information about a brand or topic, including in training data rather than only in live retrieval.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"llms.txt","description":"A proposed plain-text file placed at a website's root that gives AI crawlers a curated, structured summary of a site's most important content — an AI-era counterpart to robots.txt.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Meta Description","description":"The short summary text shown beneath a page's title in search results, written in HTML. Not a direct ranking factor, but its job is to earn the click and give engines an accurate summary of the page's purpose.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Off-Page SEO","description":"SEO activity that happens away from your own website — backlink building, digital PR, brand mentions and other signals that build external authority. Off-page signals also matter for GEO, since AI engines weigh corroboration across independent domains.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"On-Page SEO","description":"SEO activity applied directly to a page — content quality, title tags, headings, internal links and technical structure. The foundation that both classic ranking and AI retrieval are built on.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"PageRank","description":"Google's original link-analysis algorithm, which scored pages based on the quantity and quality of links pointing to them. Still part of Google's broader ranking system in evolved form, but largely irrelevant to AI citation decisions.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Passage Retrieval","description":"The process by which an AI system identifies and pulls the specific text passages most relevant to a query, rather than evaluating a whole page. Passage-level retrieval is the central architectural shift that separates GEO from traditional SEO.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Query Fan-Out","description":"The process by which a generative engine breaks one user question into multiple parallel sub-queries to retrieve a fuller set of relevant sources, then synthesises an answer from across them.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"RAG (Retrieval-Augmented Generation)","description":"The architecture underpinning most generative search engines: the system retrieves relevant passages from external content first, then feeds them to a language model to generate a grounded, cited answer.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Re-Ranking","description":"The filtering stage in a RAG pipeline where retrieved candidate passages are scored on signals like relevance, factual density, authority, freshness and structural clarity. Most candidates are discarded before the final answer is generated.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Robots.txt","description":"A plain-text file at a website's root that instructs crawlers including AI bots which parts of a site they may or may not access. Misconfigured robots.txt rules can silently block AI crawlers from a site entirely.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Schema Markup (Structured Data)","description":"Code added to a page in JSON-LD format using the Schema.org vocabulary that explicitly labels what different pieces of content are, helping both search engines and AI systems parse content with less ambiguity.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Semantic Search","description":"Search based on the meaning of a query rather than exact keyword matching, using vector embeddings to find conceptually related content even when the wording differs.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"SERP (Search Engine Results Page)","description":"The page returned after a search query, traditionally a ranked list of links, now increasingly populated with AI Overviews, featured snippets and other non-link features that reduce the space available to standard organic results.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Share of Model / Share of Voice","description":"A GEO measurement metric describing what percentage of relevant AI-generated answers in a category mention or cite your brand, relative to competitors — the generative-search equivalent of share of voice in traditional marketing.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Sitemap (XML)","description":"A file listing a website's important URLs, submitted to search engines to help them discover and crawl content more efficiently — particularly useful for large or frequently updated sites.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Title Tag","description":"The HTML element defining a page's title, shown as the clickable headline in search results and browser tabs. One of the strongest on-page SEO signals, and a contributor to heading-query alignment in AI retrieval.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Topical Authority","description":"The degree to which a website is recognised by both search engines and AI systems as a comprehensive, trustworthy source on a given subject, typically built through a structured cluster of interlinked content covering a topic in depth.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Vector Embedding","description":"A numerical representation of a piece of text's meaning, positioned in a high-dimensional space such that semantically similar content sits close together. Embeddings allow AI retrieval systems to match a query to relevant content even when no exact keywords overlap.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"},
+    {"@type":"DefinedTerm","name":"Zero-Click Search","description":"A search session that ends without the user clicking through to any external website, because their answer was resolved directly on the results page via an AI Overview, featured snippet or similar feature.","inDefinedTermSet":"https://geokeval.co.uk/glossary/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What's the difference between SEO and GEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "SEO optimises content to rank in a list of links; GEO optimises content to be retrieved and cited inside a synthesised AI answer. SEO foundations — crawlability, indexation, technical health — remain the entry ticket GEO builds on top of."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is GEO the same as AEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Largely, yes. Most practitioners use GEO and AEO to describe the same goal — visibility inside AI-generated answers — with AEO carrying a slightly stronger historical link to direct-answer formats like featured snippets and voice search."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to learn a whole new vocabulary for AI search?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Partly. Many GEO concepts (RAG, query fan-out, chunking) describe genuinely new mechanics, but they sit on top of SEO fundamentals you likely already know. This glossary bridges the two rather than treating them as separate worlds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which terms matter most for getting started with GEO?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with RAG, query fan-out, citation and passage retrieval — together they explain the core mechanic everything else builds on. The guide to how AI search engines decide what to cite walks through how they fit together."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://geokeval.co.uk/"},
+    {"@type":"ListItem","position":2,"name":"Glossary","item":"https://geokeval.co.uk/glossary/"}
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #161616;
+    --off-white: #ffffff;
+    --crimson: #0f62fe;
+    --crimson-light: #0043ce;
+    --warm-grey: #525252;
+    --mid: #f4f4f4;
+    --border-dark: rgba(22,22,22,0.1);
+    --border-light: rgba(22,22,22,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(22,22,22,0.1); }
+  .nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #161616; text-decoration: none; }
+  .nav-brand span { color: var(--crimson-light); }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #161616; text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #0f62fe; }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  .nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+  .nav-dropdown:hover > a::after { transform: rotate(180deg); }
+  .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: #ffffff; border: 1px solid rgba(22,22,22,0.12); min-width: 200px; padding: 16px 0 8px; opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0; }
+  .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+  .nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+  .dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+  .dropdown-menu a:hover { color: #161616; background: #f4f4f4; border-left-color: #0f62fe; }
+  .dropdown-menu .dropdown-divider { height: 1px; background: rgba(22,22,22,0.08); margin: 6px 0; }
+  .dropdown-menu .dropdown-all { font-size: 9px; }
+  .nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #161616; border: 1px solid rgba(22,22,22,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .nav-cta:hover { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #161616; transition: all 0.3s; transform-origin: center; }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: #ffffff; border-left: 1px solid rgba(22,22,22,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
+  .mobile-drawer.open { transform: translateX(0); }
+  .mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-overlay.open { opacity: 1; pointer-events: all; }
+  .mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+  .mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #161616; text-decoration: none; border-bottom: 1px solid rgba(22,22,22,0.08); transition: color 0.2s; }
+  .mobile-nav-links li a:hover { color: #0f62fe; }
+  .mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+  .mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #525252; border-bottom: 1px solid rgba(22,22,22,0.04); }
+  .mobile-cta { margin-top: 32px; display: block; background: #0f62fe; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
+  .mobile-cta:hover { background: #0043ce; }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .glossary-hero { background: #f4f4f4; padding: 120px 48px 64px; border-bottom: 1px solid var(--border-dark); }
+  .breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #161616; text-decoration: none; }
+  .breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(22,22,22,0.3); }
+  .breadcrumb .current { color: #525252; }
+  .hero-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 20px; }
+  .glossary-hero h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 700; color: #161616; line-height: 1.08; margin-bottom: 24px; max-width: 22ch; }
+  .glossary-hero h1 em { font-style: italic; color: #525252; }
+  .glossary-hero p { font-size: 16px; color: #525252; line-height: 1.8; font-weight: 300; max-width: 54ch; }
+
+  /* ── INTRO ──────────────────────────────────────────────── */
+  .intro-section { padding: 56px 48px 0; border-bottom: 1px solid var(--border-light); }
+  .intro-inner { max-width: 760px; margin: 0 auto; padding-bottom: 48px; }
+  .intro-inner h2 { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; color: var(--black); margin-bottom: 16px; }
+  .intro-inner p { font-size: 15px; color: var(--warm-grey); line-height: 1.85; }
+  .intro-inner p + p { margin-top: 16px; }
+  .intro-inner a { color: var(--crimson-light); text-decoration: none; border-bottom: 1px solid rgba(0,67,206,0.25); transition: border-color 0.2s; }
+  .intro-inner a:hover { border-bottom-color: var(--crimson-light); }
+
+  /* ── LETTER JUMP ────────────────────────────────────────── */
+  .letter-jump {
+    position: sticky;
+    top: 62px;
+    z-index: 100;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-light);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .letter-jump-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(22,22,22,0.5);
+    text-decoration: none;
+    padding: 14px 20px 14px 0;
+    margin-right: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .letter-jump-link:hover { color: #161616; border-bottom-color: rgba(22,22,22,0.25); }
+  .letter-jump-link.active { color: var(--crimson); border-bottom-color: var(--crimson); font-weight: 500; }
+  .letter-jump-count { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; color: rgba(22,22,22,0.3); margin-left: auto; }
+
+  /* ── GLOSSARY BODY ──────────────────────────────────────── */
+  .glossary-body { padding: 0 48px; }
+  .glossary-inner { max-width: 760px; margin: 0 auto; }
+
+  .glossary-section { scroll-margin-top: 120px; padding-top: 56px; padding-bottom: 16px; border-bottom: 1px solid var(--border-light); }
+  .glossary-section:last-child { border-bottom: none; }
+  .section-letter { font-family: var(--serif); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: rgba(22,22,22,0.08); line-height: 1; margin-bottom: 32px; display: flex; align-items: baseline; gap: 16px; }
+  .section-letter strong { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 600; color: var(--black); }
+  .section-letter span { font-size: clamp(20px, 2.5vw, 32px); }
+
+  .term-list { margin: 0; padding: 0; }
+  .term-list dt {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--black);
+    letter-spacing: 0.04em;
+    margin-top: 36px;
+    margin-bottom: 8px;
+    padding-left: 14px;
+    border-left: 2px solid var(--crimson);
+    line-height: 1.4;
+  }
+  .term-list dt:first-child { margin-top: 8px; }
+  .term-list dd {
+    font-size: 15px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    margin: 0;
+    padding-left: 14px;
+  }
+  .term-list dd a { color: var(--crimson-light); text-decoration: none; border-bottom: 1px solid rgba(0,67,206,0.25); transition: border-color 0.2s; }
+  .term-list dd a:hover { border-bottom-color: var(--crimson-light); }
+  .term-tag { display: inline-block; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 6px; margin-left: 8px; border-radius: 2px; vertical-align: middle; }
+  .tag-geo { background: #edf4ff; color: var(--crimson-light); }
+  .tag-seo { background: #f4f4f4; color: var(--warm-grey); }
+
+  /* ── FAQ ────────────────────────────────────────────────── */
+  .faq-section { padding: 64px 48px 80px; scroll-margin-top: 120px; }
+  .faq-inner { max-width: 760px; margin: 0 auto; }
+  .faq-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 12px; }
+  .faq-heading { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: var(--black); line-height: 1.15; margin-bottom: 40px; }
+  .faq-list { list-style: none; border-top: 1px solid var(--border-light); }
+  .faq-item { border-bottom: 1px solid var(--border-light); }
+  .faq-question { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; cursor: pointer; text-align: left; }
+  .faq-question-text { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--black); line-height: 1.3; transition: color 0.2s; }
+  .faq-question:hover .faq-question-text { color: var(--crimson); }
+  .faq-icon { flex-shrink: 0; width: 20px; height: 20px; border: 1px solid rgba(22,22,22,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; position: relative; }
+  .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--warm-grey); transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s; }
+  .faq-icon::before { width: 8px; height: 1.5px; }
+  .faq-icon::after { width: 1.5px; height: 8px; }
+  .faq-question[aria-expanded="true"] .faq-icon { background: var(--crimson); border-color: var(--crimson); }
+  .faq-question[aria-expanded="true"] .faq-icon::before,
+  .faq-question[aria-expanded="true"] .faq-icon::after { background: #ffffff; }
+  .faq-question[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .faq-answer-inner { padding: 0 0 24px; font-size: 15px; color: var(--warm-grey); line-height: 1.85; }
+  .faq-answer-inner a { color: var(--crimson-light); text-decoration: none; border-bottom: 1px solid rgba(0,67,206,0.25); }
+  .faq-answer-inner a:hover { border-bottom-color: var(--crimson-light); }
+
+  /* ── CTA ────────────────────────────────────────────────── */
+  .cta-band { background: #f4f4f4; padding: 72px 48px; text-align: center; border-top: 1px solid var(--border-light); }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: #161616; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: #525252; }
+  .cta-band p { font-size: 15px; color: #525252; font-weight: 300; line-height: 1.8; max-width: 52ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #161616; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(22,22,22,0.3); transition: all 0.2s; }
+  .btn-ghost:hover { color: #000000; border-color: #161616; }
+
+  footer { background: #f4f4f4; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(22,22,22,0.1); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #525252; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #161616; }
+
+  .last-updated { font-family: var(--mono); font-size: 10px; color: rgba(22,22,22,0.35); letter-spacing: 0.06em; padding: 32px 0 64px; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .glossary-hero { padding: 96px 24px 48px; }
+    .intro-section { padding: 40px 24px 0; }
+    .letter-jump { padding: 0 24px; }
+    .letter-jump-count { display: none; }
+    .glossary-body { padding: 0 24px; }
+    .faq-section { padding: 48px 24px 64px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/blog/">Articles &amp; Resources</a>
+      <div class="dropdown-menu">
+        <a href="/blog/" class="dropdown-all">All Articles</a>
+        <div class="dropdown-divider"></div>
+        <a href="/blog/category/geo/">GEO</a>
+        <a href="/blog/category/content-strategy/">Content Strategy</a>
+        <a href="/blog/category/technical-seo/">Technical SEO</a>
+        <a href="/blog/category/measurement/">Measurement</a>
+        <a href="/blog/category/resources/">Resources</a>
+      </div>
+    </li>
+    <li><a href="/glossary/" class="active">Glossary</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay"></div>
+<div class="mobile-drawer">
+  <ul class="mobile-nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Articles &amp; Resources</a></li>
+    <li>
+      <span class="mobile-section-label">Browse by category</span>
+      <ul class="mobile-sub" style="list-style:none;">
+        <li><a href="/blog/category/geo/">GEO</a></li>
+        <li><a href="/blog/category/content-strategy/">Content Strategy</a></li>
+        <li><a href="/blog/category/technical-seo/">Technical SEO</a></li>
+        <li><a href="/blog/category/measurement/">Measurement</a></li>
+        <li><a href="/blog/category/resources/">Resources</a></li>
+      </ul>
+    </li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="mobile-cta">Get in touch</a>
+</div>
+
+<div class="glossary-hero">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span>/</span>
+    <span class="current">Glossary</span>
+  </div>
+  <span class="hero-tag">Reference</span>
+  <h1>SEO &amp; GEO Glossary: <em>45+ Terms Defined</em></h1>
+  <p>Search now has two overlapping vocabularies — the established language of SEO, and the newer language of generative engine optimisation. This glossary covers both in one place, with short, self-contained definitions you can use and link to.</p>
+</div>
+
+<div class="intro-section">
+  <div class="intro-inner">
+    <h2>Why this glossary covers both SEO and GEO</h2>
+    <p>Traditional SEO governs whether your content can be found and ranked by search engines; <a href="/generative-engine-optimisation/">GEO</a> governs whether it gets retrieved, trusted and cited by generative engines like ChatGPT, Perplexity and Google's AI Overviews. The two aren't rivals — strong SEO foundations (crawlability, indexation, technical health) are the entry ticket GEO builds on top of.</p>
+    <p>Understanding both vocabularies is now a baseline requirement for anyone working in search. Each entry below is a short, citable definition. Where a term has a full deep-dive elsewhere on this site, it's linked.</p>
+  </div>
+</div>
+
+<div class="letter-jump" role="navigation" aria-label="Jump to letter group">
+  <a href="#af" class="letter-jump-link active">A–F</a>
+  <a href="#gm" class="letter-jump-link">G–M</a>
+  <a href="#ns" class="letter-jump-link">N–S</a>
+  <a href="#tz" class="letter-jump-link">T–Z</a>
+  <a href="#faqs" class="letter-jump-link">FAQs</a>
+  <span class="letter-jump-count">45 terms</span>
+</div>
+
+<div class="glossary-body">
+<div class="glossary-inner">
+
+  <section class="glossary-section" id="af">
+    <div class="section-letter"><strong>A</strong><span>– F</span></div>
+    <dl class="term-list">
+
+      <dt id="aeo">AEO (Answer Engine Optimisation) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A term often used interchangeably with GEO, with a slight emphasis on optimising for direct-answer formats — featured snippets, voice assistants, AI answer boxes — rather than generative synthesis specifically. In practice, most practitioners use AEO and GEO to describe the same underlying goal: getting content surfaced and cited in AI-generated answers.</dd>
+
+      <dt id="ai-overview">AI Overview <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>Google's AI-generated summary that appears above traditional organic results for many queries, synthesising information from multiple sources and citing a handful of them. AI Overviews now trigger on a large share of informational queries and carry significantly lower click-through rates than standard results. See <a href="/blog/why-ai-is-reshaping-search/">why AI is reshaping search</a>.</dd>
+
+      <dt id="ai-visibility">AI Visibility <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>An umbrella term for how often, how prominently and how favourably a brand appears across AI-generated answers — measured through metrics like citation frequency and share of model rather than traditional rankings or clicks.</dd>
+
+      <dt id="alt-text">Alt Text <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>A short text description attached to an image, read by screen readers and search engine crawlers since the image itself can't be parsed as text. Good alt text is accurate and descriptive rather than keyword-stuffed.</dd>
+
+      <dt id="anchor-text">Anchor Text <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The visible, clickable text of a hyperlink. Descriptive, varied anchor text — rather than repeated exact-match phrases — helps both search engines and AI systems understand what the linked page is about.</dd>
+
+      <dt id="backlink">Backlink <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>A link from one website to another. Backlinks have long been a core authority signal in traditional SEO ranking algorithms; in GEO, their influence is weaker and less consistent, with some studies finding AI-cited pages carry fewer backlinks than uncited ones.</dd>
+
+      <dt id="canonical-tag">Canonical Tag <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>An HTML tag (<code>rel="canonical"</code>) that tells search engines which version of a page is the "master" copy when duplicate or near-duplicate content exists at multiple URLs, consolidating ranking signals onto one preferred version.</dd>
+
+      <dt id="chunking">Chunking <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The process by which an AI system splits a web page into smaller, semantically coherent passages before retrieval. Chunking is why AI citation happens at the passage level rather than the page level — a long page might have just one chunk retrieved and cited. See <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a>.</dd>
+
+      <dt id="citation">Citation (AI Citation) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A reference an AI engine attaches to a specific claim in its generated answer, pointing to the source it drew that claim from. Earning citations — not rankings — is the primary goal of GEO. See <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a>.</dd>
+
+      <dt id="core-web-vitals">Core Web Vitals <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Google's set of page-experience metrics measuring loading performance, interactivity and visual stability — currently Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS). A confirmed Google ranking factor and a baseline technical health signal.</dd>
+
+      <dt id="crawl-budget">Crawl Budget <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The number of pages a search engine bot will crawl on a given site within a given timeframe. Crawl budget matters most for very large sites, where inefficient site structure can mean important pages get crawled — and indexed — less frequently.</dd>
+
+      <dt id="dark-discovery">Dark Discovery <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A category of AI-driven brand discovery and influence that occurs with no associated click, referral or analytics trail — visible in business outcomes (brand searches, direct traffic, conversion uplift) but invisible in standard reporting tools such as GA4. Dark discovery is growing as AI answers resolve queries before any click occurs. See <a href="/generative-engine-optimisation/">generative engine optimisation</a>.</dd>
+
+      <dt id="domain-authority">Domain Authority / Domain Rating <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Third-party metrics from Moz and Ahrefs respectively that estimate a website's overall ranking strength on a 1–100 scale, based largely on backlink profile. Useful as a directional SEO signal; carries little to no direct weight in AI citation decisions.</dd>
+
+      <dt id="eeat">E-E-A-T <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Google's framework for evaluating content quality: Experience, Expertise, Authoritativeness and Trustworthiness. Originally a Google Search Quality Rater guideline, E-E-A-T signals — visible author credentials, real expertise, third-party corroboration — matter for AI citation too, since engines favour authoritative, verifiable sources.</dd>
+
+      <dt id="entity">Entity (Entity Authority) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A distinct, identifiable "thing" — a person, brand, product or concept — that search and AI systems can recognise consistently across the web, typically via a knowledge graph. Building entity authority means establishing clear, consistent signals about who or what you are across many independent sources, not just your own site. See <a href="/generative-engine-optimisation/">GEO</a>.</dd>
+
+      <dt id="featured-snippet">Featured Snippet <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>A highlighted answer box shown above standard organic results in Google, pulled directly from a ranking page. Pages that hold a featured snippet have historically shown a notably higher probability of also being cited in AI Overviews — the two formats reward similar structural qualities.</dd>
+
+      <dt id="fluency-optimisation">Fluency Optimisation <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A content technique tested in the Princeton GEO study (Aggarwal et al., KDD 2024) involving rewriting content in clearer, more readable language. It improved citation visibility across most content categories and performed especially well when combined with adding statistics. See <a href="/blog/content-optimisation-for-geo/">content optimisation for GEO</a>.</dd>
+
+    </dl>
+  </section>
+
+  <section class="glossary-section" id="gm">
+    <div class="section-letter"><strong>G</strong><span>– M</span></div>
+    <dl class="term-list">
+
+      <dt id="geo">GEO (Generative Engine Optimisation) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The practice of structuring and writing content so that generative AI engines retrieve, trust and cite it in their synthesised answers. Formalised as a research discipline in a 2024 Princeton-led study, GEO is best understood as an evolution of SEO for an answer-first search landscape rather than a replacement for it. See the <a href="/generative-engine-optimisation/">complete guide to generative engine optimisation</a>.</dd>
+
+      <dt id="grounding">Grounding <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The process by which an AI system anchors a generated claim to a specific retrieved passage, reducing the risk of hallucination by tying the answer to verifiable source material. Grounding is the mechanism that produces citations — without it, a response is pure model generation.</dd>
+
+      <dt id="hallucination">Hallucination <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>An AI-generated statement presented as fact that isn't supported by any retrieved source — effectively a confident fabrication. Strong grounding and high-quality retrieval reduce hallucination risk, which is one reason engines favour clearly sourced, factually dense content.</dd>
+
+      <dt id="indexation">Index / Indexation <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The process by which a search engine stores and organises a crawled page so it can be returned in results. A page can be crawled but not indexed (for example, if it's low-value or duplicate content) — indexation is the prerequisite for both ranking and AI retrieval.</dd>
+
+      <dt id="information-gain">Information Gain <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The degree to which a piece of content adds genuinely new value beyond what's already available elsewhere on a topic, as opposed to restating consensus. AI re-ranking systems tend to favour passages with high information gain — original data, novel analysis, a fresh framework — and structurally devalue repetitive content. See <a href="/blog/content-optimisation-for-geo/">content optimisation for GEO</a>.</dd>
+
+      <dt id="internal-linking">Internal Linking <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Hyperlinks connecting pages within the same website. A deliberate internal linking structure — such as a pillar-and-cluster model — distributes topical relevance and authority across a site and helps both search crawlers and AI retrieval systems understand how content relates.</dd>
+
+      <dt id="keyword-density">Keyword Density <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The frequency of a target keyword relative to total word count on a page — a once-central SEO metric. Keyword density has little to no direct influence on AI retrieval, since generative engines match content by semantic meaning rather than exact wording; over-optimising for density can actively hurt citation chances.</dd>
+
+      <dt id="knowledge-graph">Knowledge Graph <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A structured database of entities and the relationships between them, used by Google and AI systems to understand "things" rather than just strings of text. A well-established entity in a knowledge graph is more reliably retrieved and disambiguated by AI engines.</dd>
+
+      <dt id="llmo">LLMO (Large Language Model Optimisation) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A term sometimes used alongside GEO and AEO, with a slight emphasis on optimising for how large language models represent and recall information about a brand or topic — including content baked into the model's training data, not only live retrieval.</dd>
+
+      <dt id="llmstxt">llms.txt <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A proposed plain-text file, placed at a website's root, that gives AI crawlers a curated, structured summary of a site's most important content — intended as an AI-era counterpart to robots.txt. Adoption and support vary by platform, but it's a low-cost addition worth including as part of technical GEO.</dd>
+
+      <dt id="meta-description">Meta Description <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The short summary text shown beneath a page's title in search results, written in HTML but not a direct ranking factor — its job is to earn the click, and increasingly, to give engines a clean, accurate summary of the page's purpose.</dd>
+
+    </dl>
+  </section>
+
+  <section class="glossary-section" id="ns">
+    <div class="section-letter"><strong>N</strong><span>– S</span></div>
+    <dl class="term-list">
+
+      <dt id="off-page-seo">Off-Page SEO <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>SEO activity that happens away from your own website — backlink building, digital PR, brand mentions and other signals that build external authority and corroboration. Off-page signals matter for GEO too, since AI engines weigh corroboration across independent domains, including unlinked brand mentions.</dd>
+
+      <dt id="on-page-seo">On-Page SEO <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>SEO activity applied directly to a page — content quality, title tags, headings, internal links and technical structure. The foundation that both classic ranking and AI retrieval are built on.</dd>
+
+      <dt id="pagerank">PageRank <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Google's original link-analysis algorithm, which scored pages based on the quantity and quality of links pointing to them. Still part of Google's broader ranking system in evolved form, though far less influential on its own than in Google's early years — and largely irrelevant to AI citation decisions.</dd>
+
+      <dt id="passage-retrieval">Passage Retrieval <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The process by which an AI system identifies and pulls the specific text passages most relevant to a query, rather than evaluating a whole page. Passage-level retrieval is the central architectural shift that separates GEO from traditional SEO — your content is competed at the paragraph level, not the page level. See <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a>.</dd>
+
+      <dt id="query-fan-out">Query Fan-Out <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The process by which a generative engine breaks one user question into multiple parallel sub-queries to retrieve a fuller set of relevant sources, then synthesises an answer from across them. A large share of AI citations are attributed to these fan-out sub-queries rather than the original head term. See <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a>.</dd>
+
+      <dt id="rag">RAG (Retrieval-Augmented Generation) <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The architecture underpinning most generative search engines: the system retrieves relevant passages from external content first, then feeds them to a language model alongside the original question to generate a grounded, cited answer. RAG is why citation happens at the passage level and why content structure matters so much for GEO.</dd>
+
+      <dt id="re-ranking">Re-Ranking <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The filtering stage in a RAG pipeline where retrieved candidate passages are scored on signals like relevance, factual density, authority, freshness and structural clarity — and most are discarded before the final answer is generated. Surviving re-ranking, not just being retrieved, is what determines citation. See <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a>.</dd>
+
+      <dt id="robots-txt">Robots.txt <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>A plain-text file at a website's root that instructs crawlers — including AI bots — which parts of a site they may or may not access. Misconfigured robots.txt rules, including default settings on some hosting platforms, can silently block AI crawlers from a site entirely.</dd>
+
+      <dt id="schema-markup">Schema Markup (Structured Data) <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Code added to a page — typically in JSON-LD format, using the Schema.org vocabulary — that explicitly labels what different pieces of content are (an article, a FAQ, a product, an author), helping both search engines and AI systems parse and trust the content with less ambiguity.</dd>
+
+      <dt id="semantic-search">Semantic Search <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>Search based on the meaning of a query rather than exact keyword matching, using vector embeddings to find conceptually related content even when the wording differs. Semantic search is the foundation that both modern Google ranking and all generative engine retrieval are built on.</dd>
+
+      <dt id="serp">SERP (Search Engine Results Page) <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The page returned after a search query, traditionally a ranked list of links, now increasingly populated with AI Overviews, featured snippets and other non-link features that reduce the visual and functional space available to standard organic results.</dd>
+
+      <dt id="share-of-model">Share of Model / Share of Voice <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A GEO measurement metric describing what percentage of relevant AI-generated answers in a category mention or cite your brand, relative to competitors — the generative-search equivalent of share of voice in traditional marketing. Tracking share of model is how GEO performance is measured at scale.</dd>
+
+      <dt id="sitemap">Sitemap (XML) <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>A file listing a website's important URLs, submitted to search engines to help them discover and crawl content more efficiently — particularly useful for large or frequently updated sites.</dd>
+
+    </dl>
+  </section>
+
+  <section class="glossary-section" id="tz">
+    <div class="section-letter"><strong>T</strong><span>– Z</span></div>
+    <dl class="term-list">
+
+      <dt id="title-tag">Title Tag <span class="term-tag tag-seo">SEO</span></dt>
+      <dd>The HTML element defining a page's title, shown as the clickable headline in search results and browser tabs. One of the strongest on-page SEO signals, and a strong contributor to heading–query alignment in AI retrieval too.</dd>
+
+      <dt id="topical-authority">Topical Authority <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>The degree to which a website is recognised — by both search engines and AI systems — as a comprehensive, trustworthy source on a given subject, typically built through a structured cluster of interlinked content covering a topic in depth rather than isolated pages.</dd>
+
+      <dt id="vector-embedding">Vector Embedding <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A numerical representation of a piece of text's meaning, positioned in a high-dimensional space such that semantically similar content sits close together. Embeddings are what allow AI retrieval systems to match a query to relevant content even when no exact keywords overlap — the mathematical foundation of semantic search.</dd>
+
+      <dt id="zero-click">Zero-Click Search <span class="term-tag tag-geo">GEO</span></dt>
+      <dd>A search session that ends without the user clicking through to any external website, because their answer was resolved directly on the results page via an AI Overview, featured snippet or similar feature. Zero-click behaviour is significantly higher on AI-powered surfaces than on traditional search. See <a href="/blog/why-ai-is-reshaping-search/">why AI is reshaping search</a>.</dd>
+
+    </dl>
+
+    <p class="last-updated">Last updated: June 2026. New terms added as the vocabulary evolves.</p>
+  </section>
+
+</div>
+</div>
+
+<section class="faq-section" id="faqs">
+  <div class="faq-inner">
+    <span class="faq-label">Common questions</span>
+    <h2 class="faq-heading">Frequently asked questions</h2>
+    <ul class="faq-list">
+
+      <li class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+          <span class="faq-question-text">What's the difference between SEO and GEO?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq-1" role="region">
+          <div class="faq-answer-inner">
+            SEO optimises content to rank in a list of links; GEO optimises content to be retrieved and cited inside a synthesised AI answer. SEO foundations — crawlability, indexation, technical health — remain the entry ticket GEO builds on top of. The two disciplines overlap significantly: strong SEO structure almost always aids GEO performance too.
+          </div>
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+          <span class="faq-question-text">Is GEO the same as AEO?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq-2" role="region">
+          <div class="faq-answer-inner">
+            Largely, yes. Most practitioners use GEO and AEO to describe the same goal — visibility inside AI-generated answers — with AEO carrying a slightly stronger historical link to direct-answer formats like featured snippets and voice search. LLMO is a third term with slightly different emphasis (training data vs. live retrieval). In practice, all three describe adjacent parts of the same problem.
+          </div>
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+          <span class="faq-question-text">Do I need to learn a whole new vocabulary for AI search?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq-3" role="region">
+          <div class="faq-answer-inner">
+            Partly. Many GEO concepts (RAG, query fan-out, chunking, grounding) describe genuinely new mechanics, but they sit on top of SEO fundamentals you likely already know. This glossary is designed to bridge the two rather than treat them as separate worlds — if you understand traditional SEO, most GEO concepts will click quickly.
+          </div>
+        </div>
+      </li>
+
+      <li class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+          <span class="faq-question-text">Which terms matter most for getting started with GEO?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer" id="faq-4" role="region">
+          <div class="faq-answer-inner">
+            Start with RAG, query fan-out, citation and passage retrieval — together they explain the core mechanic everything else builds on. Once you understand how generative engines retrieve and rank passages before generating an answer, the content optimisation implications follow naturally. The <a href="/blog/how-ai-search-engines-decide-what-to-cite/">how AI search engines decide what to cite</a> guide walks through how they fit together.
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
+
+<div class="cta-band">
+  <span class="cta-label">Work with Keval</span>
+  <h2>Want help applying <em>these concepts</em>?</h2>
+  <p>Search vocabulary is moving fast — if you'd like a deeper explanation tailored to your site, or a GEO audit against the terms above, get in touch.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Get in touch</a>
+    <a href="/generative-engine-optimisation/" class="btn-ghost">GEO guide</a>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Keval Patel &mdash; GEO &amp; AI Visibility Consultant, London</p>
+  <div class="footer-links">
+    <a href="/privacy/">Privacy</a>
+    <a href="/blog/">Articles</a>
+    <a href="/#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  const ham = document.querySelector('.nav-hamburger');
+  const drawer = document.querySelector('.mobile-drawer');
+  const overlay = document.querySelector('.mobile-overlay');
+  function toggleDrawer(open) {
+    ham.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open);
+  }
+  ham.addEventListener('click', () => toggleDrawer(!drawer.classList.contains('open')));
+  overlay.addEventListener('click', () => toggleDrawer(false));
+
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', !expanded);
+      answer.style.maxHeight = expanded ? '0' : answer.scrollHeight + 'px';
+    });
+  });
+
+  // Letter-jump active state on scroll
+  const sections = ['af', 'gm', 'ns', 'tz', 'faqs'].map(id => document.getElementById(id)).filter(Boolean);
+  const jumpLinks = document.querySelectorAll('.letter-jump-link');
+  const setJumpActive = id => {
+    jumpLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+  const jumpObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setJumpActive(e.target.id); });
+  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+  sections.forEach(s => jumpObserver.observe(s));
+</script>
+
+</body>
+</html>
