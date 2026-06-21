@@ -176,7 +176,54 @@
   .article-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; font-weight: 400; }
   .article-meta-dot { color: rgba(22,22,22,0.3); }
 
-  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 48px 100px; }
+  /* ── TOC LAYOUT ────────────────────────────────────────── */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 720px);
+    gap: 0 64px;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 48px;
+    align-items: start;
+  }
+  .article-content { min-width: 0; }
+
+  .toc {
+    position: sticky;
+    top: 88px;
+    align-self: start;
+    padding-top: 72px;
+    padding-bottom: 48px;
+  }
+  .toc-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    display: block;
+    margin-bottom: 16px;
+  }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-list > li { margin-bottom: 0; }
+  .toc-link {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.03em;
+    line-height: 1.45;
+    color: rgba(22,22,22,0.4);
+    text-decoration: none;
+    padding: 5px 0 5px 10px;
+    border-left: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .toc-link:hover { color: var(--black); border-left-color: rgba(22,22,22,0.2); }
+  .toc-link.active { color: var(--crimson-light); border-left-color: var(--crimson); font-weight: 500; }
+  .toc-sub { list-style: none; padding: 0; margin: 0; }
+  .toc-sub-link { font-size: 9px; padding-left: 20px; }
+
+  .article-body { padding: 72px 0 100px; }
   .article-body .lead { font-family: var(--serif); font-size: clamp(20px, 2.2vw, 26px); font-weight: 400; line-height: 1.55; color: var(--black); margin-bottom: 48px; border-left: 3px solid var(--crimson); padding-left: 28px; }
   .article-body h2 { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: var(--black); line-height: 1.15; margin-top: 64px; margin-bottom: 20px; }
   .article-body h3 { font-family: var(--serif); font-size: clamp(18px, 2vw, 24px); font-weight: 500; color: var(--black); line-height: 1.25; margin-top: 44px; margin-bottom: 14px; }
@@ -197,7 +244,7 @@
   .stat-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-grey); line-height: 1.4; }
   .stat-source { font-family: var(--mono); font-size: 9px; color: rgba(22,22,22,0.35); margin-top: 4px; }
 
-  .faq-section { max-width: 720px; margin: 0 auto; padding: 0 48px 80px; }
+  .faq-section { padding: 0 0 80px; }
   .faq-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 12px; }
   .faq-heading { font-family: var(--serif); font-size: clamp(26px, 3vw, 38px); font-weight: 600; color: var(--black); line-height: 1.15; margin-bottom: 40px; }
   .faq-list { list-style: none; border-top: 1px solid var(--border-light); }
@@ -235,6 +282,12 @@
 
   .source-note { font-family: var(--mono); font-size: 11px; color: rgba(22,22,22,0.4); letter-spacing: 0.03em; line-height: 1.7; border-top: 1px solid var(--border-light); padding-top: 24px; margin-top: 8px; }
 
+  @media (max-width: 1060px) {
+    .article-layout { grid-template-columns: 1fr; padding: 0; }
+    .toc { display: none; }
+    .article-body { padding: 72px 48px 100px; }
+    .faq-section { padding: 0 48px 80px; }
+  }
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links, .nav-cta { display: none; }
@@ -319,11 +372,31 @@
   </div>
 </div>
 
+<div class="article-layout">
+
+<aside class="toc" aria-label="Article contents">
+  <span class="toc-label">Contents</span>
+  <ol class="toc-list">
+    <li><a class="toc-link" href="#ten-blue-links">From ten blue links</a></li>
+    <li>
+      <a class="toc-link" href="#adoption-data">The data: adoption &amp; zero-click</a>
+      <ol class="toc-sub">
+        <li><a class="toc-link toc-sub-link" href="#how-fast">How fast people moved</a></li>
+        <li><a class="toc-link toc-sub-link" href="#zero-click">Rise of zero-click search</a></li>
+      </ol>
+    </li>
+    <li><a class="toc-link" href="#organic-traffic">What's happening to organic</a></li>
+    <li><a class="toc-link" href="#early-movers">Why early movers win</a></li>
+    <li><a class="toc-link" href="#faqs">FAQs</a></li>
+  </ol>
+</aside>
+
+<div class="article-content">
 <article class="article-body">
 
   <p class="lead">A billion people now use AI to get answers. Search engines are responding with features that resolve queries without a click. Organic traffic is falling. This is not a passing trend — it is a structural shift in how information is discovered. Here is what the data shows, and what it means for your brand.</p>
 
-  <h2>From ten blue links to synthesised answers</h2>
+  <h2 id="ten-blue-links">From ten blue links to synthesised answers</h2>
 
   <p>For twenty years, search worked the same way: a query produced a ranked list of links, and the user clicked through to a website. The website got the visit. That model is breaking down.</p>
 
@@ -331,9 +404,9 @@
 
   <p>Understanding the mechanics is the first step. <a href="/blog/how-ai-search-engines-decide-what-to-cite/">How AI search engines decide what to cite</a> explains the retrieval and citation pipeline in detail. This article focuses on the scale and speed of the shift — and the commercial implications for businesses that depend on search traffic.</p>
 
-  <h2>The data: adoption and zero-click trends</h2>
+  <h2 id="adoption-data">The data: adoption and zero-click trends</h2>
 
-  <h3>How fast people moved to AI</h3>
+  <h3 id="how-fast">How fast people moved to AI</h3>
 
   <p>The adoption numbers are striking. ChatGPT reached one billion monthly users by early 2025 (Sensor Tower / Reuters). Gemini passed 750 million monthly active users. Google's AI Overviews now serve more than two billion queries every month — that figure comes from Google itself.</p>
 
@@ -362,7 +435,7 @@
 
   <p>To put this in perspective: 37% of people now begin their information-seeking journey in an AI interface rather than a search engine (Eight Oh Two, 2025). A further 56% still start with a search engine (Bain), but an increasing share of those searches are answered by AI features before a click ever happens.</p>
 
-  <h3>The rise of the zero-click search</h3>
+  <h3 id="zero-click">The rise of the zero-click search</h3>
 
   <p>Zero-click rates measure what proportion of searches end without the user clicking any result. The trend was already underway before generative AI — roughly <strong>60% of traditional Google searches</strong> already end without a click, driven by featured snippets, knowledge panels and People Also Ask boxes.</p>
 
@@ -372,7 +445,7 @@
     <p>"In AI Mode, roughly 93 in every 100 searches end without a single click to a source website. The traditional link economy is being restructured from the top of the funnel down." — Semrush, 2025</p>
   </div>
 
-  <h2>What's happening to organic traffic</h2>
+  <h2 id="organic-traffic">What's happening to organic traffic</h2>
 
   <p>The zero-click rise translates directly into traffic losses for websites that rank on informational queries. Seer Interactive found a <strong>61% drop in click-through rate</strong> for pages that previously ranked well for queries now answered by AI Overviews. Ahrefs reported that clicks to the number-one organic result fell by <strong>58%</strong> on queries with an AI Overview present.</p>
 
@@ -382,7 +455,7 @@
 
   <p>The brands most exposed are those whose content is primarily informational — definition pages, how-to guides, comparison articles. These are exactly the query types AI engines answer in full. Transactional content (pricing, booking, product pages) is less immediately threatened, but the top-of-funnel that used to feed transactional intent is being captured upstream.</p>
 
-  <h2>Why early movers win</h2>
+  <h2 id="early-movers">Why early movers win</h2>
 
   <p>Not every brand is losing traffic. Semrush found that when a brand is cited in an AI answer, the resulting referral visits convert at <strong>4.4 times the rate</strong> of typical organic clicks — because the user arrives already primed by a recommendation. Seer Interactive found that brands consistently cited in AI answers saw <strong>35% more organic clicks</strong> overall, as AI mentions reinforce brand recognition and drive navigational searches.</p>
 
@@ -402,7 +475,7 @@
 
 </article>
 
-<section class="faq-section">
+<section class="faq-section" id="faqs">
   <span class="faq-label">Common questions</span>
   <h2 class="faq-heading">FAQs</h2>
   <ul class="faq-list" role="list">
@@ -469,6 +542,8 @@
 
   </ul>
 </section>
+</div><!-- /.article-content -->
+</div><!-- /.article-layout -->
 
 <div class="cta-band">
   <span class="cta-label">Work with Keval</span>
@@ -510,6 +585,24 @@
       answer.style.maxHeight = expanded ? '0' : answer.scrollHeight + 'px';
     });
   });
+
+  // TOC active section tracking
+  const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+  const headings = Array.from(tocLinks)
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = id => {
+    tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  headings.forEach(h => observer.observe(h));
 </script>
 
 </body>
