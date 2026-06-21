@@ -280,11 +280,20 @@ nav {
   .article-meta-dot { color: rgba(22,22,22,0.3); }
 
   /* ── ARTICLE BODY ───────────────────────────────────────── */
-  .article-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 72px 48px 100px;
-  }
+  /* ── TOC LAYOUT ────────────────────────────────────────── */
+  .article-layout { display: grid; grid-template-columns: 200px minmax(0, 720px); gap: 0 64px; max-width: 1060px; margin: 0 auto; padding: 0 48px; align-items: start; }
+  .article-content { min-width: 0; }
+  .toc { position: sticky; top: 88px; align-self: start; padding-top: 72px; padding-bottom: 48px; }
+  .toc-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 16px; }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-list > li { margin-bottom: 0; }
+  .toc-link { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em; line-height: 1.45; color: rgba(22,22,22,0.4); text-decoration: none; padding: 5px 0 5px 10px; border-left: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .toc-link:hover { color: var(--black); border-left-color: rgba(22,22,22,0.2); }
+  .toc-link.active { color: var(--crimson-light); border-left-color: var(--crimson); font-weight: 500; }
+  .toc-sub { list-style: none; padding: 0; margin: 0; }
+  .toc-sub-link { font-size: 9px; padding-left: 20px; }
+
+  .article-body { padding: 72px 0 100px; }
 
   .article-body .lead {
     font-family: var(--serif);
@@ -390,11 +399,7 @@ nav {
   }
 
   /* ── FAQ SECTION ────────────────────────────────────────── */
-  .faq-section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 48px 80px;
-  }
+  .faq-section { padding: 0 0 80px; }
   .faq-label {
     font-family: var(--mono);
     font-size: 10px;
@@ -478,6 +483,12 @@ nav {
     font-weight: 400;
   }
 
+  @media (max-width: 1060px) {
+    .article-layout { grid-template-columns: 1fr; padding: 0; }
+    .toc { display: none; }
+    .article-body { padding: 72px 48px 100px; }
+    .faq-section { padding: 0 48px 80px; }
+  }
   @media (max-width: 900px) {
     .faq-section { padding: 0 24px 64px; }
     .faq-question-text { font-size: 16px; }
@@ -557,6 +568,37 @@ nav {
   <img src="/blog/what-is-geo/hero.jpg" alt="Generative Engine Optimisation — AI search queries and GEO concept">
 </div>
 
+<div class="article-layout">
+
+<aside class="toc" aria-label="Article contents">
+  <span class="toc-label">Contents</span>
+  <ol class="toc-list">
+    <li><a class="toc-link" href="#landscape-changed">The landscape has changed</a></li>
+    <li><a class="toc-link" href="#what-is-geo">What is GEO?</a></li>
+    <li>
+      <a class="toc-link" href="#how-ai-decides">How AI decides what to surface</a>
+      <ol class="toc-sub">
+        <li><a class="toc-link toc-sub-link" href="#entity-authority">Entity authority</a></li>
+        <li><a class="toc-link toc-sub-link" href="#content-structure">Content structure</a></li>
+      </ol>
+    </li>
+    <li><a class="toc-link" href="#geo-vs-seo">GEO vs traditional SEO</a></li>
+    <li>
+      <a class="toc-link" href="#four-pillars">The four pillars</a>
+      <ol class="toc-sub">
+        <li><a class="toc-link toc-sub-link" href="#technical-foundation">Technical foundation</a></li>
+        <li><a class="toc-link toc-sub-link" href="#entity-building">Entity building</a></li>
+        <li><a class="toc-link toc-sub-link" href="#content-legibility">Content legibility</a></li>
+        <li><a class="toc-link toc-sub-link" href="#measurement">Measurement</a></li>
+      </ol>
+    </li>
+    <li><a class="toc-link" href="#why-now">Why now</a></li>
+    <li><a class="toc-link" href="#where-to-start">Where to start</a></li>
+    <li><a class="toc-link" href="#faqs">FAQs</a></li>
+  </ol>
+</aside>
+
+<div class="article-content">
 <!-- ARTICLE BODY -->
 <div class="article-body">
 
@@ -564,7 +606,7 @@ nav {
     AI tools now answer millions of search queries every day — without users clicking a single link. GEO is the discipline of making your brand visible, citable, and authoritative in those answers. Here's what it is, how it works, and why it matters now.
   </p>
 
-  <h2>The search landscape has quietly changed</h2>
+  <h2 id="landscape-changed">The search landscape has quietly changed</h2>
   <p>
     For the past two decades, SEO has meant one thing: ranking on Google. Get your pages to appear in the top ten results, earn the click, drive the traffic. The model was simple, measurable, and well understood.
   </p>
@@ -579,7 +621,7 @@ nav {
     <p>"In traditional search, you compete for position. In AI search, you compete to be cited at all. Those are fundamentally different challenges."</p>
   </div>
 
-  <h2>What is Generative Engine Optimisation?</h2>
+  <h2 id="what-is-geo">What is Generative Engine Optimisation?</h2>
   <p>
     Generative Engine Optimisation — GEO — is the practice of making your brand visible, credible, and citable within AI-generated search responses. It's the answer to the question: how do you show up when there are no rankings to rank for?
   </p>
@@ -593,7 +635,7 @@ nav {
     <li><strong>Corroboration</strong> — does the wider web reinforce what you say about yourself?</li>
   </ul>
 
-  <h2>How AI systems decide what to surface</h2>
+  <h2 id="how-ai-decides">How AI systems decide what to surface</h2>
   <p>
     Large language models like GPT-4, Gemini, and Claude are trained on vast amounts of web content. When a user asks a question, the model draws on that training — plus, in some cases, real-time retrieval — to compose an answer.
   </p>
@@ -601,19 +643,19 @@ nav {
     The brands that appear in those answers are not necessarily the biggest or best-known. They are the ones that the model has encountered frequently, in credible contexts, with consistent and specific information attached to them.
   </p>
 
-  <h3>The role of entity authority</h3>
+  <h3 id="entity-authority">The role of entity authority</h3>
   <p>
     AI models build internal representations of entities — people, companies, products, concepts. The richer and more consistent that representation, the more likely the model is to reference it when composing a relevant answer. Sparse, inconsistent, or contradictory information about your brand weakens your entity authority and reduces your chances of being cited.
   </p>
 
-  <h3>The role of content structure</h3>
+  <h3 id="content-structure">The role of content structure</h3>
   <p>
     Models prefer content that makes clear, specific, attributable claims. Vague brand copy — the kind optimised for persuasion rather than information — performs poorly in AI contexts. Content written with factual precision, clear structure, and specific evidence tends to be drawn on more heavily.
   </p>
 
   <hr class="article-divider">
 
-  <h2>How GEO differs from traditional SEO</h2>
+  <h2 id="geo-vs-seo">How GEO differs from traditional SEO</h2>
   <p>
     It's important to be clear: GEO does not replace SEO. The technical foundations — crawlability, indexation, structured data, site architecture — remain essential. Without them, your content may not reach the training data or retrieval systems that AI models rely on.
   </p>
@@ -621,31 +663,31 @@ nav {
     But GEO adds a layer on top. Where SEO asks "can search engines find and understand my content?", GEO asks "will AI systems reference my brand when forming an answer?". The optimisation targets are different, the success metrics are different, and the content strategy is different.
   </p>
 
-  <h2>The four pillars of a GEO strategy</h2>
+  <h2 id="four-pillars">The four pillars of a GEO strategy</h2>
 
-  <h3>1. Technical foundation</h3>
+  <h3 id="technical-foundation">1. Technical foundation</h3>
   <p>
     Ensure your site is technically sound. Clean architecture, fast load times, structured data markup, and accurate indexation are prerequisites. If a model's retrieval system can't access your content, nothing else matters.
   </p>
 
-  <h3>2. Entity building</h3>
+  <h3 id="entity-building">2. Entity building</h3>
   <p>
     Develop a consistent, well-corroborated entity presence across the web. This means Wikipedia entries where appropriate, consistent NAP data, authoritative mentions in third-party publications, and a clear brand narrative that appears across multiple credible sources.
   </p>
 
-  <h3>3. Content for AI legibility</h3>
+  <h3 id="content-legibility">3. Content for AI legibility</h3>
   <p>
     Audit your content for specificity and citability. Replace vague claims with measurable ones. Structure content with clear headings, definitions, and factual statements. Anticipate the questions your audience asks AI tools and create content that directly answers them.
   </p>
 
-  <h3>4. Measurement</h3>
+  <h3 id="measurement">4. Measurement</h3>
   <p>
     Track your brand's presence in AI-generated answers. Tools like Peec AI, Otterly, and custom prompt-monitoring frameworks allow you to test how often and how accurately your brand appears across different AI platforms. What gets measured, gets managed.
   </p>
 
   <hr class="article-divider">
 
-  <h2>Why now is the moment to act</h2>
+  <h2 id="why-now">Why now is the moment to act</h2>
   <p>
     GEO is still an emerging discipline. Most brands have no strategy at all. The organisations that move now — that start building entity authority, auditing their content for AI legibility, and establishing measurement frameworks — will have a significant advantage over those that wait.
   </p>
@@ -657,7 +699,7 @@ nav {
     <p>Most brands have zero GEO strategy. The organisations that move first will establish the citation and authority signals that are hardest to displace later.</p>
   </div>
 
-  <h2>Where to start</h2>
+  <h2 id="where-to-start">Where to start</h2>
   <p>
     If you're new to GEO, the most valuable first step is an honest audit of where your brand currently stands in AI responses. Ask the tools your customers use the questions they're likely to ask. See if your brand appears, and if so, how accurately it's represented.
   </p>
@@ -671,7 +713,7 @@ nav {
 </div>
 
 <!-- FAQ -->
-<section class="faq-section" aria-label="Frequently asked questions">
+<section class="faq-section" id="faqs" aria-label="Frequently asked questions">
   <span class="faq-label">FAQ</span>
   <h2 class="faq-heading">Common questions about GEO</h2>
   <ul class="faq-list">
@@ -798,6 +840,8 @@ nav {
 
   </ul>
 </section>
+</div><!-- /.article-content -->
+</div><!-- /.article-layout -->
 
 <!-- CTA -->
 <div class="cta-band">
@@ -821,6 +865,13 @@ nav {
 </footer>
 
 <script>
+// TOC active section tracking
+const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+const headings = Array.from(tocLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const setActive = id => tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+const tocObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }); }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+headings.forEach(h => tocObserver.observe(h));
+
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {

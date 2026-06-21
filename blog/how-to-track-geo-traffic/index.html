@@ -107,11 +107,20 @@ nav {
   .article-meta-dot { color: rgba(22,22,22,0.3); }
 
   /* ── ARTICLE BODY ───────────────────────────────────────── */
-  .article-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 72px 48px 100px;
-  }
+  /* ── TOC LAYOUT ────────────────────────────────────────── */
+  .article-layout { display: grid; grid-template-columns: 200px minmax(0, 720px); gap: 0 64px; max-width: 1060px; margin: 0 auto; padding: 0 48px; align-items: start; }
+  .article-content { min-width: 0; }
+  .toc { position: sticky; top: 88px; align-self: start; padding-top: 72px; padding-bottom: 48px; }
+  .toc-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 16px; }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-list > li { margin-bottom: 0; }
+  .toc-link { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em; line-height: 1.45; color: rgba(22,22,22,0.4); text-decoration: none; padding: 5px 0 5px 10px; border-left: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .toc-link:hover { color: var(--black); border-left-color: rgba(22,22,22,0.2); }
+  .toc-link.active { color: var(--crimson-light); border-left-color: var(--crimson); font-weight: 500; }
+  .toc-sub { list-style: none; padding: 0; margin: 0; }
+  .toc-sub-link { font-size: 9px; padding-left: 20px; }
+
+  .article-body { padding: 72px 0 100px; }
 
   .article-body .lead {
     font-family: var(--serif);
@@ -250,6 +259,11 @@ nav {
   .footer-links a:hover { color: #161616; }
 
   /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 1060px) {
+    .article-layout { grid-template-columns: 1fr; padding: 0; }
+    .toc { display: none; }
+    .article-body { padding: 72px 48px 100px; }
+  }
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links, .nav-cta { display: none; }
@@ -331,6 +345,23 @@ nav {
   </div>
 </div>
 
+<div class="article-layout">
+
+<aside class="toc" aria-label="Article contents">
+  <span class="toc-label">Contents</span>
+  <ol class="toc-list">
+    <li><a class="toc-link" href="#why-hard">Why it's hard to track</a></li>
+    <li><a class="toc-link" href="#ga4-segmentation">GA4 referrer segmentation</a></li>
+    <li><a class="toc-link" href="#hidden-direct">Recover hidden direct traffic</a></li>
+    <li><a class="toc-link" href="#utm-parameters">UTM parameters</a></li>
+    <li><a class="toc-link" href="#server-logs">Monitor server logs</a></li>
+    <li><a class="toc-link" href="#prompt-audits">Manual prompt audits</a></li>
+    <li><a class="toc-link" href="#dedicated-tool">Dedicated GEO tools</a></li>
+    <li><a class="toc-link" href="#putting-together">Putting it together</a></li>
+  </ol>
+</aside>
+
+<div class="article-content">
 <!-- ARTICLE BODY -->
 <div class="article-body">
 
@@ -338,7 +369,7 @@ nav {
     Generative Engine Optimization (GEO) traffic — visits that originate from AI assistants like ChatGPT, Perplexity, Gemini, and Claude — doesn't behave like traditional organic search traffic. It arrives differently, it's labelled inconsistently, and most analytics setups miss it by default. Here's how to actually capture and measure it.
   </p>
 
-  <h2>Why GEO Traffic Is Hard to Track</h2>
+  <h2 id="why-hard">Why GEO Traffic Is Hard to Track</h2>
   <p>Search engines send a referrer string and, increasingly, structured query data. AI assistants are inconsistent:</p>
   <ul>
     <li>Some (like Perplexity and Copilot) pass a clean referrer domain</li>
@@ -348,7 +379,7 @@ nav {
   </ul>
   <p>This means a chunk of real GEO-driven traffic hides inside your "Direct" channel in GA4 right now, uncounted.</p>
 
-  <h2>Set Up Referrer-Based Segmentation in GA4</h2>
+  <h2 id="ga4-segmentation">Set Up Referrer-Based Segmentation in GA4</h2>
   <p>Start with what's visible. In GA4, build a custom channel grouping or exploration that isolates known AI referrer domains:</p>
   <ul>
     <li><code>chat.openai.com</code> / <code>chatgpt.com</code></li>
@@ -367,7 +398,7 @@ nav {
   </ol>
   <p>This gives you a clean, dedicated channel instead of these sessions being bucketed into "Referral" or "Direct."</p>
 
-  <h2>Recover the Hidden "Direct" Traffic</h2>
+  <h2 id="hidden-direct">Recover the Hidden "Direct" Traffic</h2>
   <p>Because many AI app contexts don't pass a referrer, you need indirect signals to estimate how much of your "Direct" traffic is actually AI-originated:</p>
   <ul>
     <li><strong>Landing page patterns:</strong> AI-referred sessions often land deep on a specific answer-style page rather than the homepage. A spike in direct sessions to a single long-tail page is a strong GEO signal.</li>
@@ -376,7 +407,7 @@ nav {
   </ul>
   <p>This won't give you exact numbers, but it lets you build a defensible estimate rather than ignoring the gap entirely.</p>
 
-  <h2>Use UTM Parameters Where You Control the Link</h2>
+  <h2 id="utm-parameters">Use UTM Parameters Where You Control the Link</h2>
   <p>Anywhere you can influence the link AI tools might cite — your own structured data, llms.txt file, schema markup, or content you syndicate — append UTM parameters:</p>
   <pre><code>?utm_source=chatgpt&amp;utm_medium=ai_referral&amp;utm_campaign=geo</code></pre>
   <p>This won't catch organic citations the AI generates unprompted, but it does help with:</p>
@@ -386,7 +417,7 @@ nav {
     <li>Any sponsored or directly submitted feeds</li>
   </ul>
 
-  <h2>Monitor Server Logs for Bot and Crawler Activity</h2>
+  <h2 id="server-logs">Monitor Server Logs for Bot and Crawler Activity</h2>
   <p>GA4 only sees browser-rendered sessions. To understand whether AI crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended) are actually accessing and indexing your content in the first place, you need server-side log file analysis:</p>
   <ul>
     <li>Filter raw server logs (or use a tool like Screaming Frog's log file analyser) by known AI crawler user-agents</li>
@@ -395,7 +426,7 @@ nav {
   </ul>
   <p>This closes the loop between "is my content being read by AI" and "is that translating into visits."</p>
 
-  <h2>Run Manual Prompt Audits Alongside Analytics</h2>
+  <h2 id="prompt-audits">Run Manual Prompt Audits Alongside Analytics</h2>
   <p>Because passive tracking has real gaps, pair it with active testing:</p>
   <ol>
     <li>Build a list of target prompts your audience is likely to ask AI assistants</li>
@@ -409,12 +440,12 @@ nav {
     <p>GEO traffic measurement right now is closer to triangulation than precise attribution.</p>
   </div>
 
-  <h2>Consider a Dedicated GEO Tracking Tool</h2>
+  <h2 id="dedicated-tool">Consider a Dedicated GEO Tracking Tool</h2>
   <p>Given the gaps in native analytics, several tools now specialise in AI visibility tracking specifically — running automated prompt audits and monitoring citation presence across platforms on a schedule, rather than relying on manual spot-checks. These are worth layering on top of GA4 rather than replacing it, since they answer "are we being cited" while GA4 still answers "is that converting into visits."</p>
 
   <hr class="article-divider">
 
-  <h2>Putting It Together</h2>
+  <h2 id="putting-together">Putting It Together</h2>
   <p>None of these layers alone gives a complete picture. Combining confirmed referral data with crawl evidence and prompt-level testing is the most reliable approach until AI platforms standardise referrer behaviour.</p>
 
   <table>
@@ -455,6 +486,8 @@ nav {
   </table>
 
 </div>
+</div><!-- /.article-content -->
+</div><!-- /.article-layout -->
 
 <!-- CTA -->
 <div class="cta-band">
@@ -478,6 +511,13 @@ nav {
 </footer>
 
 <script>
+// TOC active section tracking
+const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+const headings = Array.from(tocLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const setActive = id => tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+const tocObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }); }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+headings.forEach(h => tocObserver.observe(h));
+
 const hamburger = document.querySelector('.nav-hamburger');
 const drawer = document.querySelector('.mobile-drawer');
 const overlay = document.querySelector('.mobile-overlay');

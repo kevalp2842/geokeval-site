@@ -195,11 +195,20 @@ nav {
   .article-meta-dot { color: rgba(22,22,22,0.3); }
 
   /* ── ARTICLE BODY ───────────────────────────────────────── */
-  .article-body {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 72px 48px 100px;
-  }
+  /* ── TOC LAYOUT ────────────────────────────────────────── */
+  .article-layout { display: grid; grid-template-columns: 200px minmax(0, 720px); gap: 0 64px; max-width: 1060px; margin: 0 auto; padding: 0 48px; align-items: start; }
+  .article-content { min-width: 0; }
+  .toc { position: sticky; top: 88px; align-self: start; padding-top: 72px; padding-bottom: 48px; }
+  .toc-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 16px; }
+  .toc-list { list-style: none; padding: 0; margin: 0; }
+  .toc-list > li { margin-bottom: 0; }
+  .toc-link { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 0.03em; line-height: 1.45; color: rgba(22,22,22,0.4); text-decoration: none; padding: 5px 0 5px 10px; border-left: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .toc-link:hover { color: var(--black); border-left-color: rgba(22,22,22,0.2); }
+  .toc-link.active { color: var(--crimson-light); border-left-color: var(--crimson); font-weight: 500; }
+  .toc-sub { list-style: none; padding: 0; margin: 0; }
+  .toc-sub-link { font-size: 9px; padding-left: 20px; }
+
+  .article-body { padding: 72px 0 100px; }
 
   .article-body .lead {
     font-family: var(--serif);
@@ -337,11 +346,7 @@ nav {
   }
 
   /* ── FAQ ACCORDION ──────────────────────────────────────── */
-  .faq-section {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 48px 80px;
-  }
+  .faq-section { padding: 0 0 80px; }
   .faq-label {
     font-family: var(--mono);
     font-size: 10px;
@@ -411,6 +416,12 @@ nav {
   }
 
   /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 1060px) {
+    .article-layout { grid-template-columns: 1fr; padding: 0; }
+    .toc { display: none; }
+    .article-body { padding: 72px 48px 100px; }
+    .faq-section { padding: 0 48px 80px; }
+  }
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links, .nav-cta { display: none; }
@@ -494,6 +505,29 @@ nav {
   </div>
 </div>
 
+<div class="article-layout">
+
+<aside class="toc" aria-label="Article contents">
+  <span class="toc-label">Contents</span>
+  <ol class="toc-list">
+    <li><a class="toc-link" href="#retrieves-passages">AI doesn't rank pages</a></li>
+    <li>
+      <a class="toc-link" href="#five-stage-pipeline">The five-stage pipeline</a>
+      <ol class="toc-sub">
+        <li><a class="toc-link toc-sub-link" href="#stage-1-fan-out">Stage 1 — Query fan-out</a></li>
+        <li><a class="toc-link toc-sub-link" href="#stage-2-retrieval">Stage 2 — Retrieval</a></li>
+        <li><a class="toc-link toc-sub-link" href="#stage-3-reranking">Stage 3 — Re-ranking</a></li>
+        <li><a class="toc-link toc-sub-link" href="#stage-4-citation">Stage 4 — Citation decision</a></li>
+        <li><a class="toc-link toc-sub-link" href="#stage-5-assembly">Stage 5 — Assembly</a></li>
+      </ol>
+    </li>
+    <li><a class="toc-link" href="#ranking-not-enough">Why #1 ranking isn't enough</a></li>
+    <li><a class="toc-link" href="#content-implications">What this means for content</a></li>
+    <li><a class="toc-link" href="#faqs">FAQs</a></li>
+  </ol>
+</aside>
+
+<div class="article-content">
 <!-- ARTICLE BODY -->
 <div class="article-body">
 
@@ -501,7 +535,7 @@ nav {
     When you ask ChatGPT, Perplexity or Google's AI Overviews a question, you get a single synthesised answer that names a handful of sources. Your brand is either in that answer or it isn't — and unlike a page-two Google listing, there's no "almost." Understanding why one source gets cited and another gets ignored is the foundation of everything in <a href="/blog/what-is-geo/">generative engine optimisation</a>. The short version: AI search engines don't rank pages, they retrieve and re-rank individual passages, and citation is the last filter in a multi-stage pipeline that most content never survives.
   </p>
 
-  <h2>AI doesn't rank pages — it retrieves and synthesises passages</h2>
+  <h2 id="retrieves-passages">AI doesn't rank pages — it retrieves and synthesises passages</h2>
   <p>
     Traditional search answers a query by ordering whole pages: it looks at keywords, links and authority, then hands you ten blue links to choose from. Generative search works differently. It breaks your content into fragments, scores each fragment against the meaning of the question, and stitches the best fragments from across the web into one answer — attaching citations to the specific claims those fragments support.
   </p>
@@ -509,7 +543,7 @@ nav {
     That single architectural difference explains nearly every "unusual" thing about AI visibility. A 4,000-word guide can be cited for one paragraph and ignored for the other thirty-nine. A page ranking fifth on Google can be cited while the page ranking first is passed over, because citation is decided at the level of the passage, not the page. If you take one idea from this article, take this: <strong>you are no longer optimising pages to rank, you are optimising passages to be retrieved and reused.</strong> That shift is also the clearest line between <a href="/geo-vs-seo/">how GEO differs from traditional SEO</a>.
   </p>
 
-  <h2>The five-stage AI citation pipeline</h2>
+  <h2 id="five-stage-pipeline">The five-stage AI citation pipeline</h2>
   <p>
     Most generative engines follow a variant of the same retrieval-augmented generation (RAG) pipeline. The exact engineering differs between platforms, but the logical stages are consistent:
   </p>
@@ -548,7 +582,7 @@ nav {
 
   <p>Each stage is a gate. Clearing one doesn't guarantee the next, and citation only happens if your passage survives all five.</p>
 
-  <h3>Stage 1 — Query fan-out</h3>
+  <h3 id="stage-1-fan-out">Stage 1 — Query fan-out</h3>
   <p>
     A generative engine rarely searches the exact question you typed. Instead it decomposes the prompt into several related sub-queries and runs them in parallel — a process Google calls <em>query fan-out</em>. Ask "what's the best CRM for a small B2B team" and the system might quietly search for pricing, integrations, ease of use and specific competitor comparisons, then assemble an answer from whatever sources best satisfy each thread.
   </p>
@@ -556,7 +590,7 @@ nav {
     This matters more than any other single mechanic, for two reasons. First, industry analyses (notably from Search Engine Land) attribute roughly half of all AI citations to these fan-out sub-queries rather than to the head term, and report that ranking well for the sub-queries makes a page dramatically more likely to be cited. Second, AirOps research suggests most of those sub-queries have little or no traditional search volume, which means <strong>they don't appear in your keyword tool.</strong> You cannot target them one by one. The only durable strategy is topical breadth: cover a subject thoroughly enough that whatever sub-queries the engine invents, one of your passages answers it.
   </p>
 
-  <h3>Stage 2 — Retrieval: chunking, embeddings and semantic matching</h3>
+  <h3 id="stage-2-retrieval">Stage 2 — Retrieval: chunking, embeddings and semantic matching</h3>
   <p>For each sub-query, the system retrieves candidate content and processes it in three steps:</p>
   <ul>
     <li><strong>Chunking</strong> — your page is split into smaller, self-contained passages.</li>
@@ -567,7 +601,7 @@ nav {
     The critical consequence: because matching happens on meaning, not exact wording, keyword density has essentially no direct influence on retrieval. A passage about "quarterly revenue" can be retrieved for a query about "financial earnings" without sharing a single keyword. What gets you retrieved is a passage whose meaning maps cleanly onto the question — which is why a focused, well-defined section beats a keyword-stuffed one. Whether AI bots can reach your passages in the first place is a separate, prerequisite problem covered in <a href="/technical-geo/">making your site readable by AI crawlers</a>.
   </p>
 
-  <h3>Stage 3 — Re-ranking: where most pages die</h3>
+  <h3 id="stage-3-reranking">Stage 3 — Re-ranking: where most pages die</h3>
   <p>
     Being retrieved is not being cited. Retrieved candidates pass through a re-ranking step that scores each passage on a cluster of signals: semantic relevance, factual density, source authority, freshness, structural clarity and <em>information gain</em> — how much genuinely new value a passage adds versus repeating what other sources already say. AirOps' analysis of the pipeline suggests the great majority of retrieved passages are dropped at this stage and never make the answer.
   </p>
@@ -580,19 +614,19 @@ nav {
   </ul>
   <p>This is the stage where the on-page craft lives, and it's deep enough to warrant its own guide on <a href="/content-optimisation-for-geo/">the on-page levers that earn citations</a>.</p>
 
-  <h3>Stage 4 — The citation decision</h3>
+  <h3 id="stage-4-citation">Stage 4 — The citation decision</h3>
   <p>
     Surviving passages are handed to the language model, which writes the answer. As it composes each claim, it decides which source to attach — and it's selective. A source gets cited when it directly supports a specific claim the model is making; general background context usually doesn't earn a citation at all. Citations tend to be granular (a specific passage tied to a specific sentence), pages are typically cited only once, and earlier positions in the answer carry more weight. The practical lesson: write passages that make a clean, specific, attributable claim, because that's the unit the model is looking to cite.
   </p>
 
-  <h3>Stage 5 — Response assembly</h3>
+  <h3 id="stage-5-assembly">Stage 5 — Response assembly</h3>
   <p>
     Finally the engine weaves the chosen passages into a coherent answer and renders the citations — inline, numbered or as a source list depending on the platform. Where sources disagree, the system tends to favour the fresher and more authoritative one, which is why a visible "last updated" date and a genuine refresh cadence matter: stale passages lose conflict resolutions they would otherwise win.
   </p>
 
   <hr class="article-divider">
 
-  <h2>Why ranking #1 on Google is no longer enough</h2>
+  <h2 id="ranking-not-enough">Why ranking #1 on Google is no longer enough</h2>
   <p>
     The uncomfortable headline for SEO teams is that traditional rankings and AI citations have partly decoupled. Ahrefs' analysis of thousands of AI prompts found that only a small minority of AI-cited URLs also rank in Google's top ten for the same query, and a large share don't rank in the top 100 at all. Evertune's research goes further, reporting an inverse relationship in some datasets — the most-cited pages sometimes carry fewer backlinks than less-cited ones.
   </p>
@@ -604,7 +638,7 @@ nav {
     <p>In the audits I run, it's common to find a client ranking on page one for a term while being entirely absent from the AI answers their customers are reading. The two worlds have genuinely diverged.</p>
   </div>
 
-  <h2>What this means for your content</h2>
+  <h2 id="content-implications">What this means for your content</h2>
   <p>Translating the pipeline into practice:</p>
   <ul>
     <li><strong>Build topical clusters, not hero pages.</strong> Fan-out rewards breadth across sub-queries. A cluster of focused passages gives the engine more places to retrieve you than one monster guide.</li>
@@ -619,7 +653,7 @@ nav {
 </div>
 
 <!-- FAQ -->
-<section class="faq-section" aria-label="Frequently asked questions">
+<section class="faq-section" id="faqs" aria-label="Frequently asked questions">
   <span class="faq-label">FAQ</span>
   <h2 class="faq-heading">Common questions about AI citation</h2>
   <ul class="faq-list">
@@ -686,6 +720,8 @@ nav {
 
   </ul>
 </section>
+</div><!-- /.article-content -->
+</div><!-- /.article-layout -->
 
 <!-- CONCLUSION / CTA -->
 <div class="cta-band">
@@ -709,6 +745,13 @@ nav {
 </footer>
 
 <script>
+// TOC active section tracking
+const tocLinks = document.querySelectorAll('.toc-link[href^="#"]');
+const headings = Array.from(tocLinks).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+const setActive = id => tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+const tocObserver = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); }); }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+headings.forEach(h => tocObserver.observe(h));
+
 // FAQ accordion
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
