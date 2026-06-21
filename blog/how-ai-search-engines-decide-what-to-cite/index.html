@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How AI Search Engines Decide What to Cite — Keval Patel</title>
+<meta name="description" content="Inside the mechanics of AI citation: how query fan-out, retrieval-augmented generation and re-ranking decide whether your brand appears in an AI answer — and what to do about it.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How AI Search Engines Decide What to Cite",
+  "description": "Inside the mechanics of AI citation: how query fan-out, retrieval-augmented generation and re-ranking decide whether your brand appears in an AI answer — and what to do about it.",
+  "url": "https://geokeval.co.uk/blog/how-ai-search-engines-decide-what-to-cite/",
+  "datePublished": "2025-06-21",
+  "dateModified": "2025-06-21",
+  "inLanguage": "en-GB",
+  "keywords": ["how AI search engines choose what to cite", "query fan-out", "retrieval-augmented generation", "RAG citation", "passage-level retrieval", "AI citation signals", "re-ranking", "GEO"],
+  "articleSection": "GEO",
+  "wordCount": 1800,
+  "author": {
+    "@type": "Person",
+    "name": "Keval Patel",
+    "url": "https://geokeval.co.uk",
+    "sameAs": ["https://linkedin.com/in/kevalpatel"],
+    "jobTitle": "GEO & AI Visibility Strategist",
+    "knowsAbout": ["Generative Engine Optimisation", "AI search visibility", "Search Engine Optimisation", "Retrieval-augmented generation", "Content strategy"]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "geokeval",
+    "url": "https://geokeval.co.uk",
+    "logo": { "@type": "ImageObject", "url": "https://geokeval.co.uk/favicon.ico" }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://geokeval.co.uk/blog/how-ai-search-engines-decide-what-to-cite/"
+  },
+  "about": [
+    { "@type": "Thing", "name": "Retrieval-Augmented Generation" },
+    { "@type": "Thing", "name": "Generative Engine Optimisation" },
+    { "@type": "Thing", "name": "Artificial Intelligence" },
+    { "@type": "Thing", "name": "Search Engine Optimisation" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://geokeval.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Articles", "item": "https://geokeval.co.uk/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "GEO", "item": "https://geokeval.co.uk/blog/category/geo/" },
+    { "@type": "ListItem", "position": 4, "name": "How AI Search Engines Decide What to Cite", "item": "https://geokeval.co.uk/blog/how-ai-search-engines-decide-what-to-cite/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do AI search engines choose which sources to cite?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They use a retrieval-augmented generation (RAG) pipeline: the query is split into sub-queries (fan-out), content is chunked and retrieved by semantic meaning, passages are re-ranked on relevance, factual density, authority and freshness, and the model then cites the specific passages that support each claim it writes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ranking #1 on Google get me cited by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not reliably. Good rankings help you get retrieved, but studies show only a minority of AI-cited URLs rank in Google's top ten for the same query. Citation is decided at the passage level on a different set of signals to those that determine search rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do backlinks still matter for AI citation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Less than for traditional SEO, and some research finds the most-cited pages have fewer backlinks. Authority still counts at the re-ranking stage, but it leans more on corroborated brand mentions across the web than on raw link volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is query fan-out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Query fan-out is the process where an AI engine breaks one question into multiple parallel sub-queries, retrieves sources for each, and synthesises them into a single answer. Much of your citation potential lives in these sub-queries, which often have little or no traditional search volume and won't appear in keyword research tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should a section be to get cited by AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Roughly 120–180 words per section is a commonly cited sweet spot — long enough to answer a question fully, short enough to be lifted cleanly as a passage. Lead each section with a direct answer, then add supporting context."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=DM+Sans:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #161616;
+    --off-white: #ffffff;
+    --crimson: #0f62fe;
+    --crimson-light: #0043ce;
+    --warm-grey: #525252;
+    --mid: #f4f4f4;
+    --border-dark: rgba(22,22,22,0.1);
+    --border-light: rgba(22,22,22,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--off-white); color: var(--black); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 48px;
+  background: rgba(255,255,255,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(22,22,22,0.1);
+}
+.nav-brand { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; color: #161616; text-decoration: none; }
+.nav-brand span { color: var(--crimson-light); }
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: #161616; }
+.nav-dropdown { position: relative; }
+.nav-dropdown > a { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+.nav-dropdown > a::after { content: '▾'; font-size: 9px; opacity: 0.6; transition: transform 0.2s; }
+.nav-dropdown:hover > a::after { transform: rotate(180deg); }
+.dropdown-menu {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  background: #ffffff; border: 1px solid rgba(22,22,22,0.12);
+  min-width: 200px; padding: 16px 0 8px;
+  opacity: 0; pointer-events: none; transition: opacity 0.15s; margin-top: 0;
+}
+.nav-dropdown::after { content: ''; position: absolute; top: 100%; left: -20px; right: -20px; height: 20px; background: transparent; }
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: all; }
+.dropdown-menu a { display: block; padding: 10px 18px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.15s, background 0.15s; border-left: 2px solid transparent; }
+.dropdown-menu a:hover { color: #161616; background: #f4f4f4; border-left-color: #0f62fe; }
+.dropdown-menu .dropdown-divider { height: 1px; background: rgba(22,22,22,0.08); margin: 6px 0; }
+.dropdown-menu .dropdown-all { font-size: 9px; }
+.nav-cta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: transparent; color: #161616; border: 1px solid rgba(22,22,22,0.4); padding: 9px 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+.nav-cta:hover { background: #0f62fe; color: #ffffff; border-color: #0f62fe; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 300; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: #161616; transition: all 0.3s; transform-origin: center; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 250; background: #ffffff; border-left: 1px solid rgba(22,22,22,0.1); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); display: flex; flex-direction: column; padding: 88px 32px 48px; overflow-y: auto; }
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 240; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+.mobile-nav-links { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.mobile-nav-links li a { display: block; padding: 14px 0; font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #161616; text-decoration: none; border-bottom: 1px solid rgba(22,22,22,0.08); transition: color 0.2s; }
+.mobile-nav-links li a:hover { color: #0f62fe; }
+.mobile-nav-links .mobile-section-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); padding: 20px 0 8px; display: block; }
+.mobile-nav-links .mobile-sub a { padding: 10px 0 10px 16px; font-size: 10px; color: #525252; border-bottom: 1px solid rgba(22,22,22,0.04); }
+.mobile-cta { margin-top: 32px; display: block; background: #0f62fe; color: #ffffff; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 24px; text-decoration: none; text-align: center; transition: background 0.2s; }
+.mobile-cta:hover { background: #0043ce; }
+
+  /* ── ARTICLE HEADER ─────────────────────────────────────── */
+  .article-header {
+    background: #f4f4f4;
+    padding: 120px 48px 56px;
+    border-bottom: 1px solid var(--border-dark);
+  }
+  .article-breadcrumb { display: flex; align-items: center; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .article-breadcrumb a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .article-breadcrumb a:hover { color: #161616; }
+  .article-breadcrumb span { font-family: var(--mono); font-size: 10px; color: rgba(22,22,22,0.3); }
+  .article-breadcrumb .current { color: #525252; font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .article-cat-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .article-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 68px); font-weight: 700; color: #161616; line-height: 1.08; margin-bottom: 24px; max-width: 22ch; }
+  .article-title em { font-style: italic; color: #525252; }
+  .article-meta-row { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .article-meta-item { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: #525252; font-weight: 400; }
+  .article-meta-dot { color: rgba(22,22,22,0.3); }
+
+  /* ── ARTICLE BODY ───────────────────────────────────────── */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 48px 100px;
+  }
+
+  .article-body .lead {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.2vw, 26px);
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--black);
+    margin-bottom: 48px;
+    border-left: 3px solid var(--crimson);
+    padding-left: 28px;
+  }
+
+  .article-body h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-top: 64px;
+    margin-bottom: 20px;
+  }
+
+  .article-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.25;
+    margin-top: 44px;
+    margin-bottom: 14px;
+  }
+
+  .article-body p {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.85;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+
+  .article-body strong { color: var(--black); font-weight: 700; }
+
+  .article-body a {
+    color: var(--crimson-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,67,206,0.25);
+    transition: border-color 0.2s;
+  }
+  .article-body a:hover { border-bottom-color: var(--crimson-light); }
+
+  .article-body ul, .article-body ol {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+  }
+  .article-body li {
+    font-size: 16px;
+    color: var(--warm-grey);
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .article-body .callout {
+    background: #edf4ff;
+    border-left: 3px solid #0f62fe;
+    padding: 28px 32px;
+    margin: 40px 0;
+  }
+  .article-body .callout p {
+    color: #161616;
+    font-weight: 400;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  .article-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 56px 0;
+  }
+
+  /* ── PIPELINE DIAGRAM ───────────────────────────────────── */
+  .pipeline {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 36px 0 48px;
+    background: var(--border-light);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pipeline-stage {
+    background: #ffffff;
+    flex: 1;
+    min-width: 110px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-right: 1px solid var(--border-light);
+  }
+  .pipeline-stage:last-child { border-right: none; }
+  .pipeline-num {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    font-weight: 700;
+  }
+  .pipeline-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.2;
+  }
+  .pipeline-desc {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--warm-grey);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    margin-top: 4px;
+  }
+  .pipeline-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    background: #f4f4f4;
+    color: var(--crimson);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ACCORDION ──────────────────────────────────────── */
+  .faq-section {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+  }
+  .faq-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--crimson-light);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .faq-heading {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+  .faq-list { list-style: none; border-top: 1px solid var(--border-light); }
+  .faq-item { border-bottom: 1px solid var(--border-light); }
+  .faq-question {
+    width: 100%; background: none; border: none;
+    padding: 22px 0; display: flex; justify-content: space-between;
+    align-items: center; gap: 20px; cursor: pointer; text-align: left;
+  }
+  .faq-question-text { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--black); line-height: 1.3; transition: color 0.2s; }
+  .faq-question:hover .faq-question-text { color: var(--crimson); }
+  .faq-icon { flex-shrink: 0; width: 20px; height: 20px; border: 1px solid rgba(22,22,22,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; position: relative; }
+  .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background: var(--warm-grey); transition: transform 0.3s ease, opacity 0.3s ease, background 0.2s; }
+  .faq-icon::before { width: 8px; height: 1.5px; }
+  .faq-icon::after { width: 1.5px; height: 8px; }
+  .faq-question[aria-expanded="true"] .faq-icon { background: var(--crimson); border-color: var(--crimson); }
+  .faq-question[aria-expanded="true"] .faq-icon::before,
+  .faq-question[aria-expanded="true"] .faq-icon::after { background: #ffffff; }
+  .faq-question[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+  .faq-answer { overflow: hidden; max-height: 0; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+  .faq-answer-inner { padding: 0 0 24px; font-size: 15px; color: var(--warm-grey); line-height: 1.85; font-weight: 400; }
+
+  /* ── CTA BAND ───────────────────────────────────────────── */
+  .cta-band { background: #f4f4f4; padding: 72px 48px; text-align: center; }
+  .cta-band .cta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson-light); margin-bottom: 20px; display: block; }
+  .cta-band h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: #161616; line-height: 1.15; margin-bottom: 16px; }
+  .cta-band h2 em { font-style: italic; color: #525252; }
+  .cta-band p { font-size: 15px; color: #525252; font-weight: 300; line-height: 1.8; max-width: 48ch; margin: 0 auto 36px; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; }
+  .btn-primary { display: inline-block; background: var(--crimson); color: var(--off-white); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; transition: background 0.2s; border: none; }
+  .btn-primary:hover { background: var(--crimson-light); }
+  .btn-ghost { display: inline-block; background: transparent; color: #161616; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 32px; text-decoration: none; border: 1px solid rgba(22,22,22,0.3); transition: all 0.2s; }
+  .btn-ghost:hover { color: #000000; border-color: #161616; }
+
+  /* ── FOOTER ─────────────────────────────────────────────── */
+  footer { background: #f4f4f4; padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(22,22,22,0.1); }
+  footer p { font-family: var(--mono); font-size: 10px; color: #525252; letter-spacing: 0.06em; }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; color: #525252; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #161616; }
+
+  /* ── SOURCE NOTE ────────────────────────────────────────── */
+  .source-note {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(22,22,22,0.4);
+    letter-spacing: 0.03em;
+    line-height: 1.7;
+    border-top: 1px solid var(--border-light);
+    padding-top: 24px;
+    margin-top: 8px;
+  }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .nav-hamburger { display: flex; }
+    .article-header { padding: 96px 24px 40px; }
+    .article-body { padding: 48px 24px 72px; }
+    .faq-section { padding: 0 24px 64px; }
+    .faq-question-text { font-size: 16px; }
+    .cta-band { padding: 56px 24px; }
+    .cta-btns { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+    .pipeline { min-width: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-brand">The Future of Search<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li class="nav-dropdown">
+      <a href="/blog/">Articles &amp; Resources</a>
+      <div class="dropdown-menu">
+        <a href="/blog/" class="dropdown-all">All Articles</a>
+        <div class="dropdown-divider"></div>
+        <a href="/blog/category/geo/">GEO</a>
+        <a href="/blog/category/content-strategy/">Content Strategy</a>
+        <a href="/blog/category/technical-seo/">Technical SEO</a>
+        <a href="/blog/category/measurement/">Measurement</a>
+        <a href="/blog/category/resources/">Resources</a>
+      </div>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-overlay"></div>
+<div class="mobile-drawer">
+  <ul class="mobile-nav-links">
+    <li><a href="/#what">Expertise</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/blog/">Articles &amp; Resources</a></li>
+    <li>
+      <span class="mobile-section-label">Browse by category</span>
+      <ul class="mobile-sub" style="list-style:none;">
+        <li><a href="/blog/category/geo/">GEO</a></li>
+        <li><a href="/blog/category/content-strategy/">Content Strategy</a></li>
+        <li><a href="/blog/category/technical-seo/">Technical SEO</a></li>
+        <li><a href="/blog/category/measurement/">Measurement</a></li>
+        <li><a href="/blog/category/resources/">Resources</a></li>
+      </ul>
+    </li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="mobile-cta">Get in touch</a>
+</div>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <div class="article-breadcrumb">
+    <a href="/">Home</a><span>/</span>
+    <a href="/blog/">Articles</a><span>/</span>
+    <a href="/blog/category/geo/">GEO</a><span>/</span>
+    <span class="current">How AI Search Engines Decide What to Cite</span>
+  </div>
+  <span class="article-cat-tag">GEO · Fundamentals</span>
+  <h1 class="article-title">How AI Search Engines Decide <em>What to Cite</em></h1>
+  <div class="article-meta-row">
+    <span class="article-meta-item">Keval Patel</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">June 2025</span>
+    <span class="article-meta-dot">·</span>
+    <span class="article-meta-item">10 min read</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">
+    When you ask ChatGPT, Perplexity or Google's AI Overviews a question, you get a single synthesised answer that names a handful of sources. Your brand is either in that answer or it isn't — and unlike a page-two Google listing, there's no "almost." Understanding why one source gets cited and another gets ignored is the foundation of everything in <a href="/blog/what-is-geo/">generative engine optimisation</a>. The short version: AI search engines don't rank pages, they retrieve and re-rank individual passages, and citation is the last filter in a multi-stage pipeline that most content never survives.
+  </p>
+
+  <h2>AI doesn't rank pages — it retrieves and synthesises passages</h2>
+  <p>
+    Traditional search answers a query by ordering whole pages: it looks at keywords, links and authority, then hands you ten blue links to choose from. Generative search works differently. It breaks your content into fragments, scores each fragment against the meaning of the question, and stitches the best fragments from across the web into one answer — attaching citations to the specific claims those fragments support.
+  </p>
+  <p>
+    That single architectural difference explains nearly every "unusual" thing about AI visibility. A 4,000-word guide can be cited for one paragraph and ignored for the other thirty-nine. A page ranking fifth on Google can be cited while the page ranking first is passed over, because citation is decided at the level of the passage, not the page. If you take one idea from this article, take this: <strong>you are no longer optimising pages to rank, you are optimising passages to be retrieved and reused.</strong> That shift is also the clearest line between <a href="/geo-vs-seo/">how GEO differs from traditional SEO</a>.
+  </p>
+
+  <h2>The five-stage AI citation pipeline</h2>
+  <p>
+    Most generative engines follow a variant of the same retrieval-augmented generation (RAG) pipeline. The exact engineering differs between platforms, but the logical stages are consistent:
+  </p>
+
+  <div class="pipeline" role="img" aria-label="The five-stage AI citation pipeline from query fan-out to response assembly">
+    <div class="pipeline-stage">
+      <div class="pipeline-num">Stage 1</div>
+      <div class="pipeline-title">Query fan-out</div>
+      <div class="pipeline-desc">One question → many sub-queries run in parallel</div>
+    </div>
+    <div class="pipeline-arrow">›</div>
+    <div class="pipeline-stage">
+      <div class="pipeline-num">Stage 2</div>
+      <div class="pipeline-title">Retrieval</div>
+      <div class="pipeline-desc">Chunk + embed + semantic match passages</div>
+    </div>
+    <div class="pipeline-arrow">›</div>
+    <div class="pipeline-stage">
+      <div class="pipeline-num">Stage 3</div>
+      <div class="pipeline-title">Re-ranking</div>
+      <div class="pipeline-desc">Most candidates are dropped here</div>
+    </div>
+    <div class="pipeline-arrow">›</div>
+    <div class="pipeline-stage">
+      <div class="pipeline-num">Stage 4</div>
+      <div class="pipeline-title">Citation decision</div>
+      <div class="pipeline-desc">Cite per claim, not per page</div>
+    </div>
+    <div class="pipeline-arrow">›</div>
+    <div class="pipeline-stage">
+      <div class="pipeline-num">Stage 5</div>
+      <div class="pipeline-title">Response assembly</div>
+      <div class="pipeline-desc">Weave passages, attach sources</div>
+    </div>
+  </div>
+
+  <p>Each stage is a gate. Clearing one doesn't guarantee the next, and citation only happens if your passage survives all five.</p>
+
+  <h3>Stage 1 — Query fan-out</h3>
+  <p>
+    A generative engine rarely searches the exact question you typed. Instead it decomposes the prompt into several related sub-queries and runs them in parallel — a process Google calls <em>query fan-out</em>. Ask "what's the best CRM for a small B2B team" and the system might quietly search for pricing, integrations, ease of use and specific competitor comparisons, then assemble an answer from whatever sources best satisfy each thread.
+  </p>
+  <p>
+    This matters more than any other single mechanic, for two reasons. First, industry analyses (notably from Search Engine Land) attribute roughly half of all AI citations to these fan-out sub-queries rather than to the head term, and report that ranking well for the sub-queries makes a page dramatically more likely to be cited. Second, AirOps research suggests most of those sub-queries have little or no traditional search volume, which means <strong>they don't appear in your keyword tool.</strong> You cannot target them one by one. The only durable strategy is topical breadth: cover a subject thoroughly enough that whatever sub-queries the engine invents, one of your passages answers it.
+  </p>
+
+  <h3>Stage 2 — Retrieval: chunking, embeddings and semantic matching</h3>
+  <p>For each sub-query, the system retrieves candidate content and processes it in three steps:</p>
+  <ul>
+    <li><strong>Chunking</strong> — your page is split into smaller, self-contained passages.</li>
+    <li><strong>Embedding</strong> — each passage is converted into a vector, a numerical representation of its meaning.</li>
+    <li><strong>Semantic matching</strong> — the engine compares the query's vector to passage vectors and pulls the closest matches.</li>
+  </ul>
+  <p>
+    The critical consequence: because matching happens on meaning, not exact wording, keyword density has essentially no direct influence on retrieval. A passage about "quarterly revenue" can be retrieved for a query about "financial earnings" without sharing a single keyword. What gets you retrieved is a passage whose meaning maps cleanly onto the question — which is why a focused, well-defined section beats a keyword-stuffed one. Whether AI bots can reach your passages in the first place is a separate, prerequisite problem covered in <a href="/technical-geo/">making your site readable by AI crawlers</a>.
+  </p>
+
+  <h3>Stage 3 — Re-ranking: where most pages die</h3>
+  <p>
+    Being retrieved is not being cited. Retrieved candidates pass through a re-ranking step that scores each passage on a cluster of signals: semantic relevance, factual density, source authority, freshness, structural clarity and <em>information gain</em> — how much genuinely new value a passage adds versus repeating what other sources already say. AirOps' analysis of the pipeline suggests the great majority of retrieved passages are dropped at this stage and never make the answer.
+  </p>
+  <p>A few patterns consistently survive re-ranking:</p>
+  <ul>
+    <li><strong>Factual density.</strong> Passages packed with specific, verifiable facts — figures, dates, named studies — outscore vague prose. This is the mechanism behind the Princeton-led GEO study (arXiv:2311.09735, KDD 2024), which found that adding statistics, citations and direct quotations measurably lifted source visibility in generative answers.</li>
+    <li><strong>Self-contained structure.</strong> A passage that answers a question without needing the surrounding page is easier to lift and cite. Studies suggest a sweet spot of roughly 120–180 words per section between headings, with very short or sprawling sections performing worse.</li>
+    <li><strong>Heading–query alignment.</strong> When a heading mirrors the phrasing of the question, the passage beneath it is markedly more likely to be cited. Your H2s and H3s are retrieval signals, not just formatting.</li>
+    <li><strong>Information gain.</strong> Original research and novel analysis are rewarded; pages that merely restate the consensus are structurally devalued.</li>
+  </ul>
+  <p>This is the stage where the on-page craft lives, and it's deep enough to warrant its own guide on <a href="/content-optimisation-for-geo/">the on-page levers that earn citations</a>.</p>
+
+  <h3>Stage 4 — The citation decision</h3>
+  <p>
+    Surviving passages are handed to the language model, which writes the answer. As it composes each claim, it decides which source to attach — and it's selective. A source gets cited when it directly supports a specific claim the model is making; general background context usually doesn't earn a citation at all. Citations tend to be granular (a specific passage tied to a specific sentence), pages are typically cited only once, and earlier positions in the answer carry more weight. The practical lesson: write passages that make a clean, specific, attributable claim, because that's the unit the model is looking to cite.
+  </p>
+
+  <h3>Stage 5 — Response assembly</h3>
+  <p>
+    Finally the engine weaves the chosen passages into a coherent answer and renders the citations — inline, numbered or as a source list depending on the platform. Where sources disagree, the system tends to favour the fresher and more authoritative one, which is why a visible "last updated" date and a genuine refresh cadence matter: stale passages lose conflict resolutions they would otherwise win.
+  </p>
+
+  <hr class="article-divider">
+
+  <h2>Why ranking #1 on Google is no longer enough</h2>
+  <p>
+    The uncomfortable headline for SEO teams is that traditional rankings and AI citations have partly decoupled. Ahrefs' analysis of thousands of AI prompts found that only a small minority of AI-cited URLs also rank in Google's top ten for the same query, and a large share don't rank in the top 100 at all. Evertune's research goes further, reporting an inverse relationship in some datasets — the most-cited pages sometimes carry fewer backlinks than less-cited ones.
+  </p>
+  <p>
+    This isn't a reason to abandon SEO. Strong rankings still help you enter the retrieval pool, and crawlability remains the entry ticket. But it does mean your existing rank-tracking dashboard is now a poor proxy for AI visibility. If your organic traffic has plateaued while your content quality hasn't dropped, the cause may be structural rather than strategic — discovery is simply moving into answers you can't see in Google Search Console. Measuring it requires a different instrument: the job of <a href="/ai-visibility-metrics/">measuring citation share</a>.
+  </p>
+
+  <div class="callout">
+    <p>In the audits I run, it's common to find a client ranking on page one for a term while being entirely absent from the AI answers their customers are reading. The two worlds have genuinely diverged.</p>
+  </div>
+
+  <h2>What this means for your content</h2>
+  <p>Translating the pipeline into practice:</p>
+  <ul>
+    <li><strong>Build topical clusters, not hero pages.</strong> Fan-out rewards breadth across sub-queries. A cluster of focused passages gives the engine more places to retrieve you than one monster guide.</li>
+    <li><strong>Write self-contained passages.</strong> Lead each section with a direct answer, keep sections roughly 120–180 words, and make every passage citable on its own.</li>
+    <li><strong>Match headings to real questions.</strong> Phrase H2s and H3s the way your audience asks, not the way a keyword tool suggests.</li>
+    <li><strong>Raise factual density.</strong> Add specific statistics, name your sources, and place evidence next to the claim it supports so retrieval doesn't separate them.</li>
+    <li><strong>Earn information gain.</strong> Publish something genuinely new — original data, a framework, a tested result — because novelty is a citation signal in its own right.</li>
+    <li><strong>Build the entity, not just the page.</strong> Corroboration across independent domains lifts authority at the re-ranking stage, which is the work of <a href="/off-page-geo/">building authority beyond your own site</a>.</li>
+    <li><strong>Counter-intuitively, narrow beats comprehensive.</strong> Some studies find pages covering a slice of a topic well are cited more than pages attempting to cover everything. The "definitive 10,000-word guide" can work against you in AI search.</li>
+  </ul>
+
+</div>
+
+<!-- FAQ -->
+<section class="faq-section" aria-label="Frequently asked questions">
+  <span class="faq-label">FAQ</span>
+  <h2 class="faq-heading">Common questions about AI citation</h2>
+  <ul class="faq-list">
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+        <span class="faq-question-text">How do AI search engines choose which sources to cite?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-1" role="region">
+        <div class="faq-answer-inner">
+          They use a retrieval-augmented generation (RAG) pipeline: the query is split into sub-queries (fan-out), content is chunked and retrieved by semantic meaning, passages are re-ranked on relevance, factual density, authority and freshness, and the model then cites the specific passages that support each claim it writes. Citation is awarded at the passage level, not the page level.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+        <span class="faq-question-text">Does ranking #1 on Google get me cited by AI?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-2" role="region">
+        <div class="faq-answer-inner">
+          Not reliably. Good rankings help you get into the retrieval pool, but studies (including Ahrefs' analysis of thousands of AI prompts) show only a minority of AI-cited URLs rank in Google's top ten for the same query. Citation is decided at the passage level on a different set of signals — factual density, structural clarity, information gain — that don't always correlate with ranking factors.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+        <span class="faq-question-text">Do backlinks still matter for AI citation?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-3" role="region">
+        <div class="faq-answer-inner">
+          Less than for traditional SEO, and some research (Evertune) finds the most-cited pages actually have fewer backlinks in certain datasets. Authority still counts at the re-ranking stage, but it leans more on corroborated brand mentions across the web — third-party coverage, consistent entity signals — than on raw link volume.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+        <span class="faq-question-text">What is query fan-out?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-4" role="region">
+        <div class="faq-answer-inner">
+          Query fan-out is the process where an AI engine breaks one question into multiple parallel sub-queries, retrieves sources for each, and synthesises them into a single answer. Industry analyses attribute roughly half of all AI citations to these fan-out sub-queries rather than the head term. Crucially, most of these sub-queries have little or no traditional search volume, so they won't appear in your keyword research tools.
+        </div>
+      </div>
+    </li>
+
+    <li class="faq-item">
+      <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+        <span class="faq-question-text">How long should a section be to get cited by AI?</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer" id="faq-5" role="region">
+        <div class="faq-answer-inner">
+          Roughly 120–180 words per section is a commonly cited sweet spot — long enough to answer a question fully, short enough to be lifted cleanly as a passage. Lead each section with a direct answer, then add supporting context. Very short sections lack the depth to re-rank well; very long sections are harder to chunk and retrieve precisely.
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- CONCLUSION / CTA -->
+<div class="cta-band">
+  <span class="cta-label">Decode the mechanics, then act</span>
+  <h2>Let's look at where your site is <em>winning and losing those gates.</em></h2>
+  <p>Citation isn't a black box — it's a pipeline with identifiable gates, and every GEO tactic worth doing maps to one of them. Get retrievable, get re-ranked, get cited. If you'd like a clear-eyed read on where your site stands today, that's exactly what I do.</p>
+  <div class="cta-btns">
+    <a href="/#contact" class="btn-primary">Request an audit</a>
+    <a href="/blog/what-is-geo/" class="btn-ghost">Start with GEO basics</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Keval Patel · geokeval.co.uk</p>
+  <div class="footer-links">
+    <a href="https://linkedin.com/in/kevalpatel" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="/blog/">Articles</a>
+    <a href="mailto:keval@geokeval.co.uk">Email</a>
+  </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    const answer = document.getElementById(btn.getAttribute('aria-controls'));
+    btn.setAttribute('aria-expanded', !expanded);
+    answer.style.maxHeight = expanded ? '0' : answer.scrollHeight + 'px';
+  });
+});
+
+// Mobile nav
+const hamburger = document.querySelector('.nav-hamburger');
+const drawer = document.querySelector('.mobile-drawer');
+const overlay = document.querySelector('.mobile-overlay');
+function toggleNav(open) {
+  hamburger.classList.toggle('open', open);
+  drawer.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+hamburger.addEventListener('click', () => toggleNav(!drawer.classList.contains('open')));
+overlay.addEventListener('click', () => toggleNav(false));
+document.querySelectorAll('.mobile-drawer a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+</script>
+
+</body>
+</html>
